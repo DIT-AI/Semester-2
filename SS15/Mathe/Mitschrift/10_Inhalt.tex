@@ -1,0 +1,1685 @@
+\setcounter{part}{2}
+\part{Analysis einer Ver"anderlichen (Fortsetzung)}
+
+\setcounter{chapter}{5}
+\chapter{Funktionsreihen}
+
+\section{Vorbetrachtung}
+\begin{itemize}
+	\item\redul{Reihe} (von Zahlen) ist ein formaler Ausdruck der Form $\sum\limits_{k=0}^{\infty}a_k$ mit $a_k\in\R$ (bzw. $a_k\in\C$).
+	\cbox{$\sum\limits_{k=0}^{\infty}a_k=a_0+a_1+a_2+a_3+\ldots+a_n+\ldots$}
+	Ist die Folge $(s_n)$ der Partialsummen $s_n=\sum\limits_{k=0}^{n}a_k$
+	\begin{align*}
+	s_0&=a_0\\
+	s_1&=a_0+a_1\\
+	\vdots\\
+	s_n&=a_0+a_1+\ldots+a_n
+	\end{align*}
+	konvergent, so ordnet man der Reihe $\sum\limits_{k=0}^{\infty}a_k$ den Grenzwert zu
+	\cbox{$\sum\limits_{k=0}^{\infty}a_k=\lim\limits_{n\to\infty}s_n=\lim\limits_{n\to\infty}\sum\limits_{k=0}^{n}a_k$;}
+	In diesem Fall heißt die Reihe \redul{konvergent} (oder \redul{summierbar}).
+	
+	\item \redul{Funktionsreihe} (= Reihe von Funktionen) ist ein formaler Ausdruck der Form $\sum\limits_{k=0}^{\infty}f_k$ mit Funktionen $f_k = f_k(x)$.
+	\cbox{$\sum\limits_{k=0}^{\infty}f_k=f_0+f_1+\ldots+f_n+\ldots$}
+	Für Zahlen $x\in\R$, für die die Reihe (von Zahlen) $\sum\limits_{k=0}^{\infty}f_k(x)$ konvergiert, stellt die Funktionenreihe $\sum\limits_{k=0}^{\infty}f_k$ eine Funktion $f$ dar:
+	\cbox{$f(x)=\sum\limits_{k=0}^{\infty}f_k(x)$}
+	$\D=\{x\in\R\mid\sum\limits_{k=0}^{\infty}f_k(x)\text{ ist konvergent}\}$ heißt \redul{Konvergenzbereich} (der Funktionsreihe).
+	
+	Die Partialsummen $s_n(x)$ $(n\in\N)$ der Funktionenreihe $\sum\limits_{k=0}^{\infty}f_k$ (sind Funktionen)
+	\begin{align*}
+	s_0(x)&=f_0(x)\\
+	s_1(x)&=f_0(x)+f_1(x)\\
+	s_2(x)&=f_0(x)+f_1(x)+f_2(x)\\
+	\vdots\\
+	s_n(x)&=f_0(x)+f_1(x)+f_2(x)+\ldots+f_n(x)
+	\end{align*}
+	und werden als Approximationen (= Näherungen) der Funktion $f(x)=\sum\limits_{k=0}^{\infty}f_k(x)$ betrachtet.
+\end{itemize}
+
+\Bsp $f_k(x)=x^k$ ($k=0,1,2,3,\ldots$)
+\cbox{$f(x)=\sum\limits_{k=0}^{\infty}x^k=x^0+x^1+x^2+\ldots$\\
+$\D=\{x\mid |x|<1\}={]-1;1[}$}
+
+Es gilt: $f(x)=\sum\limits_{k=0}^{\infty}x^k=\dfrac{1}{1-x}$
+
+{\bf Analogien zu Dezimalbruchentwicklung einer reellen Zahl:}
+\vspace{-0.9cm}
+\Bsp $\frac{1}{3}=0{,}\ol{3}=0{,}333333\ldots=\sum\limits_{k=1}^{\infty}3\cdot10^{-k}$ (unendliche Reihe)
+
+Die Partialsummen
+\begin{align*}
+s_0&=0\\
+s_1&=3\cdot10^{-1}=0{,}3\\
+s_2&=3\cdot10^{-1}+3\cdot10^{-2}=0{,}33\\
+s_3&=3\cdot10^{-1}+3\cdot10^{-2}+3\cdot10^{-3}=0{,}333\\
+\vdots
+\end{align*}
+sind Approximationen von $\textsl{}\dfrac{1}{3}$.
+
+In folgenden betrachten wir zwei Spezialfälle von Funktionsreihen:
+\cbox{$\sum\limits_{k=0}^{\infty}f_k$ mit $f_k=\left\{\begin{array}{ll}a_k(x-x_0)^k & \text{\flqq Potenz-/Taylorreihen\frqq}\\a_k\sin(kx)+b_k\cos(kx) & \text{\flqq Fourier-Reihen\frqq}\end{array}\right.$}
+
+\clearpage
+\section{Taylorreihen, Potenzreihen}
+\Bsp Wurzelfunktion $f(x)=\sqrt{x}, \D_f=\Rop$
+\imgw{Bilder/1}{}{}{11.5cm}
+Tangente an $G_f$ durch $P(1;1)$:\\
+$T: y=f'(x_0)(x-x_0)+f(x_0)$ allg. Tangentengleichung durch $P(x_0;y_0)$
+
+\ul{$x_0=1$}
+\begin{align*}
+f(x)&=\sqrt{x};\quad f'(x)=\dfrac{1}{2\sqrt{x}}\\
+f(1)&=\sqrt{1}=1;\quad f'(1)=\dfrac{1}{2\sqrt{1}}=\dfrac{1}{2}\\
+\Rightarrow T:y&=\frac{1}{2}x+\frac{1}{2}
+\end{align*}
+
+$\Rightarrow$ Approximation von $f(x)=\sqrt{x}$ durch $T(x)=\frac{1}{2}x+\frac{1}{2}$ für $x\approx1$; je näher $x$ bei $x_0=1$ liegt, desto besser wird $f(x)$ durch $T(x)$ dargestellt.
+
+$\greenunderbrace{\sqrt{x}}{f(x)}\approx\greenunderbrace{1+\frac{1}{2}(x-1)}{T(x)}$ für $\greenunderbrace{|x-1|}{\text{Abstand von}\atop x \text{ zu } 1}\greenunderbrace{\ll1}{\text{sehr viel}\atop\text{kleiner als }1}$
+
+\paragraph{Allgemein gilt:} $f(x)$ wird durch $T(x)=f'(x_0)(x-x_0)+f(x_0)$ in einer Umgebung $U$ von $x_0$ approximiert. Da $T(x)$ eine lineare Funktion ist, spricht man auch von einer \redul{Linearisierung} von $f$ bei $x_0$.
+
+Der Fehler der Approximation von $f(x)$ durch $T(x)$ wird durch die Funktion
+\redcbox{$R(x)=f(x)-T(x)$}
+beschrieben; $R(x)$ heißt auch \redul{Restglied}.
+
+\redul{Zentrale Frage:} Kann man die Wurzelfunktion $f(x)=\sqrt{x}$ noch genauer durch quadratische, kubische usw. Funktionen approximieren?
+
+(quadratische Funktion: $g(x)=ax^2+bx+c$)\\
+(kubische Funktion; $h(x)=ax^3+bx^2+cx+d$)
+
+\redul{Erster Schritt zum Ziel:}\\
+Finde eine bessere Beschreibung des Restgliedes $R(x)=f(x)-T(x)$ bei der Linearisierung von $f$.
+
+\Satz{{\bf Taylorsche Formel, erster Schritt}\\
+	Sei $f:I\to\R$ eine zweimal stetig differenzierbare Funktion, (d.h. $f''(x)$ existiert und ist stetig), $I$ ein Intervall und $x_0\in I$.\\
+	Dann gilt für alle $x\in I$:
+	\redcbox{$f(x)=\green{\underbrace{\black{f(x_0)+f'(x_0)(x-x_0)}}_{T(x)\text{ \flqq Linearisierung\frqq}}}+ \green{\underbrace{\black{\int\limits_{x_0}^{x}f''(t)(x-t)\intd{t}}}_{R(x)\text{ \flqq Restglied\frqq}}}$}}
+
+Zum Beweis des Satzes benötigen wir zwei Resultate aus der Integrationstheorie.
+
+\begin{enumerate}
+	\item Ist $F:I\to\R$ eine Stammfunktion von $f:I\to\R$, so gilt\\
+	\hhspace{2cm}$\ds\int\limits_{a}^{b}f(x)\intd{x}=F(b)-F(a)=\left[F(x)\right]_a^b;$\\
+	da insbesondere $f(x)$ eine Stammfunktion von $f'(x)$ ist , gilt \\
+	\hhspace{2cm}\redbox{$\ds\int\limits_{x_0}^{x}f'(t)\intd{t}=f(x)-f(x_0)$}\quad(1)
+	
+	\item Partielle Integration (P.I.):\\
+	\hhspace{2cm}\redbox{$\int u\cdot v'\intd{t}=u\cdot v-\int u'\cdot v\intd{t}$}\quad(2)
+\end{enumerate}
+
+\paragraph{Beweis des Satzes:}
+\begin{align*}
+f(x)-f(x_0)&\stackrel{(1)}{=}\int\limits_{x_0}^{x} f'(t)\intd{t}=\int\limits_{x_0}^{x}f'(t)\cdot1\intd{t}\\
+&\stackrel{\text{Trick}}{=}-\int\limits_{x_0}^{x}\greenunder{f'(t)}{u}\cdot \greenunder{\df{}{t}(x-t)}{v'}\intd{t}\\
+&\stackrel{(2)}{=}\left[\greenunder{-f'(t)}{u}\cdot\greenunder{(x-t)}{v}\right]_{x_0}^x+\int\limits_{x_0}^{x}\greenunder{f''(t)}{u'}\greenunder{(x-t)}{v}\intd{t}\\
+&=f'(x_0)(x-x_0)+\int\limits_{x_0}^{x}f''(t)(x-t)\intd{t}\quad\mid+f(x_0)\\
+\Rightarrow f(x)&=\greenunderbrace{f(x_0)+f'(x_0)(x-x_0)}{T(x)}+\greenunderbrace{\int\limits_{x_0}^{x}f''(t)(x-t)\intd{t}}{R(x)}
+\end{align*}
+\qed
+
+\Satz{{\bf Taylorsche Formel, zweiter Schritt}\\
+	Sei $f:I\to\R$ eine dreimal stetig differenzierbare Funktion, (d.h. $f'''(x)$ existiert und ist stetig), $I$ ein Intervall und $x_0\in I$.\\
+	Dann gilt für alle $x\in I$:
+	\redcbox{$f(x)=\greenunderbrace{f(x_0)+f'(x_0)(x-x_0)}{T(x)\text{ \flqq Linearisierung\frqq}}+\greenunderbrace{\dfrac{f''(x_0)}{2}(x-x_0)^2}{Q(x)\text{ \flqq quadratisches Glied\frqq}}+\greenunderbrace{\dfrac{1}{2}\int\limits_{x_0}^{x}f'''(t)(x-t)^2\intd{t}}{R(x)\text{ \flqq Restglied\frqq}}$}}
+
+\Bem $f(x)$ wird durch die quadratische Funktion $T(x)+Q(x)$ in der Nähe von $x_0$ besser approximiert als nur durch $T(x)$.
+
+\Beweis Nach der Taylorschen Formel (erster Schritt) gilt:
+\cbox{$f(x)=\greenunderbrace{f(x_0)+f'(x_0)(x-x_0)}{T(x)}+\redunderbrace{\int\limits_{x_0}^{x}f''(t)(x-t)\intd{t}}{R_1(x)}$}
+
+Wir wenden jetzt den bekannten Trick in Kombination mit partieller Integration auf $R_1(x)$ an.
+
+\vspace{-1cm}
+\begin{align*}
+\red{R_1(x)}&=\int\limits_{x_0}^{x}f''(t)(x-t)\intd{t}\\
+&\stackrel{\text{Trick}}{=}-\frac{1}{2}\int\limits_{x_0}^{x}\greenunder{f''(t)}{u}\greenunder{\df{}{t}(x-t)^2}{v'}\intd{t}\\
+&\stackrel{\text{P.I.}}{=}\left[\greenunder{-\frac{1}{2}f''(t)}{u}\greenunder{(x-t)^2}{v}\right]_{x_0}^x+\frac{1}{2}\int\limits_{x_0}^{x}\greenunder{f'''(t)}{u'}\greenunder{(x-t)^2}{v}\intd{t}\\
+&=\greenunderbrace{-\frac{1}{2}f''(x)(x-x)^2}{0}+\greenunderbrace{\frac{1}{2}f''(x_0)(x-x_0)^2}{Q(x)}+\greenunderbrace{\frac{1}{2}\int\limits_{x_0}^{x}f'''(t)(x-t)^2\intd{t}}{R_2(x)\text{ (neues Restglied)}}\\
+&=\greenunderbrace{\frac{1}{2}f''(x_0)(x-x_0)^2}{Q(x)}+\greenunderbrace{\frac{1}{2}\int\limits_{x_0}^{x}f'''(t)(x-t)^2\intd{t}}{R_2(x)}\\
+\Rightarrow f(x)&=\greenunderbrace{f(x_0)+f'(x_0)(x-x_0)}{T(x)}+\redunderbrace{\greenunderbrace{\frac{1}{2}f''(x_0)(x-x_0)^2}{Q(x)}+\greenunderbrace{\frac{1}{2}\int\limits_{x_0}^{x}f'''(t)(x-t)^2\intd{t}}{R_2(x)}}{R_1(x)}
+\end{align*}
+\qed
+
+\Bsp Wurzelfunktion $f(x)=\sqrt{x},\quad x_0=1$
+\begin{align*}
+f'(x)&=\dfrac{1}{2\sqrt{x}} = \frac{1}{2}x^{-\frac{1}{2}};\qquad f''(x)=-\frac{1}{4}x^{-\frac{3}{2}};\qquad f'''(x)=\frac{3}{8}x^{-\frac{5}{2}}\\
+f'(1)&=\frac{1}{2};\qquad f''(1)=-\frac{1}{4}\\
+\Rightarrow f(x)&=\greenunderbrace{1+\frac{1}{2}(x-1)}{T(x)}-\greenunderbrace{\frac{1}{8}(x-1)^2}{Q(x)}+\greenunderbrace{\frac{3}{8}\int\limits_{1}^{x}t^{-\frac{5}{2}}(x-t)^2\intd{t}}{R_2(x)}
+\end{align*}
+	
+\Theorem{{\bf Taylorsche Formel}\\
+	\\
+	Sei $f:I\to\R$ eine $(n+1)$-mal stetig differenzierbare Funktion, (d.h. $f^{(n+1)}(x)$ existiert und ist stetig), $I$ ein Intervall und $x_0\in I$. Dann gilt:
+	\redcbox{$f(x)=f(x_0)+\dfrac{f'(x_0)}{1!}(x-x_0)+\dfrac{f''(x_0)}{2!}(x-x_0)^2+\ldots+\dfrac{f^{(n)}(x_0)}{n!}(x-x_0)^n+R_n(x)$}}
+mit $R_n(x)=\dfrac{1}{n!}\ds\int\limits_{x_0}^{x}f^{(n+1)}(t)(x-t)^n\intd{t}$.
+
+\Beweis\quad
+\begin{align*}
+f(x)&=f(x_0)+f'(x_0)(x-x_0)+R_1(x)&\text{Trick + P.I.}\\
+R_1(x)&=\dfrac{1}{2!}f''(x_0)(x-x_0)^2+R_2(x)&\text{Trick + P.I.}\\
+R_2(x)&=\dfrac{1}{3!}f'''(x_0)(x-x_0)^3+R_3(x)&\text{Trick + P.I.}\\
+&\vdots\\
+R_{n-1}(x)&=\dfrac{1}{n!}f^{(n)}(x_0)(x-x_0)^n+R_n(x)&\text{Trick + P.I.}\\
+\text{mit }R_n(x)&=\dfrac{1}{n!}\int\limits_{x_0}^{x}f^{(n+1)}(t)(x-t)^n\intd{t}
+\end{align*}
+\qed
+
+\Def {\bf Taylor-Polynom $T_n$}\\
+Ist $f:I\to\R$ $n$-mal differenzierbar, $x_0\in I$, so heißt
+\redcbox{$T_n(x)=f(x_0)+\dfrac{f'(x_0)}{1!}(x-x_0)+\dfrac{f''(x_0)}{2!}(x-x_0)^2+\ldots+\dfrac{f^{(n)}(x_0)}{n!}(x-x_0)^n$}
+das \redul{$n$-te Taylor-Polynom} von $f$ zum/im Entwicklungspunkt $x_0$.
+
+\ul{Summenschreibweise}:\\
+\hhspace{2cm}\redbox{$T_n(x)=\sum\limits_{k=0}^{n}\dfrac{f^{(k)}(x_0)}{k!}(x-x_0)^k$}
+
+Mit Hilfe des $n$-ten Taylor-Polynoms $T_n(x)$ gilt:\\
+\hhspace{2cm}\redbox{$f(x)=T_n(x)+R_n(x)$}\quad($f$ sei $(n+1)$-mal stetig differenzierbar)
+
+Die Funktion
+\cbox{$R_n(x)=\dfrac{1}{n!}\ds\int\limits_{x_0}^{x}f^{(n+1)}(t)(x-t)^n\intd{t}$}
+heißt \redul{$n$-tes Restglied} (Restfehlerfunktion).
+
+\Bsp Taylorpolynome der Wurzelfunktion $f(x)=\sqrt{x};x_0=1$\\
+\begin{align*}
+f'(x)&=\dfrac{1}{2\sqrt{x}};\qquad f''(x)=\dfrac{-1}{4x\sqrt{x}};\qquad f'''(x)=\dfrac{3}{8x^2\sqrt{x}};\qquad f^{(4)}(x)=-\dfrac{15}{16x^3\sqrt{x}}\\
+T_1(x)&=1+\dfrac{1}{2}(x-1)\\
+T_2(x)&=1+\dfrac{1}{2}(x-1)-\dfrac{1}{8}(x-1)^2\\
+T_3(x)&=1+\dfrac{1}{2}(x-1)-\dfrac{1}{8}(x-1)^2+\dfrac{1}{16}(x-1)^3\\
+T_4(x)&=1+\dfrac{1}{2}(x-1)-\dfrac{1}{8}(x-1)^2+\dfrac{1}{16}(x-1)^3-\dfrac{5}{128}(x-1)^4
+\end{align*}
+
+\Bem Die Güte der Approximation von $f(x)$ durch das $n$-te Taylor-Polynom $T_n(x)$ ist durch das $n$-te Restglied $R_n(x)=\dfrac{1}{n!}\ds\int\limits_{x_0}^{x}f^{(n+1)}(t)(x-t)^n\intd{t}$ gegeben.\\
+Für die Praxis ist es oftmals einfacher, eine andere Form des Restglieds zu verwenden.
+
+\Satz{{\bf Lagrangesche Form des Restglieds}\\
+	\\
+	Sei $f:I\to\R$ $(n+1)$-mal stetig differenzierbar, $x_0\in I$. Dann gilt es zu jedem $x\in I$ ein $\xi$, welches zwischen $x_0$ und $x$ liegt, mit
+	\redcbox{$f(x)=\greenunderbrace{\sum\limits_{k=0}^{n}\dfrac{f^{(k)}(x_0)}{k!}(x-x_0)^k}{T_n(x)}+\greenunderbrace{\dfrac{f^{(n+1)}(\xi)}{(n+1)!}(x-x_0)^{n+1}}{R_n(x)}$}}
+
+$R_n(x)=\dfrac{f^{(n+1)}(\xi)}{(n+1)!}(x-x_0)^{n+1}$ heißt \red{\ul{\black{Lagrangesche Form des Restglieds}}}.
+
+\Korollar{{\bf Abschätzung des Restglieds}\\
+	\\
+	Sei $f:I\to\R$ $(n+1)$-mal stetig differenzierbar, $x,x_0\in I$.\\
+	Des Weiteren gebe es ein $M$ mit\\
+	\hhspace{2cm}$|f^{(n+1)}(t)|\le M$\\
+	für alle $t$ zwischen $x_0$ und $x$. Dann folgt\\
+	\hhspace{2cm}\redbox{$|f(x)-T_n(x)|\le\dfrac{M}{(n+1)!}|x-x_0|^{n+1}$}}
+
+\Bsp $f(x)=\sqrt{x},\quad x_0=1,\quad x>1$
+
+\begin{align*}
+\sqrt{x}&=\greenunderbrace{1+\frac{1}{2}(x-1)-\frac{1}{8}(x-1)^2}{T_2(x)}+\greenunderbrace{\dfrac{f'''(\xi)}{3!}(x-1)^3}{R_2(x)}&(n=2)
+\end{align*}
+$|f'''(t)|=\dfrac{3}{8t^2\sqrt{t}}=\dfrac{3}{8}\cdot\dfrac{1}{t^{2{,}5}}$ ist streng monoton fallend
+und daher ist bei $t=x_0$ das (globale) Maximum.
+\cbox{$\Rightarrow\quad M=|f'''(1)|=\frac{3}{8}$}
+
+Somit folgt:
+\cbox{$|f(x)-T_2(x)|\le\dfrac{M}{3!}|x-1|^3=\frac{1}{16}|x-1|^3\stackrel{(x>1)}{=}\frac{1}{16}(x-1)^3$}
+
+z.B. gilt
+\cbox{$|f(x)-T_2(x)|<10^{-3}$ falls $\frac{1}{16}(x-1)^3<10^{-3}$}
+
+\begin{align*}
+\frac{1}{16}(x-1)^3&<10^{-3}\quad\mid\cdot16\\
+\Leftrightarrow(x-1)^3&<16\cdot10^{-3}\quad\mid\sqrt[3]{\quad}\text{ (streng monoton steigend)}\\
+\Leftrightarrow x-1&<\sqrt[3]{16}\cdot10^{-1}\\
+\Leftrightarrow x&<1+\sqrt[3]{16}\cdot10^{-1} \approx 1{,}25
+\end{align*}
+
+Insgesamt gilt:
+\cbox{$|f(x)-T_2(x)|<10^{-3}$ für alle $1<x<1{,}25$}
+
+\Def\quad
+\begin{enumerate}
+	\item \red{\ul{\black{Potenzreihe}}} mit/im Entwicklungspunkt $x_0\in\R$ ist eine Funktionsreihe der Form
+	\cbox{$\sum\limits_{n=0}^{\infty}a_n(x-x_0)^n$}
+	mit $a_n\in\R$. Die reellen Zahlen $a_0,a_1,a_2,\ldots$ heißen \red{\ul{\black{Koeffizienten}}}.
+	
+	\item Der Grenzwert (falls er existiert)
+	\cbox{$r=\lim\limits_{n\to\infty}\left|\dfrac{a_n}{a_{n+1}}\right|\in\R\cup\{\infty\}$}
+	heißt \red{\ul{\black{Konvergenzradius}}} der Potenzreihe $\sum\limits_{n=0}^{\infty}a_n(x-x_0)^n$.
+	
+	Die Potenzreihe $\sum\limits_{n=0}^{\infty}a_n(x-x_0)^n$ $\left\{\begin{array}{l}\text{konvergiert (absolut)}\\\text{divergiert}\end{array}\right\}$ für alle $x$ mit $\left\{\begin{array}{l}|x-x_0|<r\\|x-x_0|>r\end{array}\right\}$.\\
+	Für $|x-x_0|=r$ ist eine allgemeine Konvergenzaussage \redul{nicht} möglich.
+	\imgw{Bilder/2}{}{}{12cm}
+	Das Intervall ${]x_0-r;x_0+r[}$ heißt \redul{Konvergenzintervall}.
+\end{enumerate}
+
+\Bem
+\begin{enumerate}
+	\item Zur Berechnung des Konvergenzradius $r$ gibt es eine allgemeine Formel, die verwendet wird, falls der Grenzwert nicht existiert ($\Rightarrow$ Konvergenzradius existiert für \redul{jede} Potenzreihe).
+	
+	\item Ist der Konvergenzradius $r=\infty$, so konvergiert die Potenzreihe für \redul{jedes} $x\in\R$; für das Konvergenzintervall gilt ${]-\infty;\infty[}$. Ist $r=0$, so konvergiert die Potenzreihe nur für $x=x_0$; für das Konvergenzintervall gilt in diesem Fall $I=\{x_0\}$.
+	
+	\item Durch eine Potenzreihe wird eine Funktion (genannt \redul{Potenzreihenfunktion}) auf ihrem Konvergenzintervall definiert.
+	\cbox{$f(x)=\sum\limits_{n=0}^{\infty}a_n(x-x_0)^n:\D\to\R$}
+	mit $\D={]x_0-r;x_0+r[}=\{x\in\R:|x-x_0|<r\}$\quad($r$ = Konvergenzradius)
+\end{enumerate}
+
+\Def Ist $f:I\to\R$ eine unendlich oft differenzierbare Funktion, $x_0\in I$, so heißt die Potenzreihe
+\redcbox{$T_f(x)=\sum\limits_{n=0}^{\infty}\dfrac{f^{(n)}(x_0)}{n!}(x-x_0)^n$}
+die \redul{Taylor-Reihe} von $f$ mit/im Entwicklungspunkt $x_0$; im Falle $x_0=0$ heißt $T_f(x)$ auch \redul{Maclaurinsche Reihe}.
+
+\Beachte\quad
+\begin{enumerate}
+	\item Der Konvergenzradius einer Taylor-Reihe kann auch $0$ sein.
+	
+	\item Falls die Taylor-Reihe von $f$ konvergiert, konvergiert sie nicht notwendig gegen $f$, d.h. $f(x)\ne T_f(x)$ für gewisse $x$ möglich.
+	
+	\item Die Taylor-Reihe konvergiert genau dann gegen $f(x)$, wenn das Restglied aus der Taylorschen Formel gegen $0$ konvergiert, d.h. \redbox{$f(x)=T_f(x)\Leftrightarrow\lim\limits_{n\to\infty}R_n(x)=0$}
+\end{enumerate}
+
+\Def Sei $f:I\to\R$ unendlich oft differenzierbar $x_0\in I$. Unter einer \redul{Potenzreihenentwicklung} von $f$ um $x_0$ versteht man eine Darstellung von $f(x)$ durch eine Potenzreihe in einer Umgebung von $x_0$, d.h. es gibt $\epsilon>0$ mit
+\cbox{$f(x)=\sum\limits_{n=0}^{\infty}a_n(x-x_0)^n$}
+für alle $x\in{]x_0-\epsilon;x_0+\epsilon[}\subseteq I$.
+
+\imgw{Bilder/3}{}{}{10cm}
+
+\Bem Besitzt $f$ (irgendeine beliebige) Potenzreihenentwicklung um $x_0$, so stimmt die Potenzreihe stets mit der Taylor-Reihe überein, d.h. aus $f(x)=\sum\limits_{n=0}^{\infty}a_n(x-x_0)^n$ folgt $a_n=\dfrac{f^{(n)}(x_0)}{n!}$ (Eindeutigkeit der Potenzreihenentwicklung).
+
+\cbox{$T_f(x)=\sum\limits_{n=0}^{\infty}\greenunderbrace{\dfrac{f^{(n)}(x_0)}{n!}}{a_n}(x-x_0)^n$\\
+	$r=\lim\limits_{n\to\infty}\left|\dfrac{a_n}{a_{n+1}}\right|$}
+
+\Bsp (Taylorreihen)
+\begin{enumerate}
+	\item\label{refe} $e^x=\sum\limits_{n=0}^{\infty}\dfrac{x^n}{n!}=1+x+\dfrac{x^2}{2!}+\dfrac{x^3}{3!}+\ldots$\\
+	\hhfill$x\in\R$\quad(Exponentialreihe)
+	
+	\item\label{refln} $\ln(1+x)=\sum\limits_{n=1}^{\infty}\dfrac{(-1)^{n-1}}{n}x^n=x-\dfrac{x^2}{2}+\dfrac{x^3}{3}-\dfrac{x^4}{4}+\ldots$\\
+	\hhfill$|x|<1$\quad(Logarithmusreihe)\\
+	\red{alternierendes (=wechselndes) Vorzeichen (verursacht durch $(-1)^{n-1}$)}
+	
+	\item\label{refsin} $\sin(x)=\sum\limits_{n=0}^{\infty}\dfrac{(-1)^n}{(2n+1)!}x^{2n+1}=x-\dfrac{x^3}{3!}+\dfrac{x^5}{5!}-\dfrac{x^7}{7!}+\ldots$\\
+	\hhfill$x\in\R$\quad(Sinusreihe)
+	
+	\item\label{refcos} $\cos(x)=\sum\limits_{n=0}^{\infty}\dfrac{(-1)^n}{(2n)!}x^{2n}=1-\dfrac{x^2}{2!}+\dfrac{x^4}{4!}-\dfrac{x^6}{6!}+\ldots$\\
+	\hhfill$x\in\R$\quad(Cosinusreihe)
+	
+	\item\label{refarctan} $\arctan(x)=\sum\limits_{n=0}^{\infty}\dfrac{(-1)^n}{2n+1}x^{2n+1}=x-\dfrac{x^3}{3}+\dfrac{x^5}{5}-\dfrac{x^7}{7}+\ldots$\\
+	\hhfill$|x|\le1$\quad(Arkustangensreihe)
+	
+	\item\label{refbinom} $(1+x)^\alpha=\sum\limits_{n=0}^{\infty}\binom{\alpha}{n}x^n=\binom{\alpha}{0}+\binom{\alpha}{1}x+\binom{\alpha}{2}x^2+\ldots$\\
+	\hhfill$|x|<1$\quad(Binomische Reihe)
+	
+	\Redbox{{\bf verallgemeinerter Binomialkoeffizient:}\\
+		\\
+		$\binom{\alpha}{n}=\dfrac{\alpha(\alpha-1)\cdot\ldots\cdot(\alpha-n+1)}{n!}=\prod\limits_{k=0}^{n}\dfrac{\alpha-k+1}{k}$\quad$(\alpha\in\R)$}
+	
+	\Bsp $\binom{\alpha}{0}=1,\quad\binom{\alpha}{1}=\alpha,\quad\binom{\alpha}{2}=\dfrac{\greenoverbrace{\alpha\cdot(\alpha-1)}{\text{2 Faktoren}}}{2!},\quad\binom{\alpha}{3}=\dfrac{\greenoverbrace{\alpha\cdot(\alpha-1)\cdot(\alpha-2)}{\text{3 Faktoren}}}{3!},\quad$ usw.
+	
+	\ul{Spezialfall:} $\alpha = -1$
+	
+	$\dfrac{1}{1-x}=\sum\limits_{n=0}^{\infty}=1+x+x^2+x^3+\ldots$\\
+	\hhfill$|x|<1$\quad(Geometrische Reihe)
+	
+	\begin{align*}
+	\dfrac{1}{1-x}&=\underbrace{(1-x)^{-1}}_{[1+(-x)]^{-1}}=\sum\limits_{n=0}^{\infty}\binom{-1}{n}\cdot(-x)^n=\sum\limits_{n=0}^{\infty}\binom{-1}{n}(-1)^nx^n\\
+	&=\sum\limits_{n=0}^{\infty}(-1)^n(-1)^nx^n=\sum\limits_{n=0}^{\infty}x^n\\
+	\binom{-1}{n}&=\dfrac{(\greenoverbrace{-1}{\alpha})\cdot(\greenoverbrace{-1}{\alpha}-1)\cdot(\greenoverbrace{-1}{\alpha}-2)\cdot(\greenoverbrace{-1}{\alpha}-3)\cdot\ldots\cdot(\greenoverbrace{-1}{\alpha}-n+1)}{n!}\\
+	&=\dfrac{\greenoverbrace{(-1)\cdot(-2)\cdot(-3)\cdot(-4)\cdot\ldots\cdot(-n)}{n\text{ Faktoren}}}{n!}\\
+	&=\dfrac{(-1)^n\cdot1\cdot2\cdot3\cdot4\cdot\ldots\cdot n}{n!}\\
+	&=\dfrac{(-1)^n\cdot n!}{n!}=\red{(-1)^n}
+	\end{align*}
+\end{enumerate}
+
+zu \ref{refe}.
+\begin{align*}
+x_0=0,\quad(e^x)'&=e^x\\
+(e^x)''&=e^x\\
+\vdots\\
+(e^x)^{(n)}&=e^x\\
+\end{align*}
+$\Rightarrow$ Taylorsche Reihe von $f(x)=e^x\qquad(x_0=0)$
+\cbox{$T_f(x)=\sum\limits_{n=0}^{\infty}\dfrac{f^{(n)}(0)}{n!}x^n=\sum\limits_{n=0}^{\infty}\dfrac{e^0}{n!}x^n=\sum\limits_{n=0}^{\infty}\dfrac{x^n}{n!}$}
+
+zu \ref{refln}. ($\rightarrow$ später noch weitere Berechnungsmöglichkeit)
+\begin{align*}
+x_0=0,\quad f(x)&=\ln(1+x)\\
+f'(x)&=\dfrac{1}{1+x}=(1+x)^{-1}\\
+f''(x)&=(-1)(1+x)^{-2}\\
+f'''(x)&=(-1)(-2)(1+x)^{-3}\\
+f^{(4)}(x)&=(-1)(-2)(-3)(1+x)^{-4}\\
+f^{(n)}(x)&=(-1)^{n-1}(n-1)!(1+x)^{-n}\\
+T_f(x)&=\sum\limits_{n=0}^{\infty}\dfrac{f^{(n)}(0)}{n!}x^n\\
+&=\greenunderbrace{\dfrac{f(0)}{0!}x^0}{f(0)=\ln(1)=0}+\sum\limits_{n=1}^{\infty}\dfrac{f^{(n)}(0)}{n!}x^n\\
+&=\sum\limits_{n=1}^{\infty}\dfrac{(-1)^{n-1}(n-1)!}{n!}x^n\\
+&=\sum\limits_{n=1}^{\infty}\dfrac{(-1)^{n-1}}{n}x^n
+\end{align*}
+
+zu \ref{refsin}.
+\begin{align*}
+x_0=0,\quad f(x)&=\sin x & f(0)=0\quad n=0\\
+f'(x)&=\cos x & f'(0)=1\quad n=1\\
+f''(x)&=-\sin x & f''(0)=0\quad n=2\\
+f'''(x)&=-\cos x & f'''(0)=-1\quad n=3\\
+f^{(4)}(x)&=\sin x = f(x) & f^{(4)}(0)=0\quad n=4
+\end{align*}
+Nur ungerade $n=1,3,5,7,\ldots$ müssen berücksichtigt werden.\\
+$\Rightarrow$ schreibe $n=2k+1\quad(k=0,1,2,3,4,5,\ldots)$\\
+Damit gilt
+\begin{align*}
+f^{(n)}(0)&=? & (n=2k+1)\\
+f^{(2k+1)}(0)&=+1 & (k=0)\\
+f^{(2k+1)}(0)&=-1 & (k=1)\\
+f^{(2k+1)}(0)&=+1 & (k=2)\\
+f^{(2k+1)}(0)&=-1 & (k=3)\\
+\vdots\\
+f^{(2k+1)}(0)&=(-1)^k & (k=3)
+\end{align*}
+
+$\Rightarrow$ Taylorsche Reihe
+\begin{align*}
+T_f(x)&=\sum\limits_{n=0}^{\infty}\dfrac{f^{(n)}(0)}{n!}x^n\\
+&\stackrel{(n=2k+1)}{=}\sum\limits_{k=0}^{\infty}\dfrac{f^{(2k+1)}(0)}{(2k+1)!}x^{2k+1}\\
+&=\sum\limits_{k=0}^{\infty}\dfrac{(-1)^k}{(2k+1)!}x^{2k+1}
+\end{align*}
+
+zu \ref{refbinom}.
+\begin{align*}
+f(x)&=(1+x)^\alpha\\
+f'(x)&=\alpha(1+x)^{\alpha-1}\\
+f''(x)&=\alpha(\alpha-1)(1+x)^{\alpha-2}\\
+f'''(x)&=\alpha(\alpha-1)(\alpha-2)(1+x)^{\alpha-3}\\
+\vdots\\
+f^{(n)}(x)&=\alpha(\alpha-1)(\alpha-2)\cdot\ldots\cdot(\alpha-(n-1))(1+x)^{\alpha-n}\\
+&=\alpha(\alpha-1)(\alpha-2)\cdot\ldots\cdot(\alpha-n+1)(1+x)^{\alpha-n}\\
+f^{(n)}(0)&=\alpha(\alpha-1)(\alpha-2)\cdot\ldots\cdot(\alpha-n+1)
+\end{align*}
+
+$\Rightarrow$ Taylorsche Reihe
+\begin{align*}
+T_f(x)&=\sum\limits_{n=0}^{\infty}\dfrac{f^{(n)}(0)}{n!}x^n\\
+&=\sum\limits_{k=0}^{\infty}\greenunderbrace{\dfrac{\alpha(\alpha-1)(\alpha-2)\cdot\ldots\cdot(\alpha-n+1)}{n!}}{\binom{\alpha}{n}}x^n\\
+&=\sum\limits_{k=0}^{\infty}\binom{\alpha}{n}x^n
+\end{align*}
+
+\Satz{{\bf Grundlegende Eigenschaften von Potenzreihen}
+	\begin{enumerate}
+		\item $a\cdot\sum\limits_{n=0}^{\infty}a_n(x-x_0)^n=\sum\limits_{n=0}^{\infty}a\cdot a_n(x-x_0)^n\quad(a\in\R)$
+		
+		\item $\sum\limits_{n=0}^{\infty}a_n(x-x_0)^n \pm \sum\limits_{n=0}^{\infty}b_n(x-x_0)^n = \sum\limits_{n=0}^{\infty}(a_n\pm b_n)(x-x_0)^n$
+		
+		\item $\left[\sum\limits_{n=0}^{\infty}a_n(x-x_0)^n\right]\cdot\left[\sum\limits_{n=0}^{\infty}b_n(x-x_0)^n\right] = \sum\limits_{n=0}^{\infty}c_n(x-x_0)^n$\\
+		mit $c_n=a_0b_n+a_1b_{n-1}+a_2b_{n-2}+\ldots+a_nb_0 = \sum\limits_{k=0}^{n}a_kb_{n-k}$ (Cauchy-Produkt)\\
+		für alle $x\in\D_f\cap\D_g$ $\left[f(x)=\sum\limits_{n=0}^{\infty}a_n(x-x_0)^n,\quad g(x)=\sum\limits_{n=0}^{\infty}b_n(x-x_0)^n\right]$ besitzen insbesondere $f(x), g(x)$ positive Konvergenzradien $r_f>0, r_g>0$, so gilt
+		\cbox{$r\ge\min(r_f;r_g)$}
+		für den Konvergenzradius $r$ von $f(x)\pm g(x)$ bzw. $f(x)\cdot g(x)$.
+	\end{enumerate}}
+
+\Bem Multiplikationstabelle für das Cauchy-Produkt\\
+$\left[\sum\limits_{n=0}^{\infty}a_n(x-x_0)^n\right]\cdot\left[\sum\limits_{n=0}^{\infty}b_n(x-x_0)^n\right] = \sum\limits_{n=0}^{\infty}c_n(x-x_0)^n$
+
+\imgw{Bilder/4}{}{}{13cm} %Cauchy-Produkt als Tabelle
+
+\Satz{{\bf Differenzieren und Integrieren von Potenzreihen}\\
+	\begin{enumerate}
+		\item Jede Potenzreihenfunktion $f(x)=\sum\limits_{n=0}^{\infty}a_n(x-x_0)^n$ ist auf ihrem Konvergenzintervall ${]x_0-r,x_0+r[}$ \redul{unendlich} oft \redul{differenzierbar}. Die Ableitung $f'(x)$ (und alle höheren Ableitungen) erhält man durch \redul{gliedweise Differentiation}
+		\redcbox{$f'(x)=\sum\limits_{n=0}^{\infty}a_n\df{}{x}(x-x_0)^n=\sum\limits_{n=1}^{\infty}n\cdot a_n(x-x_0)^{n-1}$}
+		
+		\item Jede Potenzreihenfunktion $f(x)=\sum\limits_{n=0}^{\infty}a_n(x-x_0)^n$ besitzt auf ihrem Konvergenzintervall ${]x_0-r,x_0+r[}$ eine Stammfunktion $F(x)$; eine solche erhält man durch \redul{gliedweise Integration}
+		\redcbox{$F(x)=\sum\limits_{n=0}^{\infty}\ds\int a_n(x-x_0)^n=\sum\limits_{n=0}^{\infty}\dfrac{a_n}{n+1}\cdot(x-x_0)^{n+1}+C$}
+	\end{enumerate}}
+
+\Bem Für die $k$-te Ableitung von $f(x)=\sum\limits_{n=0}^{\infty}a_n(x-x_0)^n$ gilt:
+\redcbox{$f^{(k)}(x)=\sum\limits_{n=k}^{\infty}n(n-1)(n-2)\cdot\ldots\cdot(n-k+1)a_n(x-x_0)^{n-k}$}
+
+\Bsp
+\begin{enumerate}
+	\item $\cos(x)=\df{}{x}\sin(x)$\\
+	Wegen $\sin(x)=\sum\limits_{k=0}^{\infty}(-1)^k\dfrac{x^{2k+1}}{(2k+1)!}$ folgt
+	\begin{align*}
+	\cos(x)&=\df{}{x}\sin(x)=\df{}{x}\left[\sum\limits_{k=0}^{\infty}(-1)^k\dfrac{x^{2k+1}}{(2k+1)!}\right]\\
+	&=\sum\limits_{k=0}^{\infty}\dfrac{(-1)^k}{(2k+1)!}\df{}{x}x^{2k+1}\\
+	&=\sum\limits_{k=0}^{\infty}\dfrac{(-1)^k}{(2k+1)!}(2k+1)x^{2k}\\
+	&=\sum\limits_{k=0}^{\infty}(-1)^k\dfrac{2k+1}{(2k+1)!}x^{2k}\\
+	&=\sum\limits_{k=0}^{\infty}(-1)^k\dfrac{1}{(2k)!}x^{2k}\\
+	&=\sum\limits_{k=0}^{\infty}\dfrac{(-1)^k}{(2k)!}x^{2k}
+	\end{align*}
+	
+	\item $\df{}{x}\ln(1+x)=\dfrac{1}{1+x}=(1+x)^{-1}=\sum\limits_{n=0}^{\infty}\greenunderbrace{\binom{-1}{n}}{(-1)^n}x^n=\sum\limits_{n=0}^{\infty}(-1)^nx^n$
+	\begin{align*}
+	\ln(1+x)&=\int\sum\limits_{n=0}^{\infty}(-1)^nx^n\intd{x}\\
+	&=\sum\limits_{n=0}^{\infty}(-1)^n\int x^n\intd{x}\\
+	&=\sum\limits_{n=0}^{\infty}(-1)^n\dfrac{x^{n+1}}{n+1}+C\\
+	\text{aus }0&=\ln(1+0)=\sum\limits_{n=0}^{\infty}(-1)^n\dfrac{0^{n+1}}{n+1}+C=C\\
+	\text{folgt }C&=0\\
+	\Rightarrow \ln(1+x)&<=\sum\limits_{n=0}^{\infty}\dfrac{(-1)^n}{n+1}x^{n+1}
+	\end{align*}
+	
+	\item $f(x)=\arctan(x)$\\
+	$f'(x)=\dfrac{1}{1+x^2}=(1+x^2)^{-1}$
+	\begin{align*}
+	(1+x)^\alpha&=\sum\limits_{n=0}^{\infty}\binom{\alpha}{n}x^n\\
+	\vdots\\
+	\vdots\\
+	\vdots\\
+	\placeholder
+	\end{align*}
+\end{enumerate}
+
+\paragraph{Zusammenfassung:} In 3 Schritten zur Potenzreihenentwicklung
+\begin{enumerate}
+	\item Bestimmung der Taylor-Reihe $T_f(x)=\sum\limits_{n=0}^{\infty}\dfrac{f^{(n)}(x_0)}{n!}(x-x_0)^n$ von $f(x)$
+	
+	\item Berechnung des Konvergenzradius $r$ von $T_f(x)$\\
+	$\Rightarrow$ Konvergenzintervall ${]x_0-r;x_0+r[}$
+	
+	\item Bestimmung von $\epsilon$ mit $0<\epsilon<r$, so dass das Restglied $R_n(x)\to0$ für $n\to\infty$ gegen Null konvergiert für jedes $x_0-\epsilon<x<x_0+\epsilon$ $\Rightarrow$ $f$ wird durch $T_f$ auf ${]x_0-\epsilon;x_0+\epsilon[}$ dargestellt.
+\end{enumerate}
+
+\clearpage
+\section{Fourier-Reihen}
+\paragraph{Periodische Vorgänge:} Physikalische Vorgänge, bei denen nach endlicher Zeit $T$ das physikalische System in den Ausgangszustand zurückkehrt, heißen \redul{periodisch}; $T$ nennt man \redul{Periode} (oder \redul{Periodendauer}).
+
+\Bsp
+\begin{enumerate}
+	\item Schwingungsvorgang eines Pendels oder elektrischen Schwingkreises (oder Luftmoleküle)
+	\item Bewegung eines Planeten um die Sonne
+\end{enumerate}
+
+Werte einer physikalischen Größe, die während eines periodischen Vorgangs gemessen werden, wiederholen sich nach der Periodendauer $T$; bezeichnet man mit $A(t)$ die physikalische Größe zum Zeitpunkt $t$, so gilt\\
+\hhspace{2cm}\redbox{$A(t+T)=A(t)$}\quad(für jedes $t$)
+
+$A(t)$ ist eine sogenannte \redul{periodische Funktion}.\\
+Der periodische Vorgang heißt \redul{harmonisch}, wenn sich die (zeitabhängigen) physikalischen Größen in der Form\\
+\hhspace{2cm}\redbox{$A(t)=A_0\cdot\sin(\omega t+\varphi_0)$}\quad\parbox{5cm}{$A_0$=Amplitude ($A_0>0$)\\$\omega=\dfrac{2\pi}{T}$=Kreisfrequenz\\$\varphi_0$=Phasenwinkel}\\
+schreiben lassen.
+
+\imgw{Bilder/5}{}{}{13cm}
+
+\Bsp Schwingungen eines Faden- oder Federpendels (\flqq harmonische Schwingung\frqq)
+\begin{align*}
+y(t)&=\hat{y}\sin(\omega t)&\text{(Auslenkung)}\\
+v(t)&=\hat{v}\cos(\omega t)&\text{(Geschwindigkeit)}\\
+a(t)&=-\hat{a}\sin(\omega t)&\text{(Beschleunigung)}
+\end{align*}
+
+\paragraph{Additionstheoreme des Sinus:}\quad
+\begin{align*}
+\sin(x_1+x_2)&=\sin(x_1)\cdot\cos(x_2)+\cos(x_1)\cdot\sin(x_2)\\
+\Rightarrow\sin(\omega t+\varphi_0)&=\sin(\omega t)\cdot\greenunderbrace{\cos(\varphi_0)}{a}+\cos(\omega t)\cdot\greenunderbrace{\sin(\varphi_0)}{b}\\
+&=\greenunder{a\cdot\greenunderbrace{\sin(\omega t)}{}+b\cdot\greenunderbrace{\cos(\omega t)}{}}{\text{keine Phasenverschiebung}}
+\end{align*}
+= \flqq Überlagerung gleichfrequenter harmonischer Schwingungen\frqq
+
+\paragraph{Fourier:} Jeder periodische Vorgang kann beschrieben werden als eine (i.a. unendliche) Überlagerung von harmonischen Vorgängen.\\
+$\rightarrow$ \flqq Fourier-Reihen\frqq.
+
+\clearpage
+\subsection{Periodische Funktionen:}
+Mathematische Beschreibung periodischer Vorgänge!
+
+\Def Eine Funktion $f:\R\to K$ ($K=\R$ oder $K=\C$) heißt \redul{periodisch} mit \redul{Periode $T$} (>0) (\redul{oder $T$-periodisch}), wenn
+\cbox{$f(t+T)=f(t)$}
+für alle $t\in\R$ gilt.
+
+\Bem
+\begin{enumerate}
+	\item Ist $T$ eine Periode von $f$, so auch jedes $nT$ ($n\in\N$). ($\rightarrow$ viele periodische Funktionen besitzen eine kleinste positive Periode)
+	
+	\item Periodentransformation:\\
+	\Redbox{$f(t)$ $T$-periodisch $\Rightarrow$ $g(x)=f\left(\dfrac{T}{2\pi}x\right)$ $2\pi$-periodisch\\
+		$g(x)$ $2\pi$-periodisch $\Rightarrow$ $f(t)=g\left(\dfrac{2\pi}{T}t\right)$ $T$-periodisch}\\
+	$\Rightarrow$ bei der Untersuchung periodischer Funktionen kann man sich oftmals auf den Spezialfall $2\pi$-periodischer Funktionen beschränken.
+\end{enumerate}
+
+\Bsp
+\begin{enumerate}
+	\item $\sin(x)$ und $\cos(x)$ sind $2\pi$-periodisch
+	\imgw{Bilder/6}{}{}{10cm}
+	\item $\tan x, \cot x$ sind $\pi$-periodisch
+	\imgw{Bilder/7}{}{}{14cm}
+	\item $\sin(ax), \cos(ax)\qquad(a\in\R,a\ne0)$\\
+	$\sin(x)$ ist $2\pi$-periodisch $\Rightarrow$ $\sin\left(\dfrac{2\pi}{T}t\right)$ ist $T$-periodisch\\
+	$\cos(x)$ ist $2\pi$-periodisch $\Rightarrow$ $\cos\left(\dfrac{2\pi}{T}t\right)$ ist $T$-periodisch\\
+	$\Rightarrow$ $\sin(ax), \cos(ax)\quad(a>0)$ ist $T$-periodisch mit $a=\dfrac{2\pi}{a}$, d.h. $T=\dfrac{2\pi}{a}$\\
+	z.B. sind $\sin(2x), \cos(2x)$ $\pi$-periodisch
+	
+	allgemein gilt:\\
+	\hhspace{2cm}\redbox{$\sin(kx), \cos(kx)$ sind $\dfrac{2\pi}{k}$-periodisch}\quad($k=1,2,3,\ldots$)
+\end{enumerate}
+
+\Def trigonometrische Polynome\\
+Eine Funktion $f:\R\to\R$ heißt trigonometrisches Polynom der Ordnung $n$, falls sie sich in der Form\\
+\hhspace{2cm}\redbox{$f(x)=\dfrac{a_0}{2}+\sum\limits_{k=1}^{n}\left(a_k\cos(kx)+b_k\sin(kx)\right)$}\quad(\#)\\
+mit $a_k,b_k\in\R$.
+
+\Bem Jedes trigonometrische Polynom ist $2\pi$-periodisch, denn $\cos(kx)$ und $\sin(kx)$ sind $\dfrac{2\pi}{k}$-periodisch; insbesondere auch $k\dfrac{2\pi}{k}=2\pi$-periodisch.\\
+Die Koeffizienten $a_k,b_k$ sind durch $f(x)$ eindeutig bestimmt, denn es gilt:
+\Satz{{\bf Euler-Fouriersche Formel}\\
+	\\
+	Für die Koeffizienten $a_k,b_k$ in (\#) gilt:\\
+	\Redbox{$a_k=\dfrac{1}{\pi}\ds\int\limits_{0}^{2\pi}f(x)\cos(kx)\intd{x}\qquad(k=0,1,2,3,\ldots,n)$\\
+		$b_k=\dfrac{1}{\pi}\ds\int\limits_{0}^{2\pi}f(x)\sin(kx)\intd{x}\qquad(k=1,2,3,\ldots,n)$}}
+Die Integration in obigem Satz kann über jedes beliebige Intervall der Form ${[a;a+2\pi]}$ $(a\in\R)$ erfolgen, z.B. ${[-\pi;\pi]}$.
+
+\Def
+\begin{enumerate}
+	\item Unter einer \redul{Fourier-Reihe} (oder \redul{trigonimetrischen Reihe}) versteht man eine Funktionenreihe der Form\\
+	\hhspace{2cm}\redbox{$\dfrac{a_0}{2}+\sum\limits_{k=1}^{\infty}a_k\cos(kx)+b_k\sin(kx)$}\\
+	mit $a_k,b_k\in\R$; $a_k,b_k$ heißen \redul{Fourier-Koeffizienten}.
+	
+	\item Ist $f:\R\to\R$ eine $2\pi$-periodische Funktion, die über ${[0;2\pi]}$ integrierbar ist, so heißt\\
+	\hhspace{2cm}\redbox{$\dfrac{a_0}{2}+\sum\limits_{k=1}^{\infty}a_k\cos(kx)+b_k\sin(kx)$}\\
+	mit\\
+	\hhspace{2cm}\redbox{$a_k=\dfrac{1}{\pi}\ds\int\limits_{0}^{2\pi}f(x)\cos(kx)\intd{x}\qquad(k=0,1,2,3,\ldots)$}\\
+	\hhspace{2cm}\redbox{$b_k=\dfrac{1}{\pi}\ds\int\limits_{0}^{2\pi}f(x)\sin(kx)\intd{x}\qquad(k=1,2,3,\ldots)$}\\
+	die \redul{Fourier-Reihe von $f$}.
+\end{enumerate}
+
+\Bem Die Fourier-Reihe einer Funktion $f(x)$ muss nicht konvergieren. Selbst wenn sie für gewisse $x$ konvergiert, muss sie nicht gegen $f(x)$ konvergieren.\\
+$\rightarrow$ Konvergenzbedingungen?
+
+\Satz{{\bf Hinreichende Bedingungen von Dirichlet}\\
+	\\
+	Eine $2\pi$-periodische Funktion $f(x)$ erfülle folgende \redul{Dirichlet-Bedingungen}:}
+\begin{enumerate}
+	\item Das Periodenintervall ${[0;2\pi]}$ lässt sich in endlich viele Teilintervalle zerlegen, so dass $f(x)$ auf jedem Teilintervall stetig und differenzierbar ist und zudem $f'(x)$ stetig ist (d.h. $f$ ist stückweise stetig differenzierbar (auch die Ableitung ist stetig)).
+	
+	\item An jeder Unstetigkeitsstelle $x_0$ existieren links- und rechtsseitiger Grenzwert $f(x_0^\pm):=\lim\limits_{x\to x_0^\pm}f(x)$.\qquad\gray{$\greenunderbrace{\lim\limits_{x_\to x_0^-}f(x)}{f(x_0^-)}=y1$}\qquad
+	\gray{$\greenunderbrace{\lim\limits_{x_\to x_0^+}f(x)}{f(x_0^+)}=y2$}
+\end{enumerate}
+
+Dann konvergiert die Fourier-Reihe von $f$ gegen
+\begin{enumerate}[a)]
+	\item $f(x)$, falls $f$ in $x$ stetig ist.
+	\item $\dfrac{f(x_0^-)+f(x_0^+)}{2}$, falls $f$ in $x_0$ unstetig ist.
+\end{enumerate}
+
+\Bem Alle bisherigen Aussagen gelten entsprechend auch für $T$-periodische Funktionen (ersetzte $2\pi$-periodisch durch $T$-periodisch, $2\pi$ durch $T$\ldots).
+
+\begin{itemize}
+	\item Fourier-Reihe:\\
+	\hhspace{2cm}\redbox{$\dfrac{a_0}{2}+\sum\limits_{k=1}^{\infty}a_k\cos(k\omega_0t)+b_k\sin(k\omega_0t)$}\qquad($\omega_0=\dfrac{2\pi}{T}$, $x\entspricht\omega_0t$)
+	
+	\item Euler-Fouriersche Formel\\
+	\hhspace{2cm}\redbox{$a_k=\dfrac{2}{T}\ds\int\limits_{t_0}^{t_0+T}f(t)\cos(k\omega_0t)\intd{t}\qquad (k=0,1,2,\ldots)$}\\
+	\hhspace{2cm}\redbox{$b_k=\dfrac{2}{T}\ds\int\limits_{t_0}^{t_0+T}f(t)\sin(k\omega_0t)\intd{t}\qquad (k=1,2,\ldots)$}\\
+	
+	\item Bedingungen von Dirichlet\\
+	(analog!)
+\end{itemize}
+
+\Bsp Rechteckimpuls
+\imgw{Bilder/8}{}{}{10cm}
+
+$f(x)=\left\{\begin{array}{rl}
++1,&\text{für }{0<x<\pi}\\
+0,&\text{für }{x=\pi}\\
+-1,&\text{für }{\pi<x<2\pi}
+\end{array}\right.$ (periodisch fortgesetzt)
+
+Bestimmung der Fourier-Koeffizienten:
+\begin{align*}
+a_k&=\dfrac{1}{\pi}\int\limits_{0}^{2\pi}f(x)\cos(kx)\intd{x}&(k=0,1,2,\ldots)\\
+a_0&=\dfrac{1}{\pi}\int\limits_{0}^{2\pi}f(x)\intd{x}\\
+&=\dfrac{1}{\pi}\int\limits_{0}^{\pi}1\intd{x}-\dfrac{1}{\pi}\int\limits_{\pi}^{2\pi}1\intd{x}\\
+&=\dfrac{1}{\pi}\left[x\right]_{0}^{\pi}-\dfrac{1}{\pi}\left[x\right]_{\pi}^{2\pi}\\
+&=1-1=0&\text{Gleichspannungsanteil}
+\end{align*}
+
+$k\ge1$:
+\begin{align*}
+a_k&=\dfrac{1}{\pi}\int\limits_{0}^{2\pi}f(x)\cos(kx)\intd{x}\\
+&=\dfrac{1}{\pi}\left\{\int\limits_{0}^{\pi}1\cdot\cos(kx)\intd{x}-\int\limits_{\pi}^{2\pi}1\cdot\cos(kx)\intd{x}\right\}\\
+&=\dfrac{1}{\pi}\left\{\left[\frac{1}{k}\sin(kx)\right]_{0}^{\pi}-\left[\frac{1}{k}\sin(kx)\right]_{\pi}^{2\pi}\right\}\\
+&=\dfrac{1}{\pi}\left\{\frac{1}{k}\left[\redunderbrace{\sin(k\pi)}{0}-\redunderbrace{\sin(0)}{0}\right]-\frac{1}{k}\left[\redunderbrace{\sin(k2\pi)}{0}-\redunderbrace{\sin(k\pi)}{0}\right]\right\}\\
+&=0
+\end{align*}
+
+\begin{align*}
+b_k&=\dfrac{1}{\pi}\int\limits_{0}^{2\pi}f(x)\sin(kx)\intd{x}\\
+&=\dfrac{1}{\pi}\left\{\int\limits_{0}^{\pi}1\cdot\sin(kx)\intd{x}-\int\limits_{\pi}^{2\pi}1\cdot\sin(kx)\intd{x}\right\}\\
+&=\dfrac{1}{\pi}\left\{\left[-\frac{1}{k}\cos(kx)\right]_{0}^{\pi}-\left[-\frac{1}{k}\cos(kx)\right]_{\pi}^{2\pi}\right\}\\
+&=\dfrac{1}{\pi}\left\{\left[-\frac{1}{k}\cos(k\pi)+\frac{1}{k}\cos(0)\right]-\left[-\frac{1}{k}\cos(k2\pi)+\frac{1}{k}\cos(k\pi)\right]\right\}\\
+&=\dfrac{1}{\pi}\left\{-\frac{2}{k}\redunderbrace{\cos(k\pi)}{(-1)^k}+\frac{1}{k}\redunderbrace{\cos(0)}{1}+\frac{1}{k}\redunderbrace{\cos(k2\pi)}{1}\right\}\\
+&=\dfrac{1}{\pi}\left\{\frac{2}{k}-\frac{2}{k}\cos(k\pi)\right\}\\
+&=\dfrac{2}{k\pi}\left(1-\redunderbrace{\cos(k\pi)}{(-1)^k}\right)\\
+&=\left\{\begin{array}{rl}
+0,&\text{für }k=2,4,6,8,\ldots\\
+\dfrac{4}{k\pi},&\text{für }k=1,3,5,7,\ldots
+\end{array}\right.
+\end{align*}
+
+$\Rightarrow$ Fourier-Reihe von $f$:
+\begin{align*}
+f(x)&=\sum\limits_{k=1\atop k\text{ ungerade}}^{\infty}b_k\sin(kx)\\
+&=\sum\limits_{k=1\atop k\text{ ungerade}}^{\infty}\dfrac{4}{k\pi}\sin(kx)\\
+&=\dfrac{4}{\pi}\sum\limits_{k=1\atop k\text{ ungerade}}^{\infty}\dfrac{1}{k}\sin(kx)\\
+&=\dfrac{4}{\pi}\sum\limits_{\nu=1}^{\infty}\dfrac{1}{2\nu-1}\sin((2\nu-1)x)\\
+&=\dfrac{4}{\pi}\left(\sin(x)+\dfrac{1}{3}\sin(3x)+\dfrac{1}{5}\sin(5x)+\ldots\right)
+\end{align*}
+
+\Def Eine Funktion $f(x)$ heißt $\left\{\begin{array}{l}\text{\redul{gerade}}\\\text{\redul{ungerade}}\end{array}\right\}$, wenn $\left\{\begin{array}{l}f(-x)=f(x)\\f(-x)=-f(x)\end{array}\right\}$ gilt.
+
+\Bem\quad
+\begin{enumerate}
+	\item $f(x)$ gerade/ungerade $\Leftrightarrow$ Graph $G_f$ ist achsen-/punktsymmetrisch
+	
+	\item $\cos(x)$ ist gerade, $\sin(x)$ ist ungerade Funktion\\
+	(analog auch für $\cos(kx)$, $\sin(kx)$)
+\end{enumerate}
+
+\Satz{Sei $f$ eine $\left\{\begin{array}{l}\text{gerade}\\\text{ungerade}\end{array}\right\}$ $T$-periodische Funktion\\
+	Für die Fourier-Reihe\\
+	\hhspace{2cm}$\dfrac{a_0}{2}+\sum\limits_{k=1}^{\infty}a_k\cos(k\omega_0t)+b_k\sin(k\omega_0t)$\\
+	gilt dann\\
+	\hhspace{2cm}$\left\{\begin{array}{rl}b_k=0,&k=1,2,3,\ldots\\a_k=0,&k=0,1,2,3,\ldots\end{array}\right.$}
+
+\Beweis Sei $f$ gerade. Dann gilt\\
+\hhspace{2cm}$b_k=\dfrac{1}{T}\ds\int\limits_{0}^{T}f(t)\sin(k\omega_0t)\ds\intd{t}=\dfrac{1}{T}\ds\int\limits_{-\frac{T}{2}}^{+\frac{T}{2}}\redunderbrace{\redoverbrace{f(t)}{\text{gerade}}\redoverbrace{\sin(k\omega_0t)}{\text{ungerade}}}{ungerade}\intd{t}=0$
+
+\Beweis Sei $f$ ungerade. Dann gilt\\
+\hhspace{2cm}$a_k=\dfrac{1}{T}\ds\int\limits_{0}^{T}f(t)\cos(k\omega_0t)\ds\intd{t}=\dfrac{1}{T}\ds\int\limits_{-\frac{T}{2}}^{+\frac{T}{2}}\redunderbrace{\redoverbrace{f(t)}{\text{ungerade}}\redoverbrace{\cos(k\omega_0t)}{\text{gerade}}}{ungerade}\intd{t}=0$
+
+\section{Fourier-Reihen in spektraler Darstellung}
+die in eine Fourier-Reihe $\dfrac{a_0}{2}+\sum\limits_{k=1}^{\infty}a_k\cos(k\omega_0t)+b_k\sin(k\omega_0t)$ auftretenden Terme $a_k\cos(k\omega_0t)+b_k\sin(k\omega_0t)$ stellen \redul{phasenverschobene Sinuskurven} (bzw. Kosinuskurven) mit Kreisfrequenzen $k\omega_0\quad(k=1,2,3,\ldots)$ dar.
+\imgplaceholder
+
+\hhspace{2cm}\redbox{$y(t)=A\cdot\sin(\omega t+\varphi)$}\quad($=A\cdot\cos(\omega t+\varphi^*$ mit $\varphi^*=\varphi-\frac{\pi}{2}$)\\
+$A=$ Amplitude\\
+$\omega=\dfrac{2\pi}{T}=$ Kreisfrequenz\\
+$T=$ Periode\\
+$\varphi=$ Phasenwinkel
+
+\Satz{\redcbox{$A\cdot\sin(\omega t+\varphi)=a\cos(\omega t)+b\sin(\omega t)$}
+	mit $A=\sqrt{a^2+b^2}$ und $\tan\varphi=\dfrac{a}{b}$ (bzw. $\cos\varphi=\dfrac{b}{A}$)}
+
+Geometrische Interpretation
+\imgplaceholder
+Beweis folgt aus dem Additionstheorem für $\sin(x)$:\\
+\hhspace{2cm}$\sin(x_1\pm x_2)=\sin(x_1)\cos(x_2)\pm\cos(x_1)\sin(x_2)$\\
+$\sin(\redunderbrace{\omega t}{x_1}+\redunderbrace{\varphi}{x_2})=\sin(\redunderbrace{\omega t}{x_1})\cos(\redunderbrace{\varphi}{x_2})+\cos(\redunderbrace{\omega t}{x_1})\sin(\redunderbrace{\varphi}{x_2})$\\
+$\Rightarrow A\sin(\omega t+\varphi)=\greenunderbrace{A\cdot\cos(\varphi)}{b}\cdot\sin(\omega t)+\greenunderbrace{A\cdot\sin(\varphi)}{a}\cdot\cos(\omega t)\\
+=a\cdot\cos(\omega t)+b\cdot\sin(\omega t)$
+
+\hhspace{2cm}$\Leftrightarrow$ \redbox{\parbox{4cm}{(I) $a=A\cdot\sin(\varphi)$\\
+	(II) $b=A\cdot\cos(\varphi)$}}\hfill
+\grayframe{\parbox{5cm}{vergleiche Polarkoordinaten\\
+		$y=r\cdot\sin(\varphi)\\
+		x=r\cdot\cos(\varphi)$}}
+
+$a^2+b^2=A^2\sin^2(\varphi)+A^2\cos^2(\varphi)=A^2(\grayunderbrace{\sin^2\varphi+\cos^2\varphi}{1})=A^2$
+
+\hhspace{2cm}$\Rightarrow$ \redbox{$A=\sqrt{a^2+b^2}$}
+
+aus (II)\quad$\cos(\varphi)=\dfrac{b}{A}$
+
+\hhspace{2cm}$\Rightarrow$ \redbox{$\varphi=\left\{\begin{array}{rlc}
+	\arccos\left(\dfrac{b}{A}\right),&\text{falls }a\ge0&(0\le\varphi\le\pi)\vspace{1ex}\\
+	-\arccos\left(\dfrac{b}{A}\right),&\text{falls }a<0&(-\pi<\varphi<0)
+	\end{array}\right.$}
+
+\qed
+
+Transformation $(A;\varphi)\leftrightarrow(b;a)$
+
+\hhspace{2cm}$\longrightarrow$: \redbox{\parbox{3cm}{$b=A\cdot\cos\varphi\\a=A\cdot\sin\varphi$}}
+
+\hhspace{2cm}$\longleftarrow$: \redbox{\parbox{10cm}{$A=\sqrt{a^2+b^2}$\vspace{1em}\\
+		$\varphi=\left\{\begin{array}{rlc}
+		\arccos\left(\dfrac{b}{A}\right),&\text{falls }a\ge0&(0\le\varphi\le\pi)\vspace{1ex}\\
+		-\arccos\left(\dfrac{b}{A}\right),&\text{falls }a<0&(-\pi<\varphi<0)
+		\end{array}\right.$}}
+
+\Def\quad
+\begin{enumerate}[a)]
+	\item Die Funktionenreihe
+	\redcbox{$\sum\limits_{k=0}^{\infty}A_k\sin(k\omega_0t+\varphi_k)=A_0+A_1\sin(\omega_0t+\varphi_1)+A_2\sin(2\omega_0t+\varphi_2)+\ldots$}
+	heißt spektrale Darstellung (oder Spektraldarstellung) der Fourier-Reihe $\dfrac{a_0}{2}+\sum\limits_{k=1}^{\infty}a_k\cos(k\omega_0t)+b_k\sin(k\omega_0t)$, wobei
+	\redcbox{\parbox{10cm}{
+		$A_0=\dfrac{a_0}{2}$
+		\vspace{1em}\\
+		$A_k=\sqrt{a_k^2+b_k^2}\qquad(k\ge1)$
+		\vspace{1em}\\
+		$\varphi_k=\left\{\begin{array}{rlc}
+		\arccos\left(\dfrac{b_k}{A_k}\right),&\text{falls }a_k\ge0&(k\ge1)\vspace{1ex}\\
+		-\arccos\left(\dfrac{b_k}{A_k}\right),&\text{falls }a_k<0&
+		\end{array}\right.$}}
+	gilt.
+	
+	\item Folgende Zuordnungen heißen Amplituden- oder Frequenzspektrum bzw. Phasenspektrum
+	
+	($\omega=k\omega_0$) \redbox{\parbox{10cm}{$\dfrac{\omega}{\omega_0}=k\to A_k$\qquad\redul{Amplituden-} oder \redul{Frequenzspektrum}\\\hhfill$(k=0,1,2,\ldots)$\vspace{1em}\\
+		$\dfrac{\omega}{\omega_0}=k\to \varphi_k$\qquad\redul{Phasenspektrum}\\\hhfill$(k=1,2,\ldots)$}}
+	\imgplaceholder
+\end{enumerate}
+
+\clearpage
+\section{Fourier-Reihen in komplexer Darstellung}
+\subsection{Eulersche Formel}
+\hhspace{2cm}\redbox{$e^{\i x}=\cos x+\i\sin x$}\qquad($x\in\R$)
+
+Aus (I) $e^{\i x}=\cos x+\i\sin x\quad(=z)$\\
+und (II) $e^{-\i x}=\cos(-x)+\i\sin(-x)=\cos x-\i\sin x\quad(=\ol{z})$\\
+erhält man durch
+\begin{itemize}
+	\item Addition (der Gleichungen)\\
+	\hhspace{2cm}$e^{\i x}+e^{-\i x}=2\cos x\quad|:2$\\
+	\hhspace{2cm}$\Leftrightarrow$ \redbox{$\cos x=\frac{1}{2}(e^{\i x}+e^{-\i x})$}\quad($x\in\R$)\qquad(*)
+	
+	\item Subtraktion (der Gleichungen)\\
+	\hhspace{2cm}$e^{\i x}-e^{-\i x}=2\i\cos x\quad|:2\i$\\
+	\hhspace{2cm}$\Leftrightarrow$ \redbox{$\sin x=\frac{1}{2\i}(e^{\i x}-e^{-\i x})$}\quad($x\in\R$)\qquad(**)
+\end{itemize}
+
+\Satz{Für $a,b\in\R$ gilt
+	\redcbox{$a\cos x+b\sin x=ce^{\i x}+\ol{c}e^{-\i x}$}
+	mit $c=\frac{1}{2}(a-\i b)\quad(\ol{c}=\frac{1}{2}(a+\i b))$}
+
+\Beweis $\cos x=\frac{1}{2}(e^{\i x}+e^{-\i x}), \sin x=\frac{1}{2\i}(e^{\i x}-e^{-\i x})$
+\begin{align*}
+\Rightarrow a\cos x+b\sin x&=\dfrac{a}{2}(e^{\i x}+e^{-\i x})+\dfrac{b}{2\i}(e^{\i x}-e^{-\i x})\\
+&=\greenunderbrace{\left(\dfrac{a}{2}+\dfrac{b}{2\i}\right)}{c}e^{\i x}+\left(\dfrac{a}{2}-\dfrac{b}{2\i}\right)e^{-\i x}&(\dfrac{1}{\i}=-\i)\\
+&=\greenunderbrace{\dfrac{1}{2}(a-\i b)}{c}e^{\i x}+\greenunderbrace{\dfrac{1}{2}(a+\i b)}{\ol{c}}e^{-\i x}
+\end{align*}
+\qed
+
+\Satz{{\bf Fourier-Polynom in komplexer Form}\\
+	\\
+	Es gilt
+	\redcbox{$\dfrac{a_0}{2}+\sum\limits_{k=1}^{n}a_k\cos(k\omega_0t)+b_k\sin(k\omega_0t)=\sum\limits_{k=-n}^{n}c_ke^{\i k\omega_0t}$}
+	mit $c_0=\dfrac{a_0}{2}$ und $c_k=\frac{1}{2}(a_k-\i b_k),\quad c_{-k}=\frac{1}{2}(a_k+\i b_k)\qquad(k=1,2,3,\ldots,n)$}
+
+\Beweis\quad
+\begin{align*}
+a_k\cos(k\omega_0t)+b_k\sin(k\omega_0t)&=c_ke^{\i k\omega_0t}+\ol{c_k}e^{-\i k\omega_0t}\\
+\text{mit }c_k=\frac{1}{2}(a_k-\i b_k)&,\quad \ol{c_k}=\frac{1}{2}(a_k+\i b_k)\\
+\Rightarrow\sum\limits_{k=1}^{n}a_k\cos(k\omega_0t)+b_k\sin(k\omega_0t)&=\sum\limits_{k=1}^{n}c_ke^{\i k\omega_0t}+\greenunderbrace{\sum\limits_{k=1}^{n}\ol{c_k}e^{-\i k\omega_0t}}{\text{Summationsindex ändern!}}\\
+\sum\limits_{k=1}^{n}\ol{c_k}e^{-\i k\omega_0t}&\stackrel{l=-k}{=}\sum\limits_{l=-n}^{-1}\redunderbrace{\ol{c_{-l}}}{=c_l\atop\text{ per Def.}}e^{\i l\omega_0t}\\
+&=\sum\limits_{l=-n}^{-1}c_le^{\i l\omega_0t}\\
+\Rightarrow\redunderbrace{\dfrac{a_0}{2}}{c_0}+\sum\limits_{k=1}^{n}a_k\cos(k\omega_0t)+b_k\sin(k\omega_0t)&=\sum\limits_{l=-n}^{-1}c_le^{\i l\omega_0t}+c_0+\sum\limits_{k=1}^{n}c_ke^{\i k\omega_0t}\\
+&\stackrel{\text{schreibe für }l\atop\text{ wieder }k}{=}\sum\limits_{k=-n}^{n}c_ke^{\i k\omega_0t}
+\end{align*}
+mit $c_k=\frac{1}{2}(a_k-\i b_k)$ und $c_{-k}=\ol{c_k}=\frac{1}{2}(a_k+\i b_k)\qquad(k=1,2,\ldots)$\\
+\qed
+
+\Def die Funktionenreihe $\sum\limits_{k=-\infty}^{+\infty}c_ke^{\i k\omega_0t}$ heißt \redul{konvergent}, wenn die Folge der Partialsummen
+\cbox{$s_n=\sum\limits_{k=-n}^{n}c_ke^{\i k\omega_0t}\qquad n=0,1,2,\ldots$}
+konvergiert, d.h.
+\cbox{$\sum\limits_{k=-\infty}^{+\infty}c_ke^{\i k\omega_0t}=\lim\limits_{n\to\infty}\sum\limits_{k=-n}^{n}c_ke^{\i k\omega_0t}$}
+
+\paragraph{Bestimmung der komplexen Koeffizienten $c_k$:}\quad\\
+Sei $f(t)=\dfrac{a_0}{2}+\sum\limits_{k=1}^{n}a_k\cos(k\omega_0t)+b_k\sin(k\omega_0t)=\sum\limits_{k=-n}^{n}c_ke^{\i k\omega_0t}$\\
+Dann gilt\\
+\hhspace{2cm}\redbox{$c_k=\dfrac{1}{T}\ds\int\limits_{0}^{T}f(t)e^{-\i k\omega_0t}\intd{t}$}
+
+\paragraph{Denn:}\quad
+\begin{align*}
+c_k=\dfrac{1}{2}(a_k-\i b_k)\quad(k=1,2,\ldots)\\
+a_k=\dfrac{2}{T}\ds\int\limits_{0}^{T}f(t)\cos(k\omega_0t)\intd{t}\\
+b_k=\dfrac{2}{T}\ds\int\limits_{0}^{T}f(t)\sin(k\omega_0t)\intd{t}\\
+\Rightarrow c_k&=\dfrac{1}{2}\cdot\dfrac{2}{T}\left[\int\limits_{0}^{T}f(t)\cos(k\omega_0t)\intd{t}-\i\int\limits_{0}^{T}f(t)\sin(k\omega_0t)\intd{t}\right]\\
+&=\dfrac{1}{T}\left[\int\limits_{0}^{T}f(t)\redunderbrace{(\cos(k\omega_0t)-\i\sin(k\omega_0t)}{e^{-\i k\omega_0t}}\intd{t}\right]\\
+&=\dfrac{1}{T}\int\limits_{0}^{T}f(t)e^{-\i k\omega_0t}\intd{t}
+\end{align*}
+
+\paragraph{HÜ:} $c_{-k}=\frac{1}{2}(a_k+\i b_k)\qquad(k=1,2,3,\ldots)$
+
+\Bem Ist $f(x):\R\to\C$ eine komplex-wertige Funktion, $u(x)=\Re(f(x)),\quad v(x)=\Im(f(x))$ (d.h. $f(x)=u(x)+\i v(x)$), so definiert man
+\redcbox{$\ds\int f(x)\intd{x}:=\redunderbrace{\ds\int u(x)\intd{x}}{\in\R}+\i\redunderbrace{\ds\int v(x)\intd{x}}{\in\R}\quad\in\C$}
+
+\Def\quad
+\Satz{Ist $f:\R\to\R$ $T$-periodisch und über ${[t_0;t_0+T]}$ integrierbar, so heißt
+	\redcbox{$\sum\limits_{k=-\infty}^{+\infty}c_ke^{\i k\omega_0t}=c_0+c_{-1}e^{-\i\omega_0t}+c_1e^{\i\omega_0t}+c_{-2}e^{-\i2\omega_0t}+c_2e^{\i2\omega_0t}+\ldots$}
+	mit\qquad
+	\redbox{$c_k=\dfrac{1}{T}\ds\int\limits_{t_0}^{t_0+T}f(t)e^{-\i k\omega_0t}\intd{t}$}\qquad($k=\ldots,-2,-1,0,1,2,\ldots$ d.h. $k\in\Z$)\\
+	die \redul{Fourier-Reihe} von $f(t)$ in \redul{komplexer Darstellung}.\\
+	Ist $\dfrac{a_0}{2}+\sum\limits_{k=1}^{\infty}a_k\cos(k\omega_0t)+b_k\sin(k\omega_0t)$ die (reelle) Fourier-Reihe von $f(t)$, so gilt
+	\redcbox{\parbox{10cm}{$c_k=\frac{1}{2}(a_k-\i b_k),\quad c_{-k}\frac{1}{2}(a_k+\i b_k)=\ol{c_k}$\vspace{1ex}\\
+		$c_0=\dfrac{a_0}{2}\qquad\qquad(k=1,2,\ldots)$}}
+	bzw.
+	\redcbox{\parbox{10cm}{$a_k=c_k+c_{-k}\quad[=2\Re(c_k)]$\\
+		$b_k=\i(c_k-c_{-k})\quad[=-2\Im(c_k)]\qquad(k=1,2,3,\ldots)$\\
+		$a_0=2c_0$}}
+	Die Zuordnung $\dfrac{\omega}{\omega_0}=k\mapsto|c_k|=\sqrt{a_k^2+b_k^2}$ heißt \redul{Sektrum}.}
+
+\Bsp Rechteckimpuls\\
+reelle Fourier-Reihe $f(x)=\sum\limits_{n=1}^{\infty}\dfrac{4}{(2n-1)\pi}\sin[(2n-1)x]$
+
+$\left.\begin{array}{rlc}
+b_k&=\dfrac{4}{\pi k}&(k=1,3,5,\ldots)\\
+b_k&=0&(k=2,4,6,\ldots)\\
+a_k&=0&(k=0,1,2,\ldots)
+\end{array}\right\}\begin{array}{rlc}
+c_k&=\frac{1}{2}(a_k-\i b_k)&(k=1,2,3,\ldots)\\
+c_{-k}&=\frac{1}{2}(a_k+\i b_k)\\
+c_0&=\dfrac{a_0}{2}
+\end{array}$
+
+$\Rightarrow c_k\stackrel{a_k=0}{=}-\i\dfrac{b_k}{2}=\left\{\begin{array}{rl}
+-\i\dfrac{2}{k\pi},&k=1,3,5,\ldots\\
+0,&k=2,4,6,\ldots
+\end{array}\right.\qquad(c_0=0)\qquad(k=1,2,3,\ldots)$
+
+\paragraph{HÜ:} $[c_{-k}=\i\dfrac{b_k}{2}=\ldots]$
+
+$\Rightarrow f(x)=\sum\limits_{n=-\infty}^{\infty}-\i\dfrac{2}{(2n-1)\pi}e^{\i(2n-1)x}\\
+\hhspace{2cm}=-\dfrac{2\i}{\pi}\sum\limits_{n=-\infty}^{\infty}\dfrac{e^{\i(en-1)x}}{2n-1}$
+
+\paragraph{Direkte Berechnung der komplexen Fourierkoeffizienten $c_k$:}\quad
+\imgplaceholder Periode $T=2\pi$
+
+\begin{align*}
+c_k&=\dfrac{1}{2\pi}\int\limits_{0}^{2\pi}f(x)e^{-\i kx}\intd{x}\\
+&=\dfrac{1}{2\pi}\left\{\int\limits_{0}^{\pi}1\cdot e^{-\i kx}\intd{x}+\int\limits_{\pi}^{2\pi}(-1)e^{-\i kx}\intd{x}\right\}\\
+&=\dfrac{1}{2\pi}\left\{\int\limits_{0}^{\pi}e^{-\i kx}\intd{x}-\int\limits_{\pi}^{2\pi}e^{-\i kx}\intd{x}\right\}\qquad\int e^{ax}\intd{x}=\frac{1}{a}e^{ax}+C\quad(a\in\C,a\ne0)\\
+&=\dfrac{1}{2\pi}\left[\dfrac{1}{-\i k}e^{-\i kx}\right]_{0}^{\pi}-\dfrac{1}{2\pi}\left[\dfrac{1}{-\i k}e^{-\i kx}\right]_{\pi}^{2\pi}\\
+&=-\dfrac{1}{2\pi\i k}\left[e^{-\i k\pi}-\greenunderbrace{e^0}{1}\right]+\dfrac{1}{2\pi\i k}\left[\greenunderbrace{e^{-\i k\cdot2\pi}}{1}-e^{-\i k\pi}\right]\\
+&=-\dfrac{2}{2\pi\i k}e^{-\i k\pi}+\dfrac{2}{2\pi\i k}\\
+&=\dfrac{}{\pi\i k}(1-e^{-\i k\pi})\\
+e^{-\i k\pi}&=\left\{\begin{array}{rl}
+-1,&k=\pm1,\pm3,\pm5,\ldots\\
+1,&k=0,\pm2,\pm4,\ldots
+\end{array}\right.\\
+\Rightarrow c_k&=\left\{\begin{array}{rlc}
+\dfrac{2}{\pi\i k},&k=\pm1,\pm3,\pm5,\ldots&k=2n-1\quad(n=1,2,\ldots)\\
+0,&k=0,\pm2,\pm4,\ldots
+\end{array}\right.\\
+\Rightarrow f(x)&=\dfrac{2}{\pi\i}\sum\limits_{n=-\infty}^{+\infty}\dfrac{e^{i(2n-1)x}}{2n-1}\qquad(\frac{1}{\i}=-\i)
+\end{align*}
+
+\clearpage
+\chapter{Gewöhnliche Differenzialgleichungen}
+\section{Grundbegriffe}
+Eine Differenzialgleichung stellt einen Zusammenhang zwischen einer Funktion $y(x)$ und deren Ableitungen $y'(x),y''(x),\ldots$ her.
+
+\Bsp\quad
+\begin{enumerate}
+	\item Fkt. $y:\R\to\R,y(x)=x^2$\\
+	1. Ableitung: $y'=2x$
+\end{enumerate}
+
+\Redbox{{\bf Geometrische Deutung der 1. Ableitung:}\\
+$y'(x)=$ Steigung $m_p$ des Graphen (= Steigung der Tangente) im Punkt $P(x;y(x))$}
+
+Betrachten wir $y'=2x$ als Gleichung für eine unbekannte Funktion $y=y(x)$, so gibt die Gleichung $y'=2x$ in jedem Punkt $P(x;y)$ der Ebene die Steigung eine Lösung $y=y(x)$ vor ($\rightarrow$ \redul{Richtungs-} oder \redul{Linienfeld})
+\imgplaceholder
+Jede Lösung $y$ der Differenzialgleichung $y'=2x$ erfüllt die Steigungsvorgabe $m_p=2x$ in jedem Punkt $P(x;y(x))$ des Graphen von $y$.
+
+Die Funktion $y=x^2$ ist eine Lösung der Differenzialgleichung $y'=2x$ aber auch $y=x^2+C$ ($C\in\R$) sind Lösungen ($\rightarrow$ es gibt unendlich viele Lösungen)
+
+\Frage Gibt es außer $y=x^2+C$ noch weitere Lösungen?
+
+\paragraph{Antwort:} Nein!
+
+\paragraph{Begründung:} Ist $y=y(x)$ eine beliebige Lösung der Differenzialgleichung $y'=2x$, so gilt $y=\ds\int y'\intd{x}+C=\ds\int2x\intd{x}+C=x^2+C$
+
+\Def Eine Gleichung der Form
+\redcbox{$y'=F(x,y)$}
+heißt explizite, gewöhnliche Differentialgleichung 1. Ordnung.
+
+\Bsp\quad
+\begin{enumerate}
+	\setcounter{enumi}{1}
+	\item $y'=\dfrac{y}{x}$
+	\imgplaceholder
+	Lösungen der Differentialgleichung sind Geraden der Form $y=ax\quad(a\in\R)$ (Ursprungsgeraden)
+	
+	\ul{Probe:}\\
+	linke Seite: $y'=(ax)'=a$\\
+	rechte Seite: $\dfrac{y}{x}=\dfrac{ax}{x}=a$
+	
+	\item $y'=-\dfrac{x}{y}$
+	\imgplaceholder
+	Lösungen sind Halbkreise
+	\ldots\ldots\ldots\placeholder
+	\ul{Kreisgleichung:} $x^2+y^2=r^2$\quad($r=$Radius)
+	\begin{align*}
+	\Rightarrow y^2&=r^2-x^2\quad|\pm\sqrt{\quad}\\
+	y&=\pm\sqrt{r^2-x^2}\\
+	y&=+\sqrt{r^2-x^2}&\text{\redul{oberer} Halbkreis}\\
+	y&=-\sqrt{r^2-x^2}&\text{\redul{unterer} Halbkreis}
+	\end{align*}
+	
+	\ul{Probe:} $y'=-\dfrac{x}{y}$, $y=\sqrt{r^2-x^2}$\\
+	linke Seite: $y'=\dfrac{1}{2\sqrt{r^2-x^2}}\cdot(-2x)=-\dfrac{x}{\sqrt{r^2-x^2}}$\\
+	rechte Seite: $-\dfrac{x}{y}=-\dfrac{x}{\sqrt{r^2-x^2}}$
+	
+	\ul{Probe:} $y'=-\dfrac{x}{y}$, $y=-\sqrt{r^2-x^2}$\\
+	linke Seite: $y'=-\dfrac{1}{2\sqrt{r^2-x^2}}\cdot(-2x)=\dfrac{x}{\sqrt{r^2-x^2}}$\\
+	rechte Seite: $-\dfrac{x}{y}=-\dfrac{x}{-\sqrt{r^2-x^2}}=\dfrac{x}{\sqrt{r^2-x^2}}$
+\end{enumerate}
+
+\Def\quad
+\begin{enumerate}
+	\item Unter einer \redul{expliziten} (gewöhnlichen) \redul{Differenzialgleichung} \redul{$n$-ter Ordnung} versteht man eine Gleichung der Form\\
+	\hhspace{2cm}\redbox{$y^{(n)}=F(x,y,y',y'',\ldots,y^{(n-1)})$} ,\qquad(*)\\
+	wobei $F(x,y_0,y_1,\ldots,y_{n-1})$ eine stetige Funktion (mehrerer Veränderlicher) ist.
+	
+	Ist die Gleichung (*) \redul{nicht} nach der höchsten Ableitung $y1{(n)}$ umgestellt, so heißt die Differenzialgleichung \redul{implizit}.\\
+	\hhspace{2cm}\redbox{$G(x,y,y',y'',\ldots,y^{(n)})=0$}\qquad(**)
+	
+	\item Eine Lösung der Differentialgleichung (*) bzw. (**) ist eine $n$-mal differenzierbare Funktion $y:I\to\R$ ($I$ Intervall), $y=y(x)$, so dass\\
+	\hhspace{2cm}\redbox{$y^{(n)}(x)=F(x,y(x),y'(x),\ldots,y^{(n-1)}(x))$}\\
+	bzw.\\
+	\hhspace{2cm}\redbox{$G(x,y(x),y'(x),\ldots,y^{(n)}(x))=0$}\\
+	für alle $x\in I$ gilt.
+\end{enumerate}
+
+\Bsp\quad
+\begin{enumerate}
+	\item $y'=\dfrac{2x}{y}$\qquad explizite Differentialgleichung 1. Ordnung
+	\item $2x+y^2y'=\cos x$\qquad implizite Differentialgleichung 1. Ordnung
+	\item $y''=-2xy$\qquad explizite Differentialgleichung 2. Ordnung
+	\item $xy''+x^2y=\sqrt{x}$\qquad implizite Differentialgleichung 2. Ordnung
+\end{enumerate}
+
+\Bsp Kinematik
+
+Kinematik = Lehre von den Gesetzen der Bewegung von Punkten und Körpern im Raum (Ebene) ohne die Ursache der Bewegung (=Kräfte) zu beachten.
+
+Beschreibung der Bewegung eines (Massen-)Punktes durch Angabe der augenblicklichen (= momentanen = zum Zeitpunkt $t$)\\
+\hhspace{2cm}Position/Ort $x(t)$\\
+\hhspace{2cm}Geschwindigkeit $v(t)$\\
+\hhspace{2cm}Beschleunigung $a(t)$
+
+Für die Bewegung entlang einer Geraden steht (1-dimensionale Bewegung), so sind $x(t),v(t),a(t)$ \redul{skalare Größen} (= Zahl + Einheit). Bei Bewegungen in der Ebene oder im Raum sind $\vec{x}(t),\vec{v}(t),\vec{a}(t)$ \redul{vektorielle Größen}.\\
+\hhspace{2cm}$\vec{x}(t)=\vv{x_1(t)}{x_2(t)}$, bzw. $\vec{x}(t)=\vvv{x_1(t)}{x_2(t)}{x_3(t)}$\vspace{1ex}\\
+\hhspace{2cm}$\vec{v}(t)=\vv{v_1(t)}{v_2(t)}$, bzw. $\vec{v}(t)=\vvv{v_1(t)}{v_2(t)}{v_3(t)}$\vspace{1ex}\\
+\hhspace{2cm}$\vec{a}(t)=\vv{a_1(t)}{a_2(t)}$, bzw. $\vec{a}(t)=\vvv{a_1(t)}{a_2(t)}{a_3(t)}$
+
+\imgplaceholder %1-dimensionale Bewegung
+\imgplaceholder %Bewegung in der Ebene
+
+In der Physik wird die Ableitung nach der Zeit $t$ durch einen Punkt über dem Formelzeichen gekennzeichnet.\\
+\hhspace{2cm}z.B.\qquad $\dot{x}(t)=\df{x}{t}$, $\dot{v}(t)=\df{v}{t}$, $\ddot{x}(t)=\ddf{x}{t}=\df{v}{t}$
+
+Es gelten folgenden Zusammenhänge zwischen Ort, Geschwindigkeit und Beschleunigung:\\
+\hhspace{2cm}\redbox{$\dot{x}(t)=v(t),\quad \ddot{x}(t)=\dot{v}(t)=a(t)$}\\
+für Bewegungen entlang einer Geraden bzw.\\
+\hhspace{2cm}\redbox{$\dot{\vec{x}}(t)=\vec{v}(t),\quad \ddot{\vec{x}}(t)=\dot{\vec{v}}(t)=\vec{a}(t)$}\\
+für Bewegungen im Raum bzw. in der Ebene.
+
+$\dot{\vec{x}}(t)=\vvv{\dot{x_1}(t)}{\dot{x_2}(t)}{\dot{x_3}(t)}$ bzw. $\dot{\vec{x}}(t)=\vv{\dot{x_1}(t)}{\dot{x_2}(t)}$\\
+analog für $\ddot{\vec{x}}$ und $\dot{\vec{v}}$.
+
+\paragraph{Denn:}\quad
+\begin{enumerate}
+	\item Bewegung entlang einer Geraden\\
+	$x(t)=$ Ort zum Zeitpunkt $t$\\
+	$\dot{x}(t)=\lim\limits_{\Delta t\to0}\dfrac{\Delta x}{\Delta t}=\placeholder$
+	
+	\imgplaceholder
+	$\ddot{x}(t)=\dot{v}(t)=\lim\limits_{\Delta t\to0}\dfrac{\Delta v}{\Delta t}$
+	
+	\item Bewegung in der Ebene (bzw. im Raum)
+	\imgplaceholder
+	Ortsvektor $\vec{x}(t)=\vv{x_1(t)}{x_2(t)}$
+	\imgplaceholder
+	Ortsvektor $\Delta\vec{x}=\vec{x}(t+\Delta t)-\vec{x}(t)$
+	\imgplaceholder
+	$\vec{v}(t)=\lim\limits_{\Delta t\to0}\dfrac{\Delta\vec{x}}{\Delta t}=\lim\limits_{\Delta t\to0}\dfrac{\vec{x}(t+\Delta t)-\vec{x}(t)}{\Delta t}$
+	
+	$\vec{v}(t)$ ist tangential zur Bahnkurve im Punkt $P$
+	
+	\Bsp Kreisbewegung
+	\imgplaceholder
+	$\vec{a}(t)\sim\placeholder$
+	
+	Durch einfache Integralrechnung erhält man die allgemeinen Bewegungsgleichungen\\
+	\hhspace{2cm}\redbox{\parbox{5cm}{$v(t)=v(t_0)+\ds\int\limits_{t_0}^{t}a(\tau)\intd{\tau}$\\
+		$x(t)=x(t_0)+\ds\int\limits_{t_0}^{t}v(\tau)\intd{\tau}$}}\\
+	bzw.\\
+	\hhspace{2cm}\redbox{\parbox{5cm}{$\vec{v}(t)=\vec{v}(t_0)+\ds\int\limits_{t_0}^{t}\vec{a}(\tau)\intd{\tau}$\\
+		$\vec{x}(t)=\vec{x}(t_0)+\ds\int\limits_{t_0}^{t}\vec{v}(\tau)\intd{\tau}$}}\}komponentenweise Integration
+	
+	\Bsp \placeholder
+\end{enumerate}
+
+\placeholder
+
+\Satz{{\bf Lösung durch Trennung der Variablen, TdV}\\
+	\\
+	Sei $y'=\dfrac{g(x)}{f(y)}$ eine separable Differentialgleichung. Ist $F(y)$ eine Stammfunktion von $f(y)$ und $G(x)$ eine Stammfunktion von $g(x)$, so gilt für die allgemeine Lösung der Differentialgleichung $y'=\dfrac{g(x)}{f(y)}$:\\
+	\hhspace{2cm}\redbox{$F(y(x))=G(x)+c$}\qquad ($c\in\R$)\quad(*)\\
+	Die allgemeine Lösung $y$ erhält man durch Auflösen der Gleichung (*) nach $y$ (falls möglich)}
+
+\Beweis Aus $y'=\dfrac{g(x)}{f(y)}$ folgt $f(y)\cdot y'=g(x)$\\
+Wegen $\df{}{x}F(y(x))=F'(y(x))\cdot y'(x)=F'(y)\cdot y'=f(y)\cdot y'=g(x)$ ist $F(y(x))$ eine Stammfunktion von $g(x)$. Da sich Stammfunktionen nur durch eine Konstante unterscheiden, folgt $F(y(x))=G(x)+c$.
+\qed
+
+\paragraph{Systematische Vorgehensweise bei TdV:}\quad
+\begin{align*}
+y'&=\dfrac{g(x)}{f(y)}\\
+\text{1. Trennung der Variablen}\\
+\df{y}{x}&=\dfrac{g(x)}{f(y)}\quad|\cdot f(y)|\cdot \intd{x}\quad\red{\text{Variablentrennung}}\\
+f(y)\intd{y}&=g(x)\intd{x}\quad|\int\\
+\text{2. Integration beider Seiten}\\
+\int f(y)\intd{y}&=\int g(x)\intd{x}\quad\red{\text{Lösen beider Integrale}}\\
+F(y)&=G(x)+c\\
+\text{3. Auflösen der Gleichung nach }y\text{ (falls möglich)}\\
+F(y)&=G(x)+c\\
+y&=F^{-1}(G(x)+c)\quad\text{(falls $F^{-1}$ existiert)}\\
+\text{(bzw. $y_1,y_2,\ldots$) bei mehreren Lösungen}
+\end{align*}
+
+\Bsp $y'=-\dfrac{x}{y}=\dfrac{-x}{y}=\dfrac{g(x)}{f(y)}$
+\begin{enumerate}
+	\item Trennung der Variablen
+	\begin{align*}
+	y'&=-\dfrac{x}{y}\\
+	\df{y}{x}&=-\dfrac{x}{y}\quad|\cdot\intd{x}|\cdot y\\
+	y\cdot\intd{y}&=-x\cdot\intd{x}\quad|\int
+	\end{align*}
+	
+	\item Integration beider Seiten
+	\begin{align*}
+	\int y\intd{y}&=-\int x\intd{x}\\
+	\frac{1}{2}y^2&=-\frac{1}{2}x^2+c_1\quad|\cdot2\\
+	y^2&=-x^2+\redunderbrace{2c_1}{c}\\
+	y^2&=c-x^2
+	\end{align*}
+	
+	\item Gleichung nach $y$ auflösen
+	\begin{align*}
+		y^2&=c-x^2\quad|\pm\sqrt{\quad}\\
+		y&=\pm\sqrt{c-x^2}\quad\text{allgemeine Lösung }(c>0)
+	\end{align*}
+\end{enumerate}
+
+Wird zudem $y(0)=1$ gefordert (AWP), so erhält man:\\
+\hhspace{2cm}$y=\pm\sqrt{c-x^2}$\\
+$y(0)=1$ eingesetzt\\
+\hhspace{2cm}$1=y(0)=\stackrel{+}{(-)}\sqrt{c-0^2}=\sqrt{c}$\\
+$\Rightarrow c=1$\\
+$\Rightarrow$ wir erhalten die eindeutige Lösung $y=\sqrt{1-x^2}$ (obere Hälfte des Einheitskreises)
+
+\subsection{7.2.2 Differentialgleichungen vom Typ $y'=f(ax+by+c)$}
+\Satz{{\bf Lösung durch Substitution $u=ax+by+c$}\\
+	\\
+	Ist $y=y(x)$ eine Lösung der Differentialgleichung\\
+	\hhspace{2cm}\redbox{$y'=f(ax+by+c)$},\qquad(*)\\
+	so ist $u=ax+by+c$ eine Lösung der Differentialgleichung\\
+	\hhspace{2cm}\redbox{$u'=a+b\cdot f(u)$}\qquad(separable Dgl.) (**)\\
+	Ist umgekehrt $u=u(x)$ eine Lösung der Differentialgleichung (**) $(b\ne0)$, so ist $y=\dfrac{1}{b}(u-ax-c)$ eine Lösung der Differentialgleichung (*).}
+
+\Beweis Für $u=ax+by+c$ gilt\\
+$u'=a+by'$.\\
+Somit gilt $\underbrace{u'=a+b\cdot f(u)}_{(**)}$ genau dann, wenn $\underbrace{y'=f(u)}_{(*)}$ gilt.
+
+\Bsp $y'=(x+y)^2$\quad$=f(x+y)$ mit $f(u)=u^2$\\
+Substitution: $u=x+y$\quad$(a=b=1, c=0)$\\
+Dann ist $u$ eine Lösung der Differentialgleichung\\
+\hhspace{2cm}$u'=1+u^2$
+
+$u=x+y;\quad u'=1+y'=1+(\redunderbrace{x+y}{u})^2=1+u^2$
+
+\paragraph{Lösung durch TdV:}
+\begin{enumerate}
+	\item Trennung der Variablen
+	\begin{align*}
+	u'&=1+u^2\\
+	\df{u}{x}&=1+u^2\quad|\cdot\intd{x}\\
+	\intd{u}&=(1+u^2)\cdot\intd{x}\quad|:(1+u^2)\\
+	\dfrac{1}{1+u^2}\intd{u}&=\intd{x}\quad|\int
+	\end{align*}
+	
+	\item Integration beider Seiten
+	\begin{align*}
+	\int\dfrac{1}{1+u^2}\intd{u}&=\int\intd{x}\\
+	\arctan(u)&=x+c
+	\end{align*}
+	
+	\item Auflösen der Gleichung nach $u$
+	\begin{align*}
+	\arctan(u)&=x+c\\
+	u&=\tan(x+c)\qquad(c\in\R)
+	\end{align*}
+\end{enumerate}
+
+Rücksubstitution: $u=x+y$\qquad$x+y=\tan(x+c)$\\
+$y=\tan(x+c)-x$
+
+\subsection{7.2.3 Differentialgleichung vom Typ $y'=f(\frac{y}{x})$}
+\Satz{{\bf Lösung durch Substitution $u=\frac{y}{x}$}\\
+	\\
+	Ist $y=y(x)$ eine Lösung der Differentialgleichung\\
+	\hhspace{2cm}\redbox{$y'=f(\frac{y}{x})$}, (*)\\
+	so ist $u=\frac{y}{x}$ eine Lösung der Differentialgleichung\\
+	\hhspace{2cm}\redbox{$u'=\dfrac{f(u)-u}{x}$}\qquad(separable Dgl.) (**)\\
+	Ist umgekehrt $u=u(x)$ eine Lösung der Differentialgleichung (**), so ist $y=u\cdot x$ eine Lösung der Differentialgleichung (*).}
+
+\Beweis Für $u=\dfrac{y}{x}$ gilt\\
+$u'=\dfrac{y'\cdot x - y\cot1}{x^2}=\dfrac{y'}{x}-\dfrac{y}{x^2}=\dfrac{y'-\frac{y}{x}}{x}=\dfrac{y'-u}{x}$\\
+Somit gilt\\
+\hhspace{2cm}$u'=\dfrac{f(u)-u}{x}$ genau dann, wenn $y'=f(u)$ gilt.
+\qed
+
+\Bsp $y'=\dfrac{x+2y}{x}$
+\begin{align*}
+y'&=\dfrac{x+2y}{x}=1+2\dfrac{y}{x}\\
+\text{Substitution: }u&=\dfrac{y}{x}\\
+\Leftrightarrow y=x\cdot u\\
+\Rightarrow y'=1\cdot u + x\cdot u'\Leftrightarrow u'=\dfrac{y'-u}{x}=\dfrac{f(\frac{y}{x})-u}{x}\\
+\Leftrightarrow u'=\dfrac{f(u)-u}{x}=\dfrac{1+2u-u}{x}=\dfrac{1+u}{x}
+\end{align*}
+
+Transformierte Differentialgleichung: $u'=\dfrac{1+u}{x}$ (separable Differentialgleichung)
+
+\paragraph{Lösung durch TdV}\quad
+\begin{enumerate}
+	\item Trennung der Variablen
+	\begin{align*}
+	u'=\dfrac{1+u}{x}\\
+	\df{u}{x}=\dfrac{1+u}{x}\quad|\cdot\intd{x}|:(1+u)\\
+	\dfrac{1}{1+u}\cdot\intd{u}=\dfrac{1}{x}\intd{x}\quad|\int
+	\end{align*}
+	\item Integration beider Seiten
+	\begin{align*}
+	\int\dfrac{1}{1+u}\intd{u}=\int\dfrac{1}{x}\intd{x}\\
+	\ln|1+u|=\ln|x|+c_1
+	\end{align*}
+	\item Gleichung nach $u$ auflösen
+	\begin{align*}
+	\ln|1+u|=\ln|x|+c_1\quad|e^{\square}\\
+	|1+u|=e^{\ln|x|+c_1}\\
+	|1+u|=\redunderbrace{e^{\ln|x|}}{|x|}\cdot \redunderbrace{e^{c_1}}{c_2}\\
+	|1+u|=c_2\cdot|x|\\
+	1+u=\pm c_2\cdot x\qquad(c_2>0)\\
+	u=c_3\cdot x-1\qquad(c_3\in\R)
+	\end{align*}
+\end{enumerate}
+
+\paragraph{Rücksubstitution:} $u=\dfrac{y}{x}$\\
+$\dfrac{y}{x}=c_3\cdot x-1\quad|\cdot x\Leftrightarrow \redul{y=cx^2-x}\qquad(c\in\R)\quad(c=c_3)$
+
+\subsection{7.2.4 Lineare Differentialgleichungen}
+\Def Eine lineare Differentialgleichung (1. Ordnung) ist eine Differentialgleichung der Form\\
+\redbox{$y'+a(x)y=b(x)$}\\
+mit Funktion $a(x),b(x):I\to\R$. Ist $b(x)\equiv0$ ({\flqq$\equiv$\frqq} bedeutet {\flqq identisch Null\frqq}, d.h. $b(x)$ ist die Nullfunktion), so heißt die lineare Differentialgleichung \redul{homogen}, ansonsten \redul{inhomogen}.\\
+$b(x)$ heißt auch \redul{Störglied} der Differentialgleichung.
+
+\Bsp\quad
+\begin{enumerate}
+	\item $y'+xy=0$\qquad homogene lineare Differentialgleichung
+	\item $y'+x^2y=\sin x$\qquad inhomogene lineare Differentialgleichung
+	\item $y'+\sqrt{x}y^2=0$\qquad nicht-lineare Differentialgleichung (wegen $y^2$)
+	\item $yy'+x=1$\qquad nicht-lineare Differentialgleichung (wegen $yy'$)
+\end{enumerate}
+
+\Satz{{\bf allgemeine Lösung einer homogenen linearen Differentialgleichung}\\
+	\\
+	\hhspace{2cm}\redbox{$y'+a(x)y=0$}\\
+	besitzt die allgemeine Lösung\\
+	\hhspace{2cm}\redbox{$y=c\cdot e^{-\int a(x)\intd{x}}$}\quad $(c\in\R)$\\
+	Das zugehörige AWP mit $y(x_0)=y_0$ (d.h. $P(x_0,y_0)\in G_y$) besitzt die eindeutige Lösung\\
+	\hhspace{2cm}\redbox{$y=y_0e^{-\int\limits_{x_0}^{x}a(\xi)\intd{\xi}}$}}
+
+\Beweis Lösung durch TdV
+\begin{enumerate}
+	\item Trennung der Variablen
+	\begin{align*}
+	y'+a(x)y&=0\\
+	y'&=-a(x)y\\
+	\df{y}{x}=-a(x)y\quad|\cdot\intd{x}|:y\\
+	\dfrac{\intd{y}}{y}=-a(x)\intd{x}\quad|\int
+	\end{align*}
+	
+	\item Integration beider Seiten
+	\begin{align*}
+	\int\dfrac{\intd{y}}{y}=-\int a(x)\intd{x}\\
+	\ln|y|=-\int a(x)\intd{x}+c_1
+	\end{align*}
+	
+	\item Gleichung nach $y$ auflösen
+	\begin{align*}
+	\ln|y|=-\int a(x)\intd{x}+c_1\quad|e^{\square}\\
+	|y|=e^{-\int a(x)\intd{x}+c_1}\\
+	|y|=e^{-\int a(x)\intd{x}}\cdot\redunderbrace{e^{c_1}}{c_2}\\
+	|y|=c_2\cdot e^{-\int a(x)\intd{x}}\\
+	y=\redunderbrace{\pm c_2}{c}\cdot e{-\int a(x)\intd{x}}\\
+	y=c\cdot e{-\int a(x)\intd{x}}\qquad(c\in\R)
+	\end{align*}
+\end{enumerate}
+
+\paragraph{Zusatz:} $y(x_0)=y_0$\\
+$y_0=y(x_0)=c\cdot e^{\redoverbrace{\int\limits_{x_0}^{x_0}a(\xi)\intd{\xi}}{=0}}=c\cdot e^0=c$\\
+$[(x)\quad y=c\cdot e^{-\int\limits_{x_0}^{x}a(\xi)\intd{\xi}}]\Rightarrow y(x)=y_0\cdot e^{-\int\limits_{x_0}^{x}a(\xi)\intd{\xi}}$
+\qed
+
+\Bsp $y'+\cos(x)y=0$\\
+$\Rightarrow$ allgemeine Lösung: $y=c\cdot e^{-A(x)}$ mit $A(x)=\int a(x)\intd{x}$\\
+$A(x)=\int a(x)\intd{x}=\int\cos(x)\intd{x}=\sin(x)$ (hier keine Integrationskonstante $\Rightarrow$ steckt bereits in $c$)\\
+$\Rightarrow$ allgemeine Lösung $y=y(x)=c\cdot e^{-sin x}$
+
+\graybox{AWP}: zusätzlich gelte $y(0)=2$\\
+$2=y(0)=c\cdot e^{-\sin(0)}=c$\\
+$\Rightarrow$ eindeutige Lösung $y=2\cdot e^{-\sin x}$
+
+Zur Bestimmung der Lösung einer inhomogenen linearen Differentialgleichung unterscheidet man zwischen
+\begin{itemize}
+	\item Variation der Konstanten (VdK)
+	\item Bestimmung einer partikulären (speziellen) Lösung durch einen sogenannten {\flqq Störansatz\frqq}.
+\end{itemize}
+
+\Satz{{\bf allgemeine Lösung der inhomogenen linearen Differentialgleichung durch VdK}\\
+	\\
+	Die allgemeine Lösung einer inhomogenen linearen Differentialgleichung\\
+	\hhspace{2cm}\redbox{$y'+a(x)y=b(x)$}\\
+	ist gegeben durch\\
+	\hhspace{2cm}\redbox{$y=c(x)e^{-\int a(x)\intd{x}}$}\\
+	mit\\
+	\hhspace{2cm}\redbox{$c(x)=\int \dfrac{1}{u(x)}b(x)\intd{x}+c$},\\
+	wobei\\
+	\hhspace{2cm}\redbox{$u(x)=e^{-\int a(x)\intd{x}}$}\\
+	gilt.}
+
+Das zugehörige AWP mit $y(x_0)=y_0$ besitzt die eindeutige Lösung\\
+\hhspace{2cm}\redbox{$y(x)=c(x)\cdot e^{-\int\limits_{x_0}^{x}a(\xi)\intd{\xi}}$}\\
+mit\\
+\hhspace{2cm}$c(x)=y_0+\int\limits_{x_0}^{x}\dfrac{1}{u(\xi)}b(\xi)\intd{\xi}$ und $u(x)=e^{-\int\limits_{x_0}^{x}a(t)\intd{t}}$
+
+\Bem $\dfrac{1}{u(x)}=e^{\int a(x)\intd{x}}=e^{A(x)}$, wobei $A(x)$ eine Stammfunktion von $a(x)$ ist. Somit gilt\\
+\redbox{$c(x)=\int e^{A(x)}b(x)\intd{x}+c$}
+
+\Beweis Inhomogene Differentialgleichung $y'+a(x)y=b(x)$\\
+zugehörige homogene Differentialgleichung $y'+a(x)y=0$\\
+$\Rightarrow$ allgemeine Lösung der homogenen Differentialgleichung $\redunderbrace{y_{\text{hom}}}{=u(x)}=c\cdot e^{-\int a(x)\intd{x}}$\\
+$\rightarrow$ Variation der Konstante $c$ $\rightarrow$ allgemeine Lösung der inhomogenen Differentialgleichung
+
+Ansatz: $y(x)=c(x)\cdot e^{-\int a(x)\intd{x}}=\redunderbrace{c(x)}{\text{noch zu}\atop\text{bestimen}}\cdot\redunderbrace{u(x)}{\text{Lsg. der zugeh.}\atop\text{homogenen Dgl.}}$
+
+\Idee Finde Differentialgleichung für $c(x)$!\\
+$y=c\cdot u\quad\Rightarrow\quad y'=c'\cdot u+c\cdot\redunderbrace{u'}{=-au}=c'u-cau=c'u-a\redunderbrace{cu}{y}=c'u-ay$\\
+$\Rightarrow$ \redbox{$y'+ay=c'u$}
+
+Da auch $y'+ay=b$ gilt, folgt \redbox{$c'u=b$} (Differentialgleichung für $c(x)$).
+
+$\Rightarrow c'(x)=\dfrac{1}{u(x)}b(x)$\\
+Integration\\
+$\Rightarrow c(x)=\ds\int\dfrac{1}{u(x)}b(x)\intd{x}+c$
+\qed
+
+\Bsp $y'+2xy=x,\quad y(0)=2$ (AWP)
+\begin{enumerate}
+	\item allgemeine Lösung der zugehörigen homogenen Differentialgleichung\\
+	\hhspace{2cm}$y'+2xy=0$\\
+	$y_{\text{hom}}(x)=c\cdot e^{-A(x)}$ mit $A(x)=\int2x\intd{x}=x^2$ (\ul{ohne} Integrationskonstante)\\
+	$\Rightarrow y_{\text{hom}}(x)=c\cdot e^{-x^2}$
+	
+	\item VdK\\
+	$y(x)=c(x)e^{-x^2}$\\
+	mit $c(x)=\int e^{x^2}\cdot x\intd{x}+c=\dfrac{1}{2}e^{x^2}+c$\\
+	$\Rightarrow$ allgemeine Lösung der inhomogenen Differentialgleichung\\
+	$y=(\dfrac{1}{2}e{x^2}+c)\cdot e^{-x^2}$
+\end{enumerate}
+
+\paragraph{AWP:} $y(0)=2$\\
+$2=y(0)=(\dfrac{1}{2}e^0+c)\cdot e{-0}=\dfrac{1}{2}+c$\\
+$\Rightarrow c=\dfrac{3}{2}$
+
+$\Rightarrow$ eindeutige Lösung des AWP: $y(x)=(\dfrac{1}{2}e^{x^2}+\dfrac{3}{2})e^{-x^2}=\dfrac{1}{2}+\dfrac{3}{2}e^{-x^2}$
+
+\placeholder
+
+\Satz{{\bf Allgemeine Lösung einer inhomogenen linearen Differentialgleichung 1. Ordnung}\\
+	\\
+	Die allgemeine Lösung $y_\text{inh}$ der inhomogenen linearen Differentialgleichung 1. Ordnung\\
+	\hhspace{2cm}$y'+a(x)y=b(x)$\\
+	ist von der Form\\
+	\hhspace{2cm}\redbox{$y_\text{inh}=y_\text{hom}+y_p$},\\
+	wobei $y_\text{hom}$ die allgemeine Lösung der zugehörigen homogenen Differentialgleichung\\
+	\hhspace{2cm}$y'+a(x)y=0$\\
+	und $y_p$ eine \redul{partikuläre}/spezielle Lösung der inhomogenen linearen Differentialgleichung $y'+a(x)y=b(x)$ ist.}
+
+\Beweis Ist $y_\text{inh}=y_\text{hom}+y_p$, so gilt
+\begin{align*}
+y'_\text{inh}+a(x)y_\text{inh}&=\redunderbrace{y'_\text{hom}+y'_p}{y'_\text{inh}}+a(x)(\redunderbrace{y_\text{hom}+y_p}{y_\text{inh}})\\
+&=\redunderbrace{y'_\text{hom}+a(x)y_\text{hom}}{0}+\redunderbrace{y'_p+a(x)y_p}{b(x)}=b(x)
+\end{align*}
+$\Rightarrow$ $y_\text{inh}=y_\text{hom}+y_p$ ist eine Lösung der inhomogenen Differentialgleichung. Sei umgekehrt $y_\text{inh}$ eine beliebige Lösung der inhomogenen Differentialgleichung. Für $y=y_\text{inh}-y_p$ gilt dann
+\begin{align*}
+\redunderbrace{y'_\text{inh}-y'_p}{y'}+a(x)(\redunderbrace{y_\text{inh}-y_p}{y})&=\redunderbrace{y'_\text{inh}+a(x)y_\text{inh}}{b(x)}-[\redunderbrace{y'_p+a(x)y_p}{b(x)}]\\
+\placeholder
+\end{align*}
+Es folgt, dass $y=y_\text{inh}-y_p$ eine Lösung der zugehörigen homogenen Differentialgleichung $y'+a(x)y=0$ ist, d.h. $y=y_\text{hom}$, und somit erhalten wir
+\begin{align*}
+y_\text{hom}&=y=y_\text{inh}-y_p\\
+\Leftrightarrow y_\text{inh}&=y_\text{hom}+y_p
+\end{align*}
+\qed
+
+\Bem {\bf Auffinden einer partikulären Lösung mittels Störansatz}\\
+Beim Auffinden einer partikulären Lösung mittel Störansatz (Lösungsansatz) setzt man $y_p$ gleich einem bestimmten Funktionentyp, der noch diverse freie Parameter beinhaltet. Setzt man den Störansatz (d.h. $y_p$) in die inhomogene Differentialgleichung ein, so erhält man Gleichungen in den freien Parametern des Störansatzes und versucht diese zu lösen.\\
+Für allgemeine inhomogene lineare Differentialgleichungen $y'+a(x)y=b(x)$ ist diese Vorgehensweise nur in einfachen (für die Praxis jedoch wichtigen) Fällen zielführend. Im allgemeinen ist es zu gegebenem $b(x)$ (=Störglied) schwierig, einen passenden Störansatz zu finden $\Rightarrow$ Spezialfälle
+
+\Bsp (Papula II, S. 379)\\
+Differentialgleichung $y'-\tan(x)\cdot y=2\cdot\sin(x)$\\
+allgemeinen Lösung der zugehörigen homogenen Differentialgleichung $y'-\tan(x)\cdot y=0$
+\begin{align*}
+y_\text{hom}&=c\cdot e^{-\int(-\tan x)\intd{x}}\\
+&=c\cdot e^{\int\tan x\intd{x}}\\
+\int\tan x\intd{x}=-\ln|\cos x|(+c)\\
+\Rightarrow y_\text{hom}&=c_1\cdot e^{-\ln|\cos x|}\\
+&=c_1\cdot e^{\ln|\cos x|^{-1}}\\
+&=\dfrac{c_1}{|\cos x|}\\
+&=\dfrac{c}{|\cos x|}
+\end{align*}
+
+Auffinden einer partikulären Lösung $y_p$ der inhomogenen Differentialgleichung:\\
+Störansatz (Lösungsansatz): $y_p=A\cdot\cos x$
+
+In die inhomogene Differentialgleichung eingesetzt: $y'_p-\tan(x)\cdot y_p=2\sin(x)$
+\begin{align*}
+\redunderbrace{-A\cdot\sin(x)}{y'_p}-\tan(x)\cdot\redunderbrace{A\cdot\cos(x)}{y_p}&=2\sin(x)\\
+\Leftrightarrow -A\cdot\sin(x)-\dfrac{\sin(x)}{\cos(x)}\cdot A\cos(x)&=2\sin(x)\\
+\Leftrightarrow-2A\sin(x)&=2\sin(x)\\
+\Leftrightarrow2\sin(x)\cdot(1+A)&=0&\parbox{4cm}{(Gl. von Funktionen!\\Gleiheit gilt für alle x)}\\
+\Leftrightarrow 1+A&=0\\
+\Leftrightarrow A&=-1
+\end{align*}
+
+$\Rightarrow$ $y_p=-\cos(x)$ ist eine partikuläre Lösung der inhomogenen linearen Differentialgleichung
+
+$\Rightarrow$ allgemeine Lösung der inhomogenen linearen Differentialgleichung
+\begin{align*}
+y_\text{inh}&=y_\text{hom}+y_p\\
+&=\dfrac{c}{\cos(x)}-\cos(x)
+\end{align*}
+
+\paragraph{Spezialfall:} lineare Differentialgleichung mit konstanten Koeffizienten\\
+\hhspace{2cm}\redbox{$y'=ay=b(x)$}\qquad Konstante $a(=\text{const}\ne0)$
+
+Allgemeine Lösung der zugehörigen homogenen Differentialgleichung $y_\text{hom}=c\cdot e^{-ax}$
+
+\Satz{{\bf Folgende Störansätze sind für folgende Störglieder $b(x)$ zielführend}}
+
+\begin{longtable}{cc|c}
+& Störglied/-funktion $b(x)$ & Störansatz für $y_p(x)$\\
+\hline
+1. & \parbox{5cm}{Konstante Funktion\\$b(x)=b_0$} & \parbox{5cm}{Konstante Funktion\\$y_p=c_0$ (Parameter $c_0$)}\\
+2. & \parbox{5cm}{Lineare Funktion\\$b(x)=b_1x+b_0$} & \parbox{5cm}{Lineare Funktion\\$y_p=c_1x+c_0$ (Parameter $c_0,c_1$)}\\
+3. & \parbox{5cm}{Quadratische Funktion\\$b(x)=b_2x^2+b_1x+b_0$} & \parbox{5cm}{Quadratische Funktion\\$y_p=c_2x^2+c_1x+c_0$ (Parameter $c_0,c_1,c_2$)}\\
+4. & \parbox{5cm}{Polynomfunktion\\$b(x)=b_nx^n+\ldots+b_1x+b_0$} & \parbox{5cm}{Polynomfunktion\\$y_p=c_nx^n+\ldots+c_1x+c_0$ (Parameter $c_0,c_1,\ldots,c_n$)}\\
+5. & \parbox{5cm}{$b(x)=A\cdot\sin(\omega x)$\\oder $b(x)=B\cdot\cos(\omega x)$\\oder $b(x)=A\cdot\sin(\omega x)+B\cdot\cos(\omega x)$} & \parbox{5cm}{$y_p=c_1\sin(\omega x)+c_2\cos(\omega x)$\\bzw. $y_p=c\cdot\sin(\omega x +\varphi)$ (Parameter $c_1,c_2$ bzw. $c,\varphi$)}\\
+6. & \parbox{5cm}{Exponentialfunktion\\$b(x)=A\cdot e^{bx}$} & \parbox{5cm}{$y_p=\begin{array}{rl}
+	c\cdot e^{bx}&\text{, falls }b\ne-a\\
+	c\cdot xe^{bx}&\text{, falls }b=-a
+	\end{array}$ (Parameter $c$)}\\
+\end{longtable}
+
+\Bem Ist $b(x)=c\cdot b^{\alpha x}$, so kann man $b(x)$ wie folgt als Exponentialfunktion schreiben:\\
+\hhspace{2cm}$b(x)=c\cdot e^{(\ln b)\cdot\alpha x}$\\
+Denn: $b^{\alpha x}=e^{\ln(b^{\alpha x})}=e^{\alpha x\cdot\ln b}$
+
+\Bsp (Papula II, S. 382)\\
+Differentialgleichung $y'+2y=2x^2-4$\\
+Allgemeine Lösung der zugehörigen homogenen Differentialgleichung $y'+2y=0$\\
+\hhspace{2cm}$y_\text{hom}=c\cdot e^{-2x}$
+
+\paragraph{Störansatz:} für partikuläre Lösung $y_p$ der inhomogenen Differentialgleichung:\\
+$b(x)=2x^2-4$ quadratische Funktion\\
+$\Rightarrow$ {\flqq quadratischer\frqq} Ansatz\\
+\hhspace{2cm}$y_p=c_2x^2+c_1x+c_0$\\
+Bestimmung der Parameter $c_0,c_1,c_2$ durch Einsetzen von $y_p$ in die inhomogene Differentialgleichung.
+\begin{align*}
+y'_p+2y_p&=2x^2-4\\
+\redunderbrace{2c_2x+c_1}{y'_p}+2(\redunderbrace{c_2x^2+c_1x+c_0}{y_p})&=2x^2-4\\
+2c_2x^2+(2c_1+2c_2)x+c_1+2c_0&=2x^2-4\\
+\Rightarrow\text{Koeffizientenvergleich}\\
+2c_2&=2&(I)\\
+2c_1+2c_2&=0&(II)\\
+c_1+2c_0&=-4&(III)\\
+\\
+c_2&=1\\
+c_1&=-1\\
+c_0&=-\dfrac{3}{2}\\
+\\
+\Rightarrow y_p(x)=x^2-x-\dfrac{3}{2}
+\end{align*}
+
+$\Rightarrow$ allgemeine Lösung der inhomogenen Differentialgleichung\\
+\begin{align*}
+y_\text{inh}&=y_\text{hom}+\placeholder
+\end{align*}
+
+\placeholder
+
+\section{7.3 Lineare Differentialgleichungen n-ter Ordnung}
+\subsection{7.3.1 Grundlagen}
+\Def Besitzt eine Differentialgleichung die Form\\
+\hhspace{2cm}\redbox{$y^{(n)}+a_{n-1}(x)y^{(n-1)}+\ldots+a_1(x)y'+a_0(x)y=b(x)$}\quad(*)\\
+mit stetigen Funktionen $a_0(x),\ldots,a_{n-1}(x),b(x):I\to\R$, so heißt sie\\
+\redul{lineare Differentialgleichung $n$-ter Ordnung}; ansonsten heißt die Differentialgleichung \redul{nicht linear}.
+
+Die Funktion $a_0(x),\ldots,a_{n-1}(x)$ heißen \redul{Koeffizienten} der Differentialgleichung.
+
+Die lineare Differentialgleichung (*) heißt \redul{homogen}, wenn $b(x)=0$ für jedes $x\in I$. (d.h. $b(x)\equiv0$, {\flqq identisch NULL\frqq}. Ist $b(x)\not\equiv0$, so heißt die lineare Differentialgleichung \redul{inhomogen}.
+
+\Bsp\quad
+\begin{enumerate}
+	\item $y''+\sqrt{x}y'-3y=0$ \qquad homogene, lineare Differentialgleichung 2. Ordnung
+	
+	\item $y'''-\sin(x)y''+1=\cos(x)$ \qquad inhomogene, lineare Differentialgleichung 3. Ordnung
+	
+	\item $2xy^{(n)}+(4x^2-1)y'=\sqrt{x}-1\\
+	\Leftrightarrow y^{(n)}+\dfrac{4x^2-1}{2x}y'=\dfrac{\sqrt{x}-1}{2x}$ \qquad inhomogene, lineare Differentialgleichung 4. Ordnung
+\end{enumerate}
+
+\Satz{{\bf allgemeine Lösung eine inhomogenen lineare Differentialgleichung n-ter Ordnung}\\
+	\\
+	Die allgemeine Lösung $y_\text{inh}$ einer inhomogenen linearen Differentialgleichung $n$-ter Ordnung\\
+	\hhspace{2cm}$y^{(n)}+a_{n-1}(x)y^{(n-1)}+\ldots+a_1(x)y'+a_0(x)y=b(x)$\\
+	ist von der Form\\
+	\hhspace{2cm}\redbox{$y_\text{inh}=y_\text{hom}+y_p$},\\
+	wobei $y_\text{hom}$ die allgemeine Lösung der zugehörigen homogenen linearen Differentialgleichung\\
+	\hhspace{2cm}$y^{(n)}+a_{n-1}(x)y^{(n-1)}+\ldots+a_1(x)y'+a_0(x)y=0$\\
+	und $y_p$ eine partikuläre Lösung der inhomogenen Differentialgleichung ist.}
+
+Zunächst untersuchen wir die Lösung homogener linearer Differentialgleichung $n$-ter Ordnung.
+
+\Def Eine Familie $\varphi_1,\ldots,\varphi_n$ von $n$ Lösungen $\varphi_i:I\to\R$ einer homogenen linearen Differentialgleichung $n$-ter Ordnung\\
+\hhspace{2cm}$y^{(n)}+a_{n-1}(x)y^{(n-1)}+\ldots+a_1(x)y'+a_0(x)y=0$\quad (*)\\
+heißt Lösungsfundamentalsystem und die $\varphi_1,\ldots,\varphi_n$ heißen \redul{Fundamental- oder Basislösungen} von (*), wenn die sogenannte Wronski-Determinante\\
+\hhspace{2cm}$W(x)=\det\left(\begin{array}{ccc}
+\varphi_1(x)&\dots&\varphi_n(x)\\
+\varphi'_1(x)&\dots&\varphi'_n(x)\\
+\vdots&&\vdots\\
+\varphi^{(n-1)}_1(x)&\dots&\varphi^{(n-1)}_n(x)
+\end{array}\right):I\to\R$\\
+nicht (identisch) Null ist.
+
+\Bem\quad
+\begin{enumerate}
+	\item Die Wronski-Determinante $W(x)$ ist eine Determinante von Funktionen und daher selbst eine Funktion $W(x):I\to\R$.
+	
+	\item\label{no2} Man kann zeigen, dass gilt:\\
+	$W(x)\ne0$ für \redul{jedes} $x\in I\Leftrightarrow W(x)\ne0$ für ein (beliebiges) $x=x_0\in I$.
+	
+	Gleichwertig dazu ist:\\
+	$W(x)=0$ für \redul{jedes} $x\in I\Leftrightarrow W(x)=0$ für ein (beliebiges) $x=x_0\in I$.
+	
+	\item Nach \ref*{no2}, kann man $W(x)\ne0$ wie folgt testen:\\
+	Wähle beliebiges $x_0\in I$ und bilde die \redul{Determinante von Zahlen}\\
+	$W(x_0)=\det\left(\begin{array}{ccc}
+	\varphi_1(x_0)&\dots&\varphi_n(x_0)\\
+	\varphi'_1(x_0)&\dots&\varphi'_n(x_0)\\
+	\vdots&&\vdots\\
+	\varphi^{(n-1)}_1(x_0)&\dots&\varphi^{(n-1)}_n(x_0)
+	\end{array}\right)\in\R$\\
+	$W(x_0)\stackrel{?}{\ne}0\left\{\begin{array}{ll}
+	\text{ja}&W(x)\ne0\text{ für \redul{jedes} }x\in I\\
+	\text{nein}&W(x)=0\text{ für \redul{jedes} }x\in I
+	\end{array}\right\}$\\
+	\redul{Oder:} Man bestimmt $W(x)$ als Determinante von Funktionen und prüfe, ob $W(x)\equiv0$ (identisch Null) gilt oder $W(x)\not\equiv0$.
+\end{enumerate}
+
+\Satz{
+	\begin{enumerate}
+		\item Zu \redul{jeder} homogenen linearen Differentialgleichung $n$-ter Ordnung gibt es ein Lösungsfundamentalsystem $\varphi_1,\ldots,\varphi_n$
+		
+		\item Ist $\varphi_1,\ldots,\varphi_n$ ein Lösungsfundamentalsystem einer homogenen linearen Differentialgleichung $n$-ter Ordnung\\
+		\hhspace{2cm}$y^{(n)}+a_{n-1}(x)y^{(n-1)}+\ldots+a_1(x)y'+a_0(x)y=0$,\quad(*)\\
+		so ist die allgemeine Lösung $y_\text{hom}$ von der Form\\
+		\hhspace{2cm}\redbox{$y_\text{hom}=c_1\varphi_1(x)+c_2\varphi_2(x)+\ldots+c_n\varphi_n(x)$}\\
+		mit Parametern $c_1,c_2,\ldots,c_n\in\R$, d.h. \redul{jede} Lösung von (*) ist eine Linearkombination der Basislösungen $\varphi_1(x),\ldots,\varphi_n(x)$.
+	\end{enumerate}}
+
+\Bsp Gegeben sei die homogenen lineare Differentialgleichung 2. Ordnung\\
+\hhspace{2cm}$y''-\dfrac{1}{2x}y'+\dfrac{1}{2x^2}y=0$\\
+auf $x>0$.\\
+($a_1(x)=-\dfrac{1}{2x}:I\to\R, a_0(x)=\dfrac{1}{2x^2}:I\to\R, I=\{x>0\}$)
+
+\Beh $\varphi_1(x)=x$ und $\varphi_2(x)=\sqrt{x}$ bilden ein Lösungsfundamentalsystem.
+
+\begin{itemize}
+	\item $\varphi_1$ und $\varphi_2$ sind Lösungen der Differentialgleichung, denn\\
+	\begin{align*}
+	\redunderbrace{x''}{0}-\dfrac{1}{2x}x'+\dfrac{1}{2x^2}x=-\dfrac{1}{2x}+\dfrac{1}{2x}=0\\
+	\sqrt{x}''-\dfrac{1}{2x}\sqrt{x}'+\dfrac{1}{2x^2}\sqrt{x}=-\dfrac{1}{4}x^{-\frac{3}{2}}-\dfrac{1}{2x}\dfrac{1}{2\sqrt{x}}+\dfrac{1}{2x^2}\sqrt{x}=-\dfrac{1}{4x\sqrt{x}}-\dfrac{1}{4x\sqrt{x}}+\dfrac{1}{2x\sqrt{x}}=0
+	\end{align*}
+	
+	\item Wronski-Determinante $W(x)$:
+	\begin{align*}
+	W(x)&=\det\left(\begin{array}{cc}
+	\varphi_1(x)&\varphi_2(x)\\
+	\varphi'_1(x)&\varphi'_2(x)
+	\end{array}\right)\\
+	&=\det\left(\begin{array}{cc}
+	x&\sqrt{x}\\
+	1&\dfrac{1}{2\sqrt{x}}
+	\end{array}\right)\\
+	&=x\cdot\dfrac{1}{2\sqrt{x}}-1\cdot\dfrac{x}{2\sqrt{x}}-\sqrt{x}\\
+	&=\dfrac{1}{2}\sqrt{x}-\sqrt{x}\\
+	&=-\dfrac{1}{2}\sqrt{x}\not\equiv0
+	\end{align*}
+	
+	$\Rightarrow$ $\varphi_1(x)$ und $\varphi_2(x)$ bilden ein Lösungsfundamentalsystem.\\
+	$\Rightarrow$ allgemeine Lösung\\
+	\hhspace{2cm}$y_\text{hom}=c_1x+c_2\sqrt{x}\qquad(c_1,c_2\in\R)$
+	
+	\Bem Die Lösungen einer homogenen linearen Differentialgleichung $n$-ter Ordnung bilden einen $n$-dimensionalen Vektorraum. Ein Lösungsfundamentalsystem ist eine Basis dieses Vektorraums. Die Bedingung $W(x)\ne0$ ($W(x)=$Wronski-Determinante) bedeutet, dass die Basislösungen $\varphi_1(x),\ldots,\varphi_n(x)$ linear unabhängig sind, d.h. aus $c_1\varphi_1(x)+\ldots+c_n\varphi_n(x)=0$ (für jedes $x$) folgt $c_1\placeholder$
+	
+	Eine partikuläre Lösung $y_p$ der inhomogenen linearen Differentialgleichung $n$-ter Ordnung findet man wieder ($\rightarrow$ sich inhomogene lineare Differentialgleichung 1. Ordnung) mithilfe eines geeigneten Störansatzes.
+\end{itemize}
+
+\placeholder
+
+\subsection{7.4.2 Freie Schwingungen}
+Wirkt \ul{keine} äußere Kraft $F(t)$ auf das mechanische System ein, so spricht man von einer \ul{freien Schwingung} (des mechanischen Systems). In diesem Fall ist die Schwingungsgleichung eine \ul{homogene} lineare Differentialgleichung 2. Ordnung mit konstantem Koeffizienten.\\
+\hhspace{2cm}\redbox{$m\ddot{x}+k\dot{x}+cx=0$}\qquad Schwingungsgleichung einer \ul{freien} Schwingung)
+
+\begin{enumerate}[A]
+	\item Freie ungedämpfte Schwingung
+	
+	Es wirkt \ul{keine} Dämpfungs-/Reibungskraft auf das mechanische System, d.h. $k=0$\\
+	$\Rightarrow$ Schwingungsgleichung\\
+	\hhspace{2cm}\redbox{$m\ddot{x}+cx=0$}
+	
+	\ul{Lösung der Differentialgleichung}
+	\begin{align*}
+	m\ddot{x}+cx&=0&|:m\\
+	\ddot{x}+\redunderbrace{\dfrac{c}{m}}{\omega_0^2}x&=0&(\omega_0=\sqrt{\dfrac{c}{m}})\\
+	\ddot{x}+\omega_0^2x&=0
+	\end{align*}
+	$\Rightarrow$ charakteristisches Polynom:
+	\begin{align*}
+	P(x)=x^2+\omega_0^2
+	\end{align*}
+	charakteristische Gleichung:
+	\begin{align*}
+	P(\lambda)&=0\\
+	\lambda^2+\omega_0^2&=0\\
+	\lambda^2&=-\omega_0^2\\
+	\lambda_{1/2}&=\pm\i\omega_0&\text{Konj. komplexes Paar einfacher nit-reeller Nst.}
+	\end{align*}
+	$\Rightarrow$ Lösungsfundamentalsystem:
+	\begin{align*}
+	\varphi_1(t)&=\sin(\omega_0t)\\
+	\varphi_2(t)&=\cos(\omega_0t)\\
+	(\omega_0=\dfrac{2\pi}{T}\quad\text{Kreisfrequenz})
+	\end{align*}
+	$\Rightarrow$ allgemein Lösung (der homogenen Differentialgleichung)\\
+	\hhspace{2cm}\redbox{$x(t)=c_1\sin(\omega_0t)+c_2\cos(\omega_0t)$}\qquad(Parameter $c_1,c_2$)\\
+	Die Parameter $c_1$ und $c_2$ werden aus der (sogenannten) Anfangsbedingungen\\
+	\begin{align*}
+	x(0)&=x_0&\text{Anfangsposition/-ort}\\
+	[v(0)=]\dot{x}(0)&=v_0&\text{Anfangsgeschwindigkeit}
+	\end{align*}
+	Die allgemeine Lösung ist $T$-periodisch mit $T=\dfrac{2\pi}{\omega_0}$.\\
+	Aus $\omega_0=\sqrt{\dfrac{c}{m}}$ und $\omega_0=\dfrac{2\pi}{T}$ folgt\\
+	\hhspace{2cm}$\sqrt{\dfrac{2\pi}{m}}=\dfrac{2\pi}{T}$\\
+	\hhspace{2cm}$\Leftrightarrow$\redbox{$T=2\pi\cdot\sqrt{\dfrac{m}{c}}$}\qquad Periodendauer einer Schwingung\\
+	\hhspace{2cm}\redbox{$\omega_0=\dfrac{2\pi}{T}=2\pi f$}\qquad$(f=\dfrac{1}{T})$\\
+	$\omega_0$ = Kreisfrequenz = \redul{Eigenfrequenz}\\
+	Eigenfrequenz = diejenige Kreisfrequenz, mit der das freie, ungedämpfte mechanische System (ohne äußeren Einfluss) eigenständig schwingt.
+	
+	Wegen
+	
+	\Redbox{$x(t)=c_1\sin(\omega_0t)+c_2\cos(\omega_0t)\\
+		=A\cdot\sin(\omega_0t+\varphi)$}
+	
+	mit
+	
+	\Redbox{$A=\sqrt{c_1^2+c_2^2}$\\
+	$\varphi=\left\{\begin{array}{rl}
+	\arccos(\dfrac{c_1}{A})&\text{, falls }c_2\ge0\\
+	-\arccos(\dfrac{c_1}{A})&\text{, falls }c_2<0
+	\end{array}\right.$}
+	
+	ist die allgemeine Lösung $x(t)$ eine phasenverschobene Sinusschwingung (harmonische Schwingung)
+	\imgplaceholder
+	
+	\item Freie gedämpfte Schwingung
+	
+	Eine Dämpfungs-/Reibungskraft wirkt auf das mechanische System ein, d.h. $k>0$.\\
+	$\Rightarrow$ Schwingungsdifferentialgleichung\\
+	\hhspace{2cm}\redbox{$m\ddot{x}+k\dot{x}+cx=0$}
+	
+	\ul{Lösung der Differentialgleichung:}
+	\begin{align*}
+	m\ddot{x}+k\dot{x}+cx&=0&|:m\\
+	\ddot{x}+\redunderbrace{\dfrac{k}{m}}{2\delta}\dot{x}+\redunderbrace{\dfrac{c}{m}}{\omega_0^2}x&=0\\
+	\ddot{x}+2\delta\dot{x}+\omega_0^2x&=0
+	\end{align*}
+	$\delta=\dfrac{k}{2m}$ = Abklingkonstante/Dämfpungsfaktor\\
+	$\omega_0=\sqrt{\dfrac{c}{m}}$ = Eigenfrequenz
+	
+	$\Rightarrow$ charateristisches Polynom:
+	\begin{align*}
+	P(x)&=x^2+2\delta x+\omega_0^2
+	\end{align*}
+	charakteristische Gleichung
+	\begin{align*}
+	P(\lambda)&=0\\
+	\lambda^2+2\delta\lambda+\omega_0^2&=0\\
+	\lambda_{1/2}&=\dfrac{-2\delta\pm\sqrt{4\delta^2-4\omega_0^2}}{2}\\
+	&=\dfrac{-2\delta\pm2\sqrt{\delta^2-\omega_0^2}}{2}\\
+	&=-\delta\pm\sqrt{\delta^2-\omega_0^2}
+	\end{align*}
+	\centering{$\Rightarrow$ \redbox{$\lambda_{1/2}=-\delta\pm\sqrt{\delta^2-\omega_0^2}$}}
+	
+	\ul{1. Fall:} Schwache Dämpfung (Schwingungsfall)
+	\redbox{$\delta<\omega_0$}\quad($\Leftrightarrow\quad\delta^2<\omega_0^2\quad\Leftrightarrow\quad\delta^2-\omega_0^2<0$)
+	
+	Setze \redbox{$\omega_d=\sqrt{\omega_0^2-\delta^2}$}.
+	
+	Dann gilt:\\
+	\begin{align*}
+	\sqrt{\delta^2\omega_0^2}&=\sqrt{-(\omega_0^2-\delta^2)}\\
+	&=\sqrt{-\omega_d^2}\\
+	&=\i\omega_d
+	\end{align*}
+	$\Rightarrow$ für die Lösungen der charakteristischen Gleichung gilt:
+	\begin{align*}
+	\lambda_{1/2}&=-\delta\pm\sqrt{\delta^2-\omega_0^2}\\
+	&=-\delta\pm\i\omega_d&\text{Konj. komplexes Paar einfacher nicht-reeller Nst.}
+	\end{align*}
+	$\Rightarrow$ Lösungsfundamentalsystem
+	\begin{align*}
+	\varphi_1(t)=e^{-\delta t}\sin(\omega_dt)\\
+	\varphi_2(t)=e^{-\delta t}\cos(\omega_dt)
+	\end{align*}
+	$\omega_d$ = Kreisfrequenz der gedämpften Schwingung\\
+	\hhspace{2cm}$\omega_d=\sqrt{\omega_0^2-\delta^2}<\omega_0$ = Eigenfrequenz (= Kreisfrequenz der ungedämpften Schwingung)\\
+	$\omega_d$ ist kleiner als $\omega_0$
+	
+	$\Rightarrow$ allgemeine Lösung\\
+	\hhspace{2cm}\redbox{$x(t)=e^{-\delta t}(c_1\sin(\omega_dt)+c_2\cos(\omega_dt))$}\qquad(Parameter $c_1,c_2$)
+\end{enumerate}
+
+\placeholder

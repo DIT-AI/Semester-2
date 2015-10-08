@@ -1,0 +1,39 @@
+\begin{titlepage}
+    \vspace*{0cm}
+    \begin{center}
+        \Huge
+        \textbf{\varFach} \\
+        \large{\varSemester} \\
+        
+        \vspace{0.5cm}
+        
+        %Vorlesung vom \varDate \\
+        
+        %\huge{\varTeilGebiet} \\
+        
+        %\LARGE{\varThema} \\
+        
+        \vspace{0cm}
+        
+        \IfFileExists{Bilder/titelseite}{
+            \cImage{Bilder/titelseite}
+        } % Nach \IfFileExists muss eine Leerzeile eingefügt werden
+
+        \vspace{0,5cm}
+
+        \newboolean{showEmail}
+        \setboolean{showEmail}{\varZeigeEmail}
+        
+        \small{Dozent} \\
+        \Large{\textit{\varDozent}} \\  
+        \normalsize
+        \ifthenelse{\boolean{showEmail}}{\textit{\varEmailDozent}\\}{}
+        
+        \vspace{0.5cm}
+        
+        \small{Mitschrift} \\
+        \Large{\textit{\varAutor}} \\
+        \normalsize
+        \ifthenelse{\boolean{showEmail}}{\textit{\varEmailAutor}\\}{}  
+    \end{center}
+\end{titlepage}
