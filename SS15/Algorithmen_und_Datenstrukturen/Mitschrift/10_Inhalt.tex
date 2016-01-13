@@ -1,0 +1,846 @@
+\chapter{Begriff Algorithmus}
+\paragraph{Algorithmus:} Definierte Berechnungsvorschrift, die aus einer Menge von Eingaben eine Menge von Ausgaben erzeugt.
+
+\section{Beispiele}
+\begin{compactitem}
+	\item Kochrezepte {\flqq ... man nehme ...\frqq}
+	\item Bedienungsanleitungen
+	\item Beipackzettel für Medikamente {\flqq Tablette in Wasser auflösen ...\frqq}
+	\item Anleitung zum Zusammenbau von für IKEA Möbeln
+	\item Anleitung zum Zusammenbau von LEGO Modellen (Besonderheit? Bilder)
+	\item Computerprogramme {\flqq if a<b ... else ...\frqq}
+\end{compactitem}
+
+\section{Eigenschaften}
+\begin{compactitem}
+	\item {\bf Endlichkeit der Beschreibung} (Gegenbeispiel (Gegenbeispiel $1 + 1/2 + 1/4 + 1/8 + 1/16 + ...$)
+	\item {\bf Effektivität}, d.h. jeder Schritte des Algorithmus ist ausführbar
+	\item {\bf Terminierung}, d.h. der Algorithmus kommt immer(!) in endlicher Zeit zu einem Ende\footnote{diese Eigenschaft ist nicht immer auf Anhieb zu erkennen und nicht allgemein zu beweisen!} (Gegenbeispiel: Berechnung der Zahl Pi)
+	\item {\bf Effizienz}, d.h. Verhältnis von Aufwand und Leistung, ein Algorithmus ist z.B. effizienter, wenn er mit weniger Rechenoperation auskommt oder mit weniger Speicherplatz als ein anderer\footnote{Effizienz ist {\flqq relativ\frqq}, bei kleinem Speicherplatz ist ein langsamerer Algorithmus u.U. effizienter} (Achtung: Effizienz $\ne$ Effektivität !)
+	\item {\bf Determinismus}\footnote{das zugehörige Adjektiv ist deterministisch}, d.h. der Ablauf ist eindeutig vorgeschrieben (Gegenbeispiel {\flqq ... man nehme ein Pfund Hackfleisch von Rind oder vom Schwein ...\frqq})
+	\item {\bf Determiniertheit}\footnote{das zugehörige Adjektiv ist determiniert}, d.h. das Ergebnis des Algorithmus ist bei gleichen Eingabedaten immer gleich
+	\paragraph{Anmerkungen:}
+	\begin{compactenum}
+		\item Determinismus und Determiniertheit sind nicht abhängig voneinander.\\
+		D.h. ein nicht-deterministischer Algorithmus muss nicht automatisch nicht-determiniert sein.\\
+		Beispiel: Finden des kleinsten Elements in einem Integer Array: Durchsuche das Array beginnend mit dem kleinsten Index oder durchsuche das Array beginnend mit dem größten Index.\\
+		\paragraph{Beispiel:} Nehmen Sie eine Zahl x ungleich 0; Addieren Sie das Dreifache von x zu x und teilen das Ergebnis durch x oder subtrahieren Sie 4 von x und subtrahieren das Ergebnis von x
+		\item Die gängigen Programmiersprachen C, C++, Java, C\# sind deterministisch
+		\item Nicht-deterministisch erscheinende Abläufe entstehen bei parallelen Abläufen von Software, z.B. in verschiedenen Prozessen auf einem Mikrocontroller
+	\end{compactenum}
+	\item {\bf Semantik}, d.h. die Bedeutung des Algorithmus
+	\paragraph{Anmerkungen:}
+	\begin{compactenum}
+		\item Die tatsächliche Semantik eines Algorithmus kann von der beabsichtigten Semantik abweichen. In diesem Fall ist der Algorithmus falsch!
+		\item Verschiedene Algorithmen können die gleiche Semantik haben.
+	\end{compactenum}
+	\item {\bf Korrektheit}, d.h. die beabsichtigte Semantik entspricht der tatsächlichen Semantik des Algorithmus\\
+	\paragraph{Achtung:} Die Korrektheit von Algorithmen ist nur sehr eingeschränkt beweisbar!
+\end{compactitem}
+
+\section{Bausteine von Algorithmen}
+\begin{compactitem}
+	\item elementare Operationen, z.B.: $a+b, c*d, a<5, >$
+	\item sequentieller Ablauf, z.B.: a+b; c-d;
+	\item paralleler Ablauf (Mehrprozessorsysteme!)
+	\item bedingte Ausführung, z.B.: if a<b ...
+	\item Schleifen, z.B.: for (i = 1 ... ), while (h == 7) ...
+	\item Unterprogramme, z.B.: a = f(b);
+	\item Rekursion, z.B.: f(int i) { if (... ) else f(i-1) }
+	\item (Sprünge, z.B.: goto marke;)
+\end{compactitem}
+
+\paragraph{Anmerkungen:}
+\begin{compactenum}
+	\item Die Konstrukte elementare Operationen, Sequenz, Bedingung, Schleifen (oder Sprünge) sind ausreichend, alle auf Rechnern programmierbaren Algorithmen zu beschreiben (auch andere Kombinationen möglich)
+	\item Es gibt Probleme, die sich nicht mittels eines Programms lösen lassen, z.B.: Terminierungsproblem
+\end{compactenum}
+
+$\Rightarrow$ Theorie der Berechenbarkeit
+
+\subsection{Existenz nicht berechenbarer Funktionen}
+\paragraph{Vorbedingung:}
+Jeder Algorithmus lässt sich in einem endlichen, fest definierten Alphabet beschreiben\\
+(andernfalls ließe sich der Algorithmus nicht als Programm einer Programmiersprache darstellen)
+
+\begin{compactitem}
+	\item $A := \{a_1; \ldots ; a_n\}$ ein Alphabet mit der Ordnung $a_1 < a_2 < \ldots < a_n$.
+	\item $A* :=$ Menge der Texte (Zeichenketten, endlichen Folgen, Worte), die aus $A$ gebildet werden können
+	% ToDo
+	\item $A* = \{{\flqq\_\frqq}, {\flqq a_1\frqq}, {\flqq a_2\frqq}, \ldots, {\flqq a_1a_1\frqq}, {\flqq a_1a_2\frqq}, \ldots\}$
+	\item Die Elemente von $A*$ können der Länge nach aufgelistet werden. Zu einer Länge $l$ gibt es $nl$ verschiedene Texte (endlich viele)
+	\item Durch ${\flqq b_1b_2\ldots b_k\frqq} < {\flqq c_1c_2\ldots c_k\frqq}\\
+	\Leftrightarrow b_1 < c_1\\
+	\lor (b_1 = c_1 \land b_2 < c_2)\\
+	\lor \ldots\\
+	\lor b_k < c_k$\\
+	wird eine Ordnung auf A* definiert.
+	\item Aus der Tatsache, dass es nur endlich viele Texte einer Länge $l$ gibt und dass über $A*$ eine Ordnung definiert werden kann, folgt $A*$ ist abzählbar (d.h. $A*$ kann durchnummeriert werden)
+	\item Betrachten wir nun speziell einstellige Funktionen $f : \Z \to \Z$ ($\Z$ ganze Zahlen)
+	\item Wie oben erläutert, gibt es nur abzählbar viele solcher Funktionen, die auch berechenbar sind.
+	\item Es gibt aber insgesamt mehr Funktionen, wie die folgende Überlegung zeigt:
+	\begin{compactitem}
+		\item Wir betrachten die Menge $F := \{ f : \Z \to \Z \}$ der einstelligen Funktionen auf $\Z$ und nehmen an, dass diese Menge ebenfalls abzählbar ist. $\Rightarrow$ jedes $f$ aus $F$ hat eine Nummer $i$, d.h. $F= \{f_1, f_2, \ldots \}$
+		\item Sei nun $g: \Z \to \Z$ definiert durch $g(x) = f_{abs(x)}(x) + 1$
+		\item $\Rightarrow$ es gilt für $i = 1, 2, \ldots$ $g(i) \ne f_i(i)$
+		\item $\Rightarrow$ für $i = 1, 2, \ldots$ gilt immer $g \ne f_i$
+		\item $\Rightarrow$ $g$ kommt in $\{f_1, f_2, \ldots \}$ nicht vor, ist aber eine einstellige Funktion auf $\Z$ und müsste somit in $F$ vorkommen $\Rightarrow$ \red{Widerspruch}
+		\item $\Rightarrow$ Der Widerspruch lässt sich nur auflösen, wenn die Annahme fallengelassen wird, $F$ sei abzählbar.
+		\item $\Rightarrow$ Es gibt nicht berechenbare Funktionen\footnote{diese Tatsache war schon in den 30er Jahren des vorigen Jahrhunderts bekannt}
+	\end{compactitem}
+	\paragraph{Beispiele nicht berechenbarer Funktionen:}\footnote{für einen einzelnen gegebenen Algorithmus lässt sich das u.U. entscheiden, nicht aber allgemein}
+	\begin{compactitem}
+		\item Halteproblem: Terminiert ein Algorithmus $x$ mit Eingabe $y$
+		\item Erreicht ein Algorithmus eine bestimmte Stelle
+		\item Sind zwei Algorithmen gleich (d.h. haben sie immer das gleiche Ergebnis)?
+		\item Ist ein Algorithmus korrekt?
+	\end{compactitem}
+\end{compactitem}
+
+\section{Beweis der Terminierung von Algorithmen}
+Die Terminierung eines Algorithmus lässt sich allgemein nicht beweisen. Für bestimmte Algorithmen ist dies aber möglich.
+
+\chapter{Komplexität von Algorithmen}
+\paragraph{Ziele:}
+\begin{compactenum}
+	\item\label{en1} für die Lösung eines Problems mittels eines Algorithmus: Korrektheit des Algorithmus.
+	\item\label{en2} Problemlösung durch Algorithmus mit geringem oder geringstem Aufwand\footnote{mit Aufwand kann Zeit und/oder auch Platzbedarf gemeint sein}
+\end{compactenum}
+
+\ref*{en2}. Ziel u.U. genau so wichtig wie \ref*{en1}., speziell im harten Echtzeitbereich, z.B.:
+\begin{compactitem}
+	\item Airbag, ABS, ESP (lebenswichtig)
+	\item Motorsteuerung (gesetzliche Vorgaben)
+	\item Fernbedienung, Navigation (Komfort)
+\end{compactitem}
+
+\section{Komplexitätstheorie für Algorithmen}
+$\Rightarrow$ Schätzen des Aufwands eines konkreten Algorithmus\\
+$\Rightarrow$ Angabe eines Mindestaufwands für die Lösung eines bestimmten Problems oder einer Klasse von Problemen.
+
+\subsection{Komplexitätsklassen}
+\begin{compactitem}
+	\item für Algorithmen zur Lösung eines Problems
+	\item für Probleme, die mittels eines Algorithmus gelöst werden sollen
+\end{compactitem}
+
+Algorithmus $a$ löst Problem $p$
+\begin{compactitem}
+	\item Komplexitätsklasse (Algorithmus $a$) $>$ Komplexitätsklasse (Problems $p$)\\
+	$\Rightarrow$ besseren Algorithmus suchen
+	\item Komplexitätsklasse (Algorithmus $a$) $=$ Komplexitätsklasse (Problems $p$)\\
+	$\Rightarrow$ nur noch Feintuning möglich
+\end{compactitem}
+
+Problem abhängig von einem (oder mehreren) Größenparametern (z.B.: Feld der Länge $n$, Baum der Tiefe $t$, Struktur mit $x$ Bytes)\\
+$\Rightarrow$ wie wächst die Komplexität der Lösung des Problems mit dem Größenparameter\\
+$\Rightarrow$ die Komplexität der Lösungsalgorithmen wächst ebenfalls mit dem Größenparameter
+
+Möglichst unabhängig von einem konkreten Rechner/HW/Controller
+$\Rightarrow$ Berechnung der Komplexität in Rechenschritten (für die Laufzeit)
+\begin{compactitem}
+	\item wie häufig wird eine Operation ausgeführt
+	\item wie laufzeitintensiv ist eine Operation im Vergleich zu anderen Operationen (ggf. ausschließliche Betrachtung laufzeitintensiver Operationen)
+\end{compactitem}
+$\Rightarrow$ maschinenunabhängiges Maß für die Rechenzeit
+
+\paragraph{Allgemeine Form:} $f : \N \to \N$ ($\N$ hier für die natürlichen Zahlen)\\
+wobei $f(n) = a$ steht für: {\flqq Ein konkretes Problem der Größe $n$ erfordert Aufwand $a$.\frqq}
+\begin{compactitem}
+	\item Die {\flqq Problemgröße\frqq} $n$ bezeichnet dabei meist ein grobes Maß für den Umfang einer Eingabe, z.B.:
+	\begin{compactitem}
+		\item die Anzahl der Elemente einer Liste
+		\item Anzahl Elemente in einem Feld
+		\item Größe eines bestimmten Eingabewertes
+	\end{compactitem}
+	\item Der {\flqq Aufwand\frqq} $a$ ist in der Regel ein grobes Maß für die Rechenzeit (und ggf. den Speicherplatz)
+	\item Die Rechenzeit zählt die Anzahl der Rechenoperationen und ggf. Anzahl der Speicherzugriffe,\\
+	$\Rightarrow$ Maschinenunabhängiges Maß
+\end{compactitem}
+
+\subsection{Komplexitätsklassen {\flqq O-Notation\frqq}}
+\begin{compactitem}
+	\item Abschätzungen mit vereinfachenden Annahmen
+	\item obere Schranke für die Komplexität
+	\item abhängig vom Größenparameter $n$ ($n\in\N$) des Problems
+\end{compactitem}
+$\Rightarrow$ Komplexität Problem $p(n) <= O(g(n))$, d.h. es gibt eine Funktion $g(n)$ in den natürlichen Zahlen für die gilt: die Lösung des Problems $p$ (abhängig vom Größenparameter $n$) erfordert mindestens $g(n)$ Schritte
+
+\paragraph{Mathematische Definition:} $f(n) \in O(g(n)) \Leftrightarrow \exists c, n_0 : \forall n \ge n_0 : f(n) \le c * g(n)$
+
+{\flqq $f$ wächst nicht stärker als $g$\frqq}
+{\flqq $f$ ist beschränkt durch $g$\frqq}
+{\flqq $f(n)$ hat höchstens die Komplexität $g(n)$\frqq}
+
+\paragraph{Anwendung bei der Analyse von Algorithmen:} Aufwandsfunktionen $f : \N \to \N$ wird durch Angabe einer einfachen Vergleichsfunktion $g : \N \to \N$ abgeschätzt.
+
+\paragraph{Auflistung der Komplexität in steigender Form:}
+\begin{compactitem}
+	\item $O(1)$ $\Rightarrow$ konstanter Aufwand
+	\item $O(\log n)$ $\Rightarrow$ logarithmischer Aufwand
+	\item $O(n)$ $\Rightarrow$ linearer Aufwand
+	\item $O(n \cdot log n)$
+	\item $O(n^2)$ $\Rightarrow$ quadratischer Aufwand
+	\item $O(n^k)$ $\Rightarrow$ polynomialer Aufwand ($k>2$)
+	\item $O(2^n)$ $\Rightarrow$ exponentieller Aufwand
+\end{compactitem}
+
+\paragraph{Anmerkungen:}
+\begin{compactitem}
+	\item Summanden werden weggelassen, d.h. $O(n+5) = O(n)$
+	\item Faktoren werden weggelassen, d.h. $O(5\cdot n) = O(n)$
+	\item Basen von Logarithmen werden (meist) weggelassen, d.h. $O(\log_2 n) = O(\ln n) = O(\log_{10} n)$
+\end{compactitem}
+
+\paragraph{Beispiele:}
+\begin{compactitem}
+	\item Suchen mittels Hashverfahren\footnote{unter bestimmten Randbedingungen} $\Rightarrow$ $O(1)$
+	\item binäres Suchen in einem sortierten Array $\Rightarrow$ $O(\log n)$
+	\item lineares Suchen in einem unsortierten Array $\Rightarrow$ $O(n)$
+	\item Syntaktische Analyse von Programmen (Compiler) $\Rightarrow$ $O(n)$
+	\item Multiplikation Matrix-Vektor $\Rightarrow$ $O(n^2)$
+	\item Matrizen-Multiplikation $\Rightarrow$ $O(n^3)$
+\end{compactitem}
+
+\chapter{Rekursion}
+\paragraph{Idee:} Löse ein Problem dadurch, dass durch eine leicht durchzuführende Aktion das Problem auf einen einfacheren Fall des gleichen Problems zurückgeführt werden kann.
+
+\paragraph{Beispiel:} Suchen einer bestimmten Stelle (z.B.: Foto) in einem Buch durch Blättern.\\
+$\rightarrow$ {\bf Einfache Aktion:} Blättern um eine Seite, nachschauen, ob das Foto gefunden ist. Falls nein: Suchen im restlichen Buch.
+
+\begin{compactitem}
+	\item {\flqq etwas auf sich selbst zurückführen\frqq}
+	\item im Sinn der Programmierung {\flqq zurückführen auf einen einfacheren Fall des selben Problems\frqq}
+	\item mathematische Definitionen
+	\begin{compactitem}
+		\item $1$ ist eine natürliche Zahl
+		\item ist $n$ eine natürliche Zahl, dann ist auch $n+1$ eine natürliche Zahl
+	\end{compactitem}
+	\item rekursiver Algorithmus
+	\item rekursive Datenstruktur
+	\item erlaubt eine unendliche Menge von Objekten mit einer endlichen Definition zu beschreiben
+	\item erlaubt eine unendliche Anzahl von Berechnungen durch eine endliche Definition zu beschreiben
+	\item rekursive Algorithmen beschreiben die Lösung {\flqq rekursiver\frqq} Probleme auf einfache Art\footnote{der Algorithmus ist dabei nicht immer der effizienteste oder im Extremfall nicht effektiv}
+	\item rekursive Algorithmen arbeiten auf rekursiven Datenstrukturen auf einfache Art\footnote{der Algorithmus ist dabei nicht immer der effizienteste oder im Extremfall nicht effektiv}
+	\item Im Sinn der Programmiersprache bedeutet Rekursion, dass eine Funktion sich direkt oder indirekt selbst aufruft.
+	\item {\bf direkte Rekursion:} Funktion ruft sich selbst im eigenen Funktionsrumpf auf.
+	\item {\bf indirekte Rekusion:} Funktion $f$ ruft eine Funktion $g$ auf, die direkt oder indirekt wiederum $f$ aufruft
+	\item {\bf kaskadenartige Rekusion:} In der Funktion $f$ werden mindestens zwei Aufrufe von $f$ {\flqq nebeneinander\frqq} aufgerufen.\\
+	{\flqq nebeneinander\frqq} bedeutet hier dass die rekursiven Aufrufe verknüpft sind, z.B.: durch einen Operator oder Parameter eines anderen Funktionsaufrufs sind. Der äußere Aufruf kann erst beendet werden, wenn die kaskadenartigen rekursiven Aufrufe beendet sind.
+	\item {\bf geschachtelte Rekusion:} In der Funktion $f$ wird $f$ in der Form $f(..., f(...), ...)$ aufgerufen.
+	\item Rekursion benötigt immer eine Terminierung, d.h. einen Fall, der zu keinen weiteren rekursiven Aufrufen führt (z.B.: bei Fakultät i==0)
+	\item Mittels Rekursion lassen sich viele Aufgabenstellungen {\flqq einfach\frqq} lösen, falls die Aufgabe selbst rekursiv lösbar ist.
+\end{compactitem}
+
+\section{Behandlung von rekursiven Funktionsaufrufen}
+\begin{compactitem}
+	\item jeder rekursive Aufruf besitzt seine eigenen Parameter, auch wenn diese den selben Namen wie in der aufrufenden Funktion haben
+	\item jeder rekursive Aufruf besitzt seine eigenen lokalen Variablen (Ausnahme static)
+	\item Parameter und lokale Variable bleiben so lange gültig, bis der rekursive Aufruf beendet ist
+\end{compactitem}
+
+\section{Einsatzgebiete der Rekursion}
+\paragraph{Gut:} Umgebungen, in denen ausreichend Speicherplatz auf dem Stack zur Verfügung steht $\Rightarrow$ PC Umgebungen, {\flqq sehr große\frqq} eingebettete Systeme (Multimediasysteme im Kfz)
+\paragraph{Schlecht:} Systeme mit {\flqq wenig\frqq} Speicherplatz, z.B.: Mikrocontroller im Kfz
+
+\section{Schlußbemerkung}
+Rekursive Funktionen können in äquivalente nicht-rekursive Programme übergeführt werden ({\flqq Entrekursivierung\frqq}).\\
+$\Rightarrow$ einfach bei einfacher Rekursion
+$\Rightarrow$ komplex bei kaskadenartiger Rekursion (erfordert in der Regel einen eigenen Stack zur Verwaltung)
+
+\chapter{Komplexe Datenstrukturen}
+\begin{compactitem}
+	\item Stack (Stapel, Keller)
+	\item Listen
+	\item Queue (Schlange)
+\end{compactitem}
+
+\section{Stack (Stapel, Keller)}
+Zugriff nur {\flqq von oben\frqq}
+\begin{compactitem}
+	\item Ablegen oben
+	\item Wegnehmen oben
+	\item kein direkter Zugriff auf Elemente, die unterhalb des obersten Elements liegen
+\end{compactitem}
+
+\subsection{Definition}
+Ein Stack (über einem bereits existierenden Datentyp T) besteht aus einer Folge von Elementen (vom Typ T), die nur an einem Ende der Folge gelesen oder beschrieben werden kann.
+
+\subsubsection{Funktionen}
+\begin{compactitem}
+	\item \verb|stack* Push (stack *s, T e) /* fügt oben ein Element an */|
+	\item \verb|stack* Pop (stack *s) /* löscht oberstes Element */|\\
+	\verb|/* Voraussetzung: Stack ist nicht leer! */|
+	\item \verb|T Top (stack *s) /* liefert oberstes Element */|\\
+	\verb|/* Stack bleibt unverändert */|\\
+	\verb|/* Voraussetzung: Stack ist nicht leer! */|
+	\item \verb|bool Isempty (stack *s) /* Stack leer ? */|\\
+	\verb|/* Stack bleibt unverändert */|
+	\item \verb|stack* emptystack() /* Erzeugt leeren Stack */|
+\end{compactitem}
+
+Die Datenstruktur Stack kann durch ihre Eigenschaften formal vollständig beschrieben werden (Axiomatische Beschreibung)
+\paragraph{Eigenschaften (Axiome):}
+\begin{compactitem}
+	\item \verb|isempty (emptystack()) = true|
+	\item \verb|not isempty(s)| $\Rightarrow$ \verb|push(pop(s),top(s)) = s|
+	\item \verb|isempty(push(s,e)) = false|
+	\item \verb|top(push(s,e)) = e|
+	\item \verb|top(emptystack())| $\Rightarrow$ Error
+	\item \verb|pop(emptystack())| $\Rightarrow$ Error
+\end{compactitem}
+
+\subsection{Anwendung/Nutzen}
+\begin{compactitem}
+	\item Speicherverwaltung bei Laufzeitsystemen:
+	\begin{compactitem}
+		\item Parameterübergabe
+		\item lokale/globale Variable
+	\end{compactitem}
+	\item Verwaltung der Aufrufinformation bei geschachtelten und rekursiven Funktionen
+	\item Umwandlung von rekursiven Programmen in nicht-rekursive
+	\item LIFO-Speicher (Last-In-First-Out)
+\end{compactitem}
+
+\subsection{Implementierung}
+Zum Beispiel als Array (Stapel wird auf Array gekippt)
+
+\section{Queue (Schlange)}
+Zugriff {\flqq an beiden Enden\frqq}\\
+$\Rightarrow$ Anfügen nur hinten an der Schlange\\
+$\Rightarrow$ Wegnehmen nur vorne\\
+$\Rightarrow$ kein direkter Zugriff auf Elemente, die zwischen dem ersten und letzten Element liegen
+
+\subsection{Definition}
+Eine Queue (über einem bereits existierenden Datentyp T) besteht aus einer Folge von Elementen (vom Typ T), die nur an einem Ende ({\flqq vorne\frqq}) gelesen bzw. gelöscht werden kann und am anderen Ende ({\flqq hinten\frqq}) ergänzt.
+
+\subsubsection{Funktionen}
+\begin{compactitem}
+	\item \verb|queue* Append (queue *q, T e) /* fügt hinten ein Element an */|
+	\item \verb|queue* Rest (queue *q) /* löschte erstes Element */|\\
+	\verb|/* Voraussetzung: Queue ist nicht leer! */|
+	\item \verb|T Top (queue *q) /* liefert erstes Element */|\\
+	\verb|/* Queue bleibt unverändert */|\\
+	\verb|/* Voraussetzung: Queue ist nicht leer! */|
+	\item \verb|Bool Isempty (queue * q) /* Queue leer ? */|\\
+	\verb|/* Queue bleibt unverändert */|
+	\item \verb|queue* emptyqueue() /* Erzeugt eine leere Queue */|
+\end{compactitem}
+
+Die Datenstruktur Queue kann (wie Stack) durch ihre Eigenschaften formal vollständig beschrieben werden (Axiomatische Beschreibung)
+\paragraph{Eigenschaften (Axiome):}
+\begin{compactitem}
+	\item \verb|isempty (emptyqueue()) = true|
+	\item \verb|rest(append(q,e)) = emptyqueue()|, falls \verb|isempty(q)|, sonst \verb|append(rest(q),e)|
+	\item \verb|top(append(q,e) = e|, falls \verb|isempty(q)|, sonst \verb|top(q)|
+	\item \verb|isempty(append(q,e)) = false|
+	\item \verb|top(emptyqueue())| $\Rightarrow$ Error
+	\item \verb|rest(emptyqueue())| $\Rightarrow$ Error
+\end{compactitem}
+
+\subsection{Anwendung/Nutzen}
+\begin{compactitem}
+	\item Verwaltung von Betriebsmitteln (z.B.: Drucker, Prozessor) in Betriebsystemen:
+	\begin{compactitem}
+		\item Prozesse, die auf ein Betriebsmittel warten werden in eine Warteschlange eingehängt
+		\item Verschiedene Warteschlangen, z.B.: individuell für jedes Betriebsmittel oder auch prioritätsgesteuert.
+	\end{compactitem}
+	\item FIFO (First-in-First-Out) Speicher
+\end{compactitem}
+
+\section{Einfach Verkettete Liste (List)}
+Zugriff nur {\flqq am hinteren Ende\frqq}\\
+$\Rightarrow$ Anfügen und Wegnehmen hinten an der Liste\\
+$\Rightarrow$ kein direkter Zugriff auf Elemente, die zwischen dem ersten und letzten Element liegen
+
+\subsection{Definition}
+Eine einfach verkettete Liste (über einem bereits existierenden Datentyp T) besteht aus einer Folge von Listenelementen, die wiederum aus einem Element vom Typ T und aus einem Zeiger auf ein Listenelement bestehen. Der direkte (lesende und schreibende) Zugriff erfolgt am Ende der Liste\footnote{Der Zugriff erfolgt wie bei einem Stack, daher lassen sich mittels Listen Stacks einfach implementieren. Mittels eines Stacks lässt sich auch eine Liste darstellen (eher ungewöhnlich)}.
+
+\begin{compactitem}
+	\item Im Unterschied zu den vorher besprochenen Datentypen Stack und Queue legen Listentypen eine bestimmte Implementierung (Struktur) über Pointer nahe.
+	\item {\flqq Aufweichen\frqq} der rein axiomatische Definition des Datentyps über seine Eigenschaften
+	\item Trotzdem kann auch eine Liste {\flqq rein axiomatisch\frqq} definiert werden.
+	\item Im Unterschied zu Stack und Queue (die mittels Arrays implementiert werden) sind Listen als dynamischer Datentyp (theoretisch) nicht begrenzt.
+\end{compactitem}
+
+\subsubsection{Funktionen}
+\begin{compactitem}
+	\item \verb|list* Tail (list *l) /* löschte erstes Element */|\\
+	\verb|/* Voraussetzung: Liste ist nicht leer! */|
+	\item \verb|T Head (list * l) /* liefert erstes Element */|\\
+	\verb|/* Liste bleibt unverändert */|\\
+	\verb|/* Voraussetzung: Liste ist nicht leer! */|
+	\item \verb|list* Append (list *l, T e) /* fügt Element vorne an */|
+	\item \verb|bool Isempty (list *l) /* Liste leer ? */|\\
+	\verb|/* Liste bleibt unverändert */|
+	\item \verb|list* emptylist() /* Erzeugt eine leere Liste */|
+\end{compactitem}
+
+Die Datenstruktur Liste kann (wie Stack) durch ihre Eigenschaften formal vollständig beschrieben werden (Axiomatische Beschreibung)\\
+Die Beschreibung ergibt sich analog zu den Axiomen von Stack.
+
+\subsection{Anwendung/Nutzen}
+Implementierung von Stacks und Queues
+\paragraph{Vorteile:} Dynamische Speicherverwaltung ermöglicht optimale Ausnutzung des Speichers, (theoretisch) keine Begrenzung der Größe
+
+\paragraph{Nachteil:} Zusätzlicher Speicherplatzverbrauch durch Verkettung über Pointer
+
+\paragraph{Achtung:} Speicherverwaltung muss sorgfältig durchgeführt werden (Memory Leaks!)\footnote{dies gilt für alle dynamischen Datentypen, die über Pointer Speicherplatz selbst verwalten!}
+
+\section{Doppelt verkettete Liste (List)}
+Zugriff {\flqq am hinteren\frqq} und am {\flqq vorderen Ende\frqq}\\
+$\Rightarrow$ Anfügen und Wegnehmen an beiden Enden\\
+$\Rightarrow$ kein direkter Zugriff auf Elemente, die zwischen dem ersten und letzten Element liegen
+
+\begin{compactitem}
+	\item Spezieller Listenkopf zeigt auf den Anfang und das Ende der Liste.
+	\item In jedem Listenelement zeigt ein Pointer auf das nächste Element (oder NULL) und auf das vorhergehende (oder NULL)
+	\item vereinfacht den Zugriff
+	\item ermöglicht die Implementierung von zweiköpfigen Queues
+\end{compactitem}
+
+\section{Bäume (Tree)}
+\subsection{Definition}
+Ein \ul{Baum} besteht aus einer endlichen Menge von Knoten K und einer endlichen Menge von gerichteten Kanten P (dargestellt als Pfeil) zwischen Knoten aus K. Es gibt maximal eine Kante von einem Knoten zu einem anderen.
+
+Ein Baum hat einen ausgezeichneten Knoten, die \ul{Wurzel}, die nicht Endknoten einer Kante ist.
+
+Gibt es eine Kante von einem Knoten $k_1$ zu einem Knoten $k_2$, dann ist $k_1$ der \ul{Elternknoten} von $k_2$. $k_2$ ist \ul{Kind} von $k_1$. Ein Knoten $k_2$ ist \ul{erreichbar} von einem Knoten $k_1$, wenn es eine Folge von Knoten $k_1, k_x, \ldots, k_{x+n}, k_2$ gibt, so dass $k_1$ Elternknoten von $k_x$ ist, $k_{x+i}$ Elternknoten von $k_{x+i+1}$ für alle $i$ von $0$ bis $(n-1)$ und $k_{x+n}$ ist Elternknoten von $k_2$.
+
+Ist $k_1$ Elternknoten von $k_2$, so ist $k_2$ von $k_1$ aus auch erreichbar. Knoten, die keine Kinder haben, heißen \ul{Blatt}.
+
+Ist ein Knoten $l$ erreichbar von einem Knoten $k$, so ist $k$ \ul{Vorgänger} von $l$ und $l$ \ul{Nachfolger} von $k$.\\
+Jeder Knoten ist auf nur genau eine Weise von der Wurzel aus erreichbar.
+
+Der \ul{Grad} $g(k)$ eines Knotens $k$ ist die Anzahl seiner Kinder.
+
+Die \ul{Tiefe} (oder \ul{Höhe}) $t(k)$ eines Knotens $k$ ist definiert als\\
+$0$, falls $k$ die Wurzel des Baums ist\\
+$1 + t(k*)$, wenn $k*$ Elternknoten von $k$ ist.
+
+Ein Baum heißt \ul{geordnet}, wenn die Reihenfolge der Verzweigungen in einem Knoten festgelegt ist. Ist dies nicht der Fall heißt der Baum \ul{ungeordnet}.
+
+\subsection{Anwendung/Nutzen}
+\begin{compactitem}
+	\item Darstellung von Unternehmensstrukturen
+	\item Darstellung von Inhaltsverzeichnissen in Kapitel, Unterkapitel, Abschnitte
+	\item Darstellung von statischen Programmstrukturen (Funktionen, Blöcke, Anweisungen) $\Rightarrow$ Compilerbau
+	\item Darstellung mathematischer Ausdrücke, z.B.: $(a+b)*(c+d+e)$
+	\item Darstellung von Codes
+	\item Stammbäume
+	\item Suchen
+	\item Sortieren
+\end{compactitem}
+
+\subsection{Binär Bäume}
+\paragraph{Eigenschaften (Satz 1):} Sei T ein nichtleerer binärer Baum mit Höhe h. Dann gilt:
+\begin{compactenum}
+	\item  Für $0 \le i \le h$ gilt, dass $T$ maximal $2^i$ Knoten der Tiefe $i$ besitzt.
+	\item $T$ besitzt minimal $h + 1$ und maximal $2^{h+1} − 1$ Knoten.
+	\item Für die Anzahl $n$ der Knoten in $T$ gilt $\log(n + 1) − 1 \le h \le n − 1$.
+\end{compactenum}
+
+\subsubsection{Definition}
+Ein geordneter Baum heißt \ul{binär}, wenn er leer ist oder der Grad aller seiner Knoten kleiner oder gleich 2 ist.
+
+Ein nichtleerer binärer Baum mit Höhe h heißt \ul{voll}, wenn er $2^{h+1} − 1$ Knoten besitzt.
+
+Sei $T_1$ ein binärer Baum der Höhe $h$ mit $n > 0$ Knoten. $T_2$ sei ein voller binärer Baum ebenfalls mit Höhe $h$. In $T_2$ seien die Knoten stufenweise von links nach rechts durchnummeriert (siehe vorheriges Beispiel). $T_1$ heißt dann \ul{vollständig}, wenn er aus $T_2$ durch Wegstreichen der Knoten der Nummern $n+1, n+2, \ldots, 2^{h+1}−1$ erzeugt werden kann.
+
+Sei $T_1$ ein (binärer) Baum. $T_1$ heißt \ul{ausgeglichen}, wenn in jedem Knoten die Höhen der Teilbäume sich um höchstens $1$ voneinander unterscheiden\footnote{diese Bäume werden auch AVL-Bäume bezeichnet nach ihren Erfindern Adelson-Velski und Landis}.
+
+\subsubsection{Funktionen}
+\begin{compactitem}
+	\item \verb|b_tree* emptytree () /* erzeugt leeren Baum */|
+	\item \verb|b_tree* b_tree_new (b_tree *left, T e, b_tree *right)|\\
+	\verb|/* erzeugt aus zwei Teilbäumen und einem Knotenelement einen neuen Baum */|
+	\item \verb|b_tree* left (b_tree *t) /* gibt den linken Teilbaum zurück */|
+	\item \verb|b_tree* right (b_tree *t) /* gibt den rechten Teilbaum zurück */|\\
+	\item \verb|T element (b_tree *t) /* gibt den Inhalt der Wurzel zurück */|
+	\item \verb|bool ismepty (b_tree *t) /* Baum leer ? */|
+\end{compactitem}
+
+\subsection{Weiter Baumtypen}
+\begin{compactitem}
+	\item $n$-näre Bäume, d.h. Bäume, die in jedem Knoten $n$-fach verzweigen (unärer Bäum = verkettete Liste)
+	\item beblätterte Bäume, d.h Bäume, die Information nur an den Blättern tragen. Die Knoten, die keine Blätter sind, haben nur Verzweigungen
+	\item \ldots
+\end{compactitem}
+
+\subsection{Anwendungen von Bäumen}
+\begin{compactitem}
+	\item Filesystem auf einem Rechner
+	\item Teileliste einer Maschine
+	\item Suchbäume (binäre Bäume)
+\end{compactitem}
+
+\subsection{Anwendungen binärer Bäume}
+$\Rightarrow$ Suchen, Sortieren\\
+Betrachtet werden Bäume über einem Typ T mit einer \ul{linearen Ordnung} $\le$, d.h. für alle $a, b, c \in T$ gilt:
+\begin{compactitem}
+	\item $a \le a$ (reflexiv)
+	\item aus $a \le b$ und $b \le c$ folgt $a \le c$ (transitiv)
+	\item aus $a \le b$ und $b \le a$ folgt $a = b$ (antisymmetrisch)
+	\item es gilt immer $a \le b$ oder $b \le a$ (totale Ordnung)
+\end{compactitem}
+
+Sei $a_1, a_2, \ldots, a_n$ eine Folge von $n$ Elementen aus $T$, so soll durch Sortieren die Folge so neu geordnet werden, dass gilt:\\
+$a_i \le a_j \le a_k \le \ldots \le a_l$, wobei die Menge $\{a_1, a_2, \ldots, a_n\}$ der Menge $\{a_i, a_j, a_k, \ldots, a_l\}$ entspricht.
+
+Ein binärer Baum ist geordnet, wenn
+\begin{compactitem}
+	\item er entweder leer ist oder
+	\item alle Knoten des linken geordneten Teilbaums kleiner oder gleich sind als die Wurzel und
+	\item alle Knoten des rechten geordneten Teilbaums größer oder gleich sind als die Wurzel
+\end{compactitem}
+
+Ein geordneter binärer Baum wird als \ul{Suchbaum} bezeichnet.
+
+\paragraph{Operationen auf Suchbäumen:}
+\begin{compactitem}
+	\item Suchen eines Elements $x$ in einen Baum $b$
+	\item Einfügen eines neuen Elements in den Baum
+	\item Löschen eines Elements aus dem Baum
+	\item Zusammenfügen von zwei Bäumen
+	\item Bereinigen {\flqq ungünstiger\frqq} Suchbäume
+\end{compactitem}
+
+Bereinigung nach jeder Operation, die den Baum verändert ist aufwändig\\
+$\Rightarrow$ Nutzung von AVL-Bäumen\\
+$\Rightarrow$ Nutzung von B-Bäumen
+
+\subsection{AVL Bäume (Suchbäume)}
+\begin{compactitem}
+	\item benannt nach den russischen Mathematikern AdelsonVelskii und Landis (1962)
+	\item {\bf Kriterium:} für jeden (inneren) Knoten gilt: Höhe des linken und rechten Teilbaums differieren maximal um 1
+\end{compactitem}
+
+\paragraph{Operationen auf AVL Bäumen:}
+\begin{compactitem}
+	\item Einfügen, Löschen, Suchen wie zuvor
+	\item Ändernde Operationen können die AVL-Eigenschaft zerstören\\
+	$\Rightarrow$ Reparieren mittels\\
+	Eine Rotation oder Doppelrotation beim Einfügen\\
+	Eine oder mehrere (Doppel-)Rotationen beim Löschen
+	\item Operationen auf AVL-Bäumen erfordern $O(\log n)$ Aufwand
+\end{compactitem}
+
+\imgw{Bilder/Rotation}{Rotation}{}{0.8\textwidth}
+\imgw{Bilder/DoubleRotation}{Doppelrotation}{}{0.8\textwidth}
+
+Anmerkung Rotationen. Bei den Rotationen ändert sich die {\flqq horizontale Position\frqq} eines Knotens nicht, nur die vertikale Position wird verändert.
+
+Zusammenfassung Rotationen auf oberstem Niveau:
+\begin{compactenum}
+	\item\label{k1} Einfügen in linken Teilbaum des linken Kindes
+	\item\label{k2} Einfügen in rechten Teilbaum des linken Kindes
+	\item\label{k3} Einfügen in linken Teilbaum des rechten Kindes
+	\item\label{k4} Einfügen in rechten Teilbaum des rechten Kindes
+\end{compactenum}
+Anmerkung \ref*{k1}. und \ref*{k4}. sind symmetrisch, \ref*{k2}. und \ref*{k3}. sind symmetrisch
+
+Sonderfälle: Rotation von Teilbäumen
+\begin{compactitem}
+	\item Einfügen in linken Teilbaum des linken Kindes\\
+	$\Rightarrow$ Rotation mit linkem Kind
+	\item Einfügen in rechten Teilbaum des linken Kindes\\
+	$\Rightarrow$ Doppelrotation mit linkem Kind
+	\item Einfügen in linken Teilbaum des rechten Kindes\\
+	$\Rightarrow$ Doppelrotation mit rechtem Kind
+	\item Einfügen in rechten Teilbaum des rechten Kindes\\
+	$\Rightarrow$ Rotation mit rechtem Kind
+\end{compactitem}
+
+\subsection{B-Bäume (Suchbäume)}
+\begin{compactitem}
+	\item benannt 1978 nach ihrem Erfinder R. Bayer (B kann auch stehen für balanciert, breit, buschig, aber NICHT für binär)
+	\item B-Bäume sind dynamische balancierte Mehrwegsuchbäume (d.h. nicht binär)
+\end{compactitem}
+
+\paragraph{Vollständig ausgeglichener Mehrwegbaum:}
+\begin{compactitem}
+	\item alle Wege von der Wurzel bis zu den Blättern gleich lang
+	\item jeder Knoten gleich viele Einträge
+\end{compactitem}
+$\Rightarrow$ Kriterium nur mit sehr hohem Aufwand einzuhalten\\
+$\Rightarrow$ Modifikation zu B-Bäumen
+
+\subsubsection{Definition}
+\begin{compactitem}
+	\item Jede Seite (= Knoten) enthält höchstens $2m$ Elemente.
+	\item Jede Seite, außer der Wurzel, enthält mindestens $m$ Elemente.
+	\item Jede Seite ist entweder ein Blatt ohne Nachfolger oder hat $i + 1$ Nachfolger, wobei $i$ die Anzahl ihrer Elemente ist.
+	\item Alle Blattseiten liegen auf der gleichen Stufe, d.h. die Höhe vom Blatt zur Wurzel ist für alle Blätter gleich.
+\end{compactitem}
+
+\chapter{Komplexe Algorithmen}
+\section{Sortierverfahren}
+\begin{compactitem}
+	\item Sortieren bedeutet allgemein der Prozess des Anordnens einer gegebenen Menge von Daten in einer bestimmten Ordnung.
+	\item Sortiert wird, um zu einem späteren Zeitpunkt schnell nach einem bestimmten Element der Menge suchen zu können.
+	\item Beispiele sortierter Datenmengen: Telefonbücher, Indexe, Wörterbücher
+\end{compactitem}
+
+\paragraph{Sortierverfahren:}
+\begin{compactitem}
+	\item gibt es in zahlreichen Variationen
+	\item zeigen (exemplarisch) wie ein Problem auf vielfältige Weise gelöst werden kann
+	\item bieten ein gutes Beispiel, die Leistung verschiedener Algorithmen miteinander zu vergleichen
+\end{compactitem}
+
+\paragraph{Ordnung (Definition):} Gegeben sei ein Array eines Types $T$ der Länge $n$, $n>0$. Das Array ist bzgl. einer Ordnungsfunktion $f(T)$ geordnet, wenn gilt:\\
+$f(\text{Array}[0]) \le f(\text{Array}[1]) \le \ldots \le f(\text{Array}[n-1])$
+
+\subsection{Sortierverfahren für Arrays}
+\subsubsection{Allgemeines}
+\paragraph{Ausgangspunkt:} Array der Länge $n$, das bzgl. einer Ordnung $\le$ zu sortieren ist.
+
+\paragraph{Effizienz eines Sortieralgorithmus:}
+\begin{compactitem}
+	\item Anzahl der notwendigen Vergleiche
+	\item Anzahl der notwendigen Bewegungen (Austausch von Arrayelementen)
+\end{compactitem}
+$\Rightarrow$ als Funktion von $n$ (Anzahl der Elemente des Arrays)
+
+Einfache Verfahren:
+\begin{compactitem}
+	\item Sortieren durch Einfügen
+	\item Sortieren durch Auswählen
+	\item Sortieren durch Austausch
+\end{compactitem}
+
+\paragraph{Sortieren durch Einfügen:}
+\begin{compactitem}
+	\item Durchlaufe das Array elementweise, beginnend mit dem 2. bis zum $n$-ten Element.
+	\item Betrachte dabei jedes Element und sortiere es in die Sequenz der schon zuvor betrachteten Elemente ein. Dabei wird das einzusortierende Element mit den Vorgängern verglichen so lange die Vorgänger (Elemente mit kleinerem Arrayindex) größer sind oder der Anfang des Arrays erreicht ist.
+	\item Das Ende des kompletten Sortiervorgangs ist erreicht, wenn das letzte Element des Arrays betrachtet und ggf. einsortiert wurde.
+\end{compactitem}
+
+\paragraph{Sortieren durch binäres Einfügen:}
+Verbesserung des direkten Einfügens durch Nutzen der Tatsache, dass die Sequenz, in die das gerade betrachtete Element eingefügt wird, bereits sortiert ist.
+
+{\bf Gesamtaufwand wächst mit $n^2$}
+
+\paragraph{Sortieren durch direktes Auswählen:} Prinzip:\\
+$\Rightarrow$ Auswahl des kleinsten Elements im noch nicht sortierten Teil des Arrays\\
+$\Rightarrow$ Austausch mit dem ersten Element des noch nicht sortierten Teilarrays\\
+$\Rightarrow$ Analog mit dem Rest des Arrays
+
+{\bf Mittel ~ $n*(\ln n +g)$ ($g$ Eulersche Konstante)}
+
+$\Rightarrow$ das Verfahren der direkten Auswahl ist günstiger als Einfügeverfahren
+
+\paragraph{Sortieren durch direktes Austauschen (Bubblesort):}
+Prinzip:\\
+$\Rightarrow$ Mehrfaches Durchlaufen des Arrays (wie bisher)\\
+$\Rightarrow$ Fortgesetztes Austauschen nebeneinander liegender Elemente im Array falls das hintere Element kleiner als das vordere ist.
+
+Anzahl der Vergleiche: $(n^2-n)/2$\\
+Anzahl der Bewegungen: im Durchschnitt $3*(n^2-n)/4$
+
+$\Rightarrow$ Sortieren durch direktes Austauschen ist den vorherigen Verfahren unterlegen!
+
+\paragraph{Komplexe Verfahren:}
+\begin{compactitem}
+	\item Quicksort
+	\item Mergesort
+\end{compactitem}
+
+\paragraph{Sortieren durch Zerlegen, Partitionieren (Quicksort):}
+Prinzip:\\
+$\Rightarrow$ Wähle ein beliebiges Element e aus dem Array\\
+$\Rightarrow$ Zerlege das zu sortierende Array in zwei Teile, so dass im linken Teil alle Elemente kleiner e sind und im rechten Teil alle Elemente größer oder gleich e.\\
+$\Rightarrow$ Bearbeite auf diese Weise nun die Teilarrays\\
+$\Rightarrow$ Führe diesen Prozess fort, bis die Teilarrays nur noch ein Element besitzen, damit ist die Sortierung beendet
+
+Anzahl Vergleiche:
+\begin{compactitem}
+	\item schlechtester Fall: $n+2$ Vergleiche bei einem Durchlauf und Partitionierung immer an den Rand gelegt $\Rightarrow$ Aufwand $O(n^2)$ $\Rightarrow$ Quicksort in diesem Fall ineffizient
+	\item durchschnittlicher Fall Aufwand $O(n \ln n)$
+\end{compactitem}
+
+\paragraph{Sortieren durch Zerlegen, Partitionieren (Mergesort):}
+Prinzip:\\
+$\Rightarrow$ Zerlege das zu sortierende Array in zwei Teile, sortiere diese durch weitere Zerlegung\\
+$\Rightarrow$ Füge die sortieren Teile elementweise zusammen, so dass die neue Sequenz sortiert ist\\
+$\Rightarrow$ Führe diesen Prozess fort, bis die Teilarrays nur noch ein Element besitzen, damit ist die Sortierung beendet
+
+Anzahl Vergleiche: $O(n \log n)$
+
+\subsubsection{Anmerkung}
+Sowohl Quicksort als auch Mergesort zerlegen (rekursiv) eine Array in sortierte Teilarrays, die anschließend wieder zusammengefügt werden. Bei Quicksort erfordert das Zerlegen Aufwand, während das Zusammenfügen einfach ist. Im Gegensatz dazu ist bei Mergesort das Zerlegen einfach, aber der Zusammenbau ist aufwändig.
+
+\chapter{Hashverfahren}
+\paragraph{Ausgangsituation:} Elemente eines Datentyps sind nach einem Schlüssel in einem Array gespeichert\footnote{verallgemeinert kann statt eines Arrayindex einen Speicheradresse gesucht werden.}.
+\paragraph{Aufgabe:} Berechnen des Arrayindex $i$ zu einem gegebenen Schlüssel $s$ als Funktion von $s$\footnote{weitere Funktionen zum Aufbau ({\flqq Füllen\frqq}) und Löschen des Arrays sind notwendig}
+
+$\Rightarrow$ Lösung durch Anwendung einer Hashfunktion $h(s)$
+
+\paragraph{Beispiele:}
+\begin{compactitem}
+	\item Verwaltung von Personendaten über das Geburtsdatum
+	\item Verwaltung von Kfz-Daten über das Kennzeichen
+	\item Symboltabellen in Compilern
+\end{compactitem}
+
+\paragraph{Definition Hash-Funktion:} Sei $M$ eine Menge deren Elemente durch Schlüsselwerte $S$ charakterisiert sind (d.h. jedes Element $e$ aus $M$ besitzt einen Schlüssel $s$). $B$ sei eine endliche Menge von Behältern, in denen Elemente von $M$ gespeichert werden sollen, mit $|B| = n, n>0$
+
+Eine \ul{Hash-Funktion} ist eine totale, d.h. überall definierte Funktion $M \to \{1, \ldots, n\}$
+
+Der berechnete Wert (Nummer des Behälters für $e$) eines Elements $s$ aus $M$ der Hashfunktion $h(e)$ wird als \ul{Hashwert} bezeichnet.
+
+Die Gesamtzahl der Behälter $B_1, \ldots, B_n$ wird als \ul{Hashtabelle} bezeichnet.\\
+Der Wert $n/|M|$ definiert die \ul{Schlüsseldichte}.
+
+Der Wert $n/m$ ist der \ul{Belegungsfaktor} der Hash-Tabelle $B_0, \ldots, B_{m−1}$.
+
+Haben unterschiedliche Elemente aus $M$ den gleichen Hashwert, so wird dies als \ul{Kollision} bezeichnet. Kollisionen kommen häufig vor, da in der Regel $|M| >> n$.
+
+Die Hash-Funktion $h$ sollte die folgenden Eigenschaften haben:
+\begin{compactitem}
+	\item Sie sollte surjektiv sein, d.h. alle Behälter sollten belegt werden, d.h. es gibt zu jedem Behälter $b$ ein $x \in M$ mit $h(x) = b$
+	\item Die zu speichernden Schlüssel sollen möglichst gleichmäßig über alle Behälter verteilt werden. Jeder Behälter sollte möglichst mit gleicher Wahrscheinlichkeit belegt werden.
+	\item Sie sollte {\flqq einfach\frqq} zu berechnen sein
+\end{compactitem}
+
+\paragraph{Wahrscheinlichkeit für Kollisionen?} Sei $h : M \to \{1, \ldots, n\}$ eine ideale Hash-Funktion, $e \in M$.
+
+Dann gilt zunächst: $P(h(e) = i) = 1/n$\\
+und für eine Folge von $k$ Schlüsseln, wobei $k<n$, gilt weiter:\\
+$P(\text{Kollision}(1, \ldots, k) = 1- P(\text{keine Kollision}(1, \ldots, k))$\footnote{$P$ steht hier für Wahrscheinlichkeit}
+
+$P(\text{keine Kollsision}(1, \ldots, k)) = P(1) * P(2) * \ldots * P(k)$\\
+wobei $P(i)$ die Wahrscheinlichkeit ist, dass der $i$-te Schlüssel einen freien Platz findet und alle vorherigen auch einen freien Platz gefunden haben (d.h. es sind keine Kollisionen aufgetreten)
+
+Es gilt: $P(1) = 1, P(2) = (n-1)/n, P(i) = (n-i+1)/n$, daraus folgt\\
+$P(\text{Kollision}(1, \ldots, k) = 1-\dfrac{n(n-1) * \ldots * (n-k+1)}{n^k}$
+
+\paragraph{Beispiel:} Für die Anzahl der Tage eines Jahres $n = 365$ ergeben sich die folgenden Wahrscheinlichkeiten einer Kollision:\\
+$k = 22$: $P(\text{Kollision}) \approx 0{,}475$\\
+$k = 23$: $P(\text{Kollision}) \approx 0{,}507$\\
+$k = 50$: $P(\text{Kollision}) \approx 0{,}970$
+
+\paragraph{Dies ist das so genannte {\flqq Geburtstagsparadoxon\frqq}:}
+Sind mehr als 23 Personen zusammen, so haben mit mehr als 50\% Wahrscheinlichkeit mindestens zwei von ihnen am selben Tag Geburtstag.
+
+Für Hashverfahren bedeutet die obige Analyse, dass
+\begin{compactitem}
+	\item Kollisionen praktisch nicht zu vermeiden sind!
+	\item Mit Kollisionen definiert umgegangen werden muss!
+\end{compactitem}
+
+\section{Behandeln von Kollisionen}
+Hashverfahren, bei denen ein Behälter (theoretisch) beliebig viele Elemente aufnehmen kann, heißen \ul{offene Hashverfahren}.\\
+(im Gegensatz zu \ul{geschlossenen Verfahren}, bei denen jeder Behälter nur eine kleine feste Zahl von Elementen beherbergen kann.)
+
+\paragraph{Hashing mit Verkettung:} Als Behälter wird eine verkettete Liste verwendet, in die die Elemente gespeichert werden.
+
+\section{offene Verfahren, Aufwand}
+Sei $S = \{x_1, \ldots, x_n\} \subseteq M$ eine zu speichernde Menge und sei $HT$ eine offene Hash-Tabelle der Länge $n$ mit Hash-Funktion $h$.\\
+$h(e)$ soll in konstanter Zeit ausgewertet werden für alle $e \in M$.
+
+Im Folgenden soll die Rechenzeit wird dann für Operationen Suchen, Einfügen und Löschen in der Hashtabelle betrachtet werden.
+
+Für $0 \le i < n$ sei $HT[i]$ die Liste der Schlüssel $x_j$ , für die $h(x_j) = i$ gilt. $|HT[i]|$ sei die Länge der $i$-ten Liste.
+
+Dann kostet jede Operation im schlechtesten Fall max $O(|HT[h(x)]|)$ viele Schritte (über alle möglichen $x$). $O(|HT[h(x)]|) \le n$, da maximal $n$ Elemente in einer Liste gespeichert werden.
+
+Damit gilt, dass die Ausführung der Operationen Suchen, Einfügen und Löschen in einer Hash-Tabelle, in der eine Menge $S$ mit $n$ Elementen abgespeichert werden soll, im schlechtesten Fall einen Aufwand $O(n)$ erfordert.
+
+\paragraph{Anmerkung:} In der Realität ist der Aufwand geringer, da die Wahrscheinlichkeit, dass alle Elemente in einer Liste {\flqq landen\frqq}, gering ist.
+
+\subsection{Geschlossenen Hashverfahren}
+Bei geschlossenen Hashverfahren kann jeder Behälter nur eine konstante Anzahl $a \ge 1$ von Schlüsseln aufnehmen.
+
+Daher ist die Behandlung von Kollisionen in der Regel komplexer (und daher wichtiger) als bei offenen Verfahren.
+
+Im folgenden wird der Fall $a = 1$ betrachtet und Hash-Tabellen, die Schlüssel/Wert-Paare mit Schlüsseln vom Typ String und Werten vom Typ Object speichern. Dabei soll jedem Schlüssel höchstens ein Wert zugeordnet sein.
+
+Kennzeichnung der Felder der Hashtabelle mit einem booleschen Wert. Unterscheidung:
+\begin{compactitem}
+	\item Behälter wurde noch nie getroffen (true)
+	\item Ein Behälter wurde schon benutzt, ist aber wegen einer vorhergehenden Löschoperation leer. (false)
+\end{compactitem}
+
+Grundlegende Idee der Kollisionsbehandlung: \ul{Rehashing}:
+\begin{compactitem}
+	\item Neben der {\flqq Haupt\frqq}-Hashfunktion $h_0$ werden weitere Hashfunktionen $h_1, \ldots, h_l$ benutzt.
+	\item Für einen Schlüssel $x$ werden dann nacheinander die Behälter $h_0(x), h_1(x), \ldots, h_l(x)$ angeschaut. Sobald ein freier Behälter gefunden wird, kann das Element gespeichert werden.
+\end{compactitem}
+
+\paragraph{Problem:} Das Auftreten einer freien Zelle für $h_i(x)$ besagt nicht, dass $x$ nicht schon in der Hash-Tabelle enthalten gewesen ist. $\Rightarrow$ Markieren der gelöschten Paare.
+
+Analog zu den offenen Hashverfahren soll die Folge der Hashfunktionen $h_0, \ldots, h_{n−1}$ so festgelegt werden, dass für jeden Schlüsselwert $s$ sämtliche Behälter $HT[i]$ ($0 \le i < n$) erreicht werden. D.h. es gibt eine {\flqq gleichmäßige\frqq} Verteilung über alle Behälter.
+
+\paragraph{Wahl der Hashfunktionen $h_i(x)$:} $h_i(x) := (h(x) + i) \mod n$\\
+Diese einfachste Art der Festlegung wird als \ul{lineares Sondieren} (\ul{linear probing}) bezeichnet.
+
+\subsubsection{Lineares Sondieren}
+\paragraph{Eigenschaften:}
+\begin{compactitem}
+	\item Verschieben {\flqq kollidierender\frqq} Elemente auf den nächsten freien Behälter.
+	\item Bei $k$ hintereinander belegten Behältern gilt: Die Wahrscheinlichkeit, dass der erste freie Behälter nach diesen $k$ Behältern belegt wird, ist mit $(k + 1)/m$ wesentlich größer als die Wahrscheinlichkeit, dass ein Behälter im nächsten Schritt belegt wird, dessen Vorgänger noch frei ist. Dadurch entstehen beim linearen Sondieren {\flqq Ketten\frqq} belegter Behälter.
+	\item Sei $\alpha := n/m$ der Belegungsfaktor einer Hash-Tabelle mit $m$ Behältern, von denen $n$ belegt sind. Beim Hashing mit linearem Sondieren entstehen für eine Suchoperation durchschnittlich folgende Kosten: (Knuth 1973)
+	\begin{compactitem}
+		\item $(1 + 1/(1 − \alpha ))/2$ beim erfolgreichen Suchen
+		\item $1 + 1/(1 − \alpha )2)/2$ beim erfolglosen Suchen
+	\end{compactitem}
+\end{compactitem}
+
+\paragraph{Folgerung:} Bei Belegung einer Hashtabelle wird Suchen mittels linearem Sondieren ineffizient.\\
+$\Rightarrow$ Alternative Hashverfahren betrachten!
+
+\paragraph{Verallgemeinertes lineares Sondieren:} $h_i(x) = (h(x) + c \cdot i) \mod m$\\
+$c$ ist dabei eine ganzzahlige Konstante ($>0$), die zu $m$ teilerfremd sein muss, um alle Behälter zu erreichen.
+
+\paragraph{Quadratisches Sondieren:} $h_i(x) = (h(x) + i^2) \mod m$\\
+oder für $1 \le i \le (m − 1)/2)$\\
+$h_{2i−1}(x) = (h(x) + i^2) \mod m$,\\
+$h_{2i}(x) = (h(x) − i^2) \mod m$.\\
+(Wählt man bei dieser Variante $m = 4j + 3$ als Primzahl, so wird jeder Behälter getroffen.)
+
+\paragraph{Doppel-Hashing:} Seien $h, h*
+: M \to \{0, \ldots, n−1\}$ zwei Hash-Funktionen.\\
+Dabei seien $h$ und $h*$ so definiert, dass für beide eine Kollision nur mit Wahrscheinlichkeit $1/n$ auftritt, d.h. $P(h(x) = h(y)) = P(h*(x) = h*(y)) = 1/n$\\
+Die Funktionen $h$ und $h*$ heißen \ul{unabhängig}, wenn eine Doppelkollision nur mit Wahrscheinlichkeit $1/n^2$ auftritt, d.h. $P(h(x) = h(y)$ und $h*(x) = h* (y)) = 1/n^2$.
+
+Eine Folge von Hash-Funktionen wird wie folgt definiert:\\
+Sei $i \ge 1$, dann ist $h_i(x) = (h(x) + h*(x) \cdot i^2) \mod m$.
+
+\paragraph{Problem:} Paare von Funktionen finden, die unabhängig sind.
+
+\section{Hashfunktionen}
+Im folgenden sollen verschiedene Hashfunktionen vorgestellt werden.
+
+Sei $M$ eine Menge und $\text{nat} : M \to \N$ eine Funktion von $M$ in die Menge der natürlichen Zahlen. Dann ist $h(m) = \text{nat}(m) \mod n$ eine Hashfunktion (für $n$ Behälter).
+
+\subsection{Bildung von Hashwerten aus Wörtern}
+Sei $W$ die Menge der Wörter aus dem Alphabet $A = \{a, b, \ldots, z\}$. Dann kann ein Wort $w = a_1a_2\ldots a_n$ ($a_i \in A$) als eine Zahl $\text{nat}(w) = \text{wert}(a_1) * 26^{n−1} + \text{wert}(a_2) * 26^{n−2} + \ldots + \text{wert}(a_{n−1}) * 26 + \text{wert}(a_n)$ aufgefasst werden, wenn man $\text{wert}(a) = 0, \text{wert}(b) = 1, \ldots, \text{wert}(z) = 25$ setzt.
+
+\subsection{Einfache Bildung von Hashwerten aus Zahlen}
+Sei $M \subseteq \N$, $n$ eine Menge von Behältern, dann sei $h(x) = x \mod n$
+\begin{compactitem}
+	\item Alle Behälter werden erfasst
+	\item Nacheinander folgende Schlüssel landen in aufeinanderfolgende Behälter $\Rightarrow$ Probleme beim Sondieren
+\end{compactitem}
+
+\paragraph{Die Mittel-Quadrat-Methode:}\quad\\
+Sei $U \subseteq \N$ und sei $k=\sum\limits_{i=0}^{l}z_i*10^i$\\
+$k$ wird durch die Ziffernfolge $z_lz_{l−1}\ldots z_0$ beschrieben.\\
+Den Wert $h(k)$ erhält man dadurch {\flqq Herausgreifen\frqq} eines hinreichend großen Blocks aus der Mitte der Ziffernfolge von $k^2$.
+
+Die mittleren Ziffern von $k^2$ hängen von allen Ziffern von $k$ ab $\Rightarrow$ gute Streuung von aufeinander folgenden Werten von $k$.
+
+\paragraph{Beispiel:}\quad\\
+Sei $n = 100$ (Anzahl der Behälter)\\
+\begin{tabular}{|c|c|c|c|}
+	\hline
+	$k$ & $k\mod 100$ & $k^2$ & $h(k)$\\
+	\hline
+	130 & 30 & 16\ul{90}0 & 90\\
+	\hline
+	131 & 31 & 17\ul{16}1 & 16\\
+	\hline
+	132 & 32 & 17\ul{42}4 & 42\\
+	\hline
+\end{tabular}
