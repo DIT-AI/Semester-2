@@ -1,0 +1,91 @@
+% ####################
+% # Pakete einbinden #
+% ####################
+
+% Pakete erweitern LaTeX um zusätzliche Funktionen. Dies ist eine Satz nützlicher Pakete.
+% Weitere sollten in der Datei"`01_EigenePakete.tex"' hinzugefügt werden.
+\usepackage[utf8x]{inputenc}                                                  % Legt die Zeichenkodierung fest, z.B UTF8
+\usepackage[T1]{fontenc}                                                      % Verwendung der Zeichentabelle T1, für deutschsprachige Dokumente sinnvoll
+\usepackage[ngerman,english]{babel}                                           % Silbentrennung nach neuer deutscher und englischer Rechtschreibung
+\usepackage{amsmath}                                                          % Mathepaket
+\usepackage{amsfonts}
+\usepackage{amssymb}                                                          % Mathepaket
+\usepackage{xifthen}                                                          % Wird benötigt um \ifthenelse zu benutzen
+%\usepackage{graphicx}                                                         % Zum flexiblen Einbinden von Grafiken, pdftex ist optional
+\usepackage[pdftex]{graphicx}                                                 % Zum flexiblen Einbinden von Grafiken, pdftex ist optional
+\usepackage{units}                                                            % Ermöglicht die Nutzung von \unit[Zahl]{Einheit}
+\usepackage{setspace}                                                         % Einfaches wechseln zwischen unterschiedlichen Zeilenabständen
+%\usepackage{hyperref}                                                         % Verlinkt Textstellen im PDF Dokument
+\usepackage[pdfpagelabels]{hyperref}                                          % Verlinkt Textstellen im PDF Dokument
+\usepackage[font=small,labelfont=bf,labelsep=endash,format=plain]{caption}    % Darstellung für Caption s.u.
+\usepackage{subfig}                                                           % Bilder nebeneinander
+\usepackage{wrapfig}                                                          % Fließtext um Figure-Umgebung
+\usepackage{cite}                                                             % Zusatzfunktionen zum zitieren
+\usepackage{scrpage2}                                                         % Wird für Kopf- und Fußzeile benötigt
+\usepackage{array,dcolumn}                                                    % Beide Pakete werden für die Ausrichtung der Tabellenspalten benötigt
+
+
+% ############################
+% # weitere Pakete einbinden #
+% ############################
+
+% \usepackage{showframe}
+% Die Folgenden Pakete sind schon eingebunden (siehe 00_Protokoll.tex):
+% \usepackage[utf8x]{inputenc}                             % Legt die Zeichenkodierung fest, z.B UTF8
+% \usepackage[T1]{fontenc}                                 % Verwendung der Zeichentabelle T1, für deutschsprachige Dokumente sinnvoll
+% \usepackage[ngerman,english]{babel}                      % Silbentrennung nach neuer deutscher und englischer Rechtschreibung
+% \usepackage{amsmath}                                     % Mathepaket
+% \usepackage{amssymb}                                     % Mathepaket
+% \usepackage{ifthenx}                                     % Wird benötigt um \ifthenelse zu benutzen
+% \usepackage[pdftex]{graphicx}                            % Zum flexiblen Einbinden von Grafiken, pdftex ist optional
+% \usepackage{rotating}                            % Zum drehen von Objekten, pdftex ist optional
+  \usepackage[pdftex]{rotating}                            % Zum drehen von Objekten, pdftex ist optional
+% \usepackage{units}                                       % Ermöglicht die Nutzung von \unit[Zahl]{Einheit}
+% \usepackage{setspace}                                    % Einfaches wechseln zwischen unterschiedlichen Zeilenabständen
+% \usepackage[pdfpagelabels]{hyperref}                     % Verlinkt Textstellen im PDF Dokument
+% \usepackage[font=small,labelfont=bf,labelsep=endash,format=plain]{caption}
+%                                                          % Darstellung für Caption s.u.
+% \usepackage{subfig}                                      % Bilder nebeneinander
+% \usepackage{wrapfig}                                     % Fließtext um Figure-Umgebung
+% \usepackage{cite}                                        % Zusatzfunktionen zum zitieren
+% \usepackage{scrpage2}                                    % Wird für Kopf- und Fußzeile benötigt
+% \usepackage{array,dcolumn}                               % Beide Pakete werden für die Ausrichtung der Tabellenspalten benötigt
+  \usepackage{enumerate}                                   % Um andere Aufzählungsvarianten zu erzeugen http://ctan.org/pkg/enumerate
+  \usepackage{xcolor}
+  \usepackage{ulem}
+% \usepackage{mathtools}
+  \usepackage{longtable}
+  \usepackage{tabularx}                                    % http://ctan.org/pkg/tabularx
+  \usepackage{booktabs}                                    % http://ctan.org/pkg/booktabs
+% \usepackage{a4wide}
+  \usepackage{geometry}
+  \usepackage{amsthm}
+% \usepackage{pstricks-add}
+% \usepackage{pstricks}
+  \usepackage{pgf,tikz}
+  \usetikzlibrary{arrows}
+  \usepackage{chngcntr}
+  \usepackage{trfsigns}
+  \usepackage{multicol}
+  \usepackage{eurosym}
+  \usepackage{pdfpages}
+  \usepackage[nomessages]{fp}% http://ctan.org/pkg/fp
+  \usepackage{calc}
+  \usepackage{listings}
+  \usepackage{paralist}
+\input{kvmacros}
+
+% Spezialpakete
+\usepackage{fp}
+\usepackage{tikz}
+\usepackage{xcolor}
+% TikZ-Bibliotheken
+\usetikzlibrary{arrows}
+\usetikzlibrary{shapes}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{decorations.shapes}
+\usetikzlibrary{decorations.text}
+\usetikzlibrary{calc}
+\usetikzlibrary{snakes}
+\usetikzlibrary{positioning}
