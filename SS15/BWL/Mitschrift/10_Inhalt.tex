@@ -58,23 +58,23 @@ Ausgangspunkt der Investitionsplanung ist die Annahme, dass ein Geldbetrag, der 
 Daraus folgt -- Grundlage der Investitionstheorie ist das Auf- und Abzinsen von Zahlungsströmen, die zu verschiedenen Zeitpunkten anfallen.
 
 \paragraph{Aufzinsen}
-\redbox{$K_n=K_0\cdot(1+p)^n$}
+\redbox{$C_n=C_0\cdot(1+i)^n$}
 
 \paragraph{Abzinsen}
-\redbox{$K_0=\dfrac{K_n}{(1+p)^n}$}
+\redbox{$C_0=\dfrac{C_n}{(1+i)^n}$}
 
 \paragraph{Durchschnittszinsen}
-\redbox{$p=\sqrt[n]{\dfrac{K_n}{K_0}}-1$}
+\redbox{$i=\sqrt[n]{\dfrac{C_n}{C_0}}-1$}
 
 \paragraph{Investitionszeit} um aus Anfangsbetrag Endbetrag zu machen
-\redbox{$n=\dfrac{\log{\left(\dfrac{K_n}{K_0}\right)}}{\log{(1+p)}}$}
+\redbox{$n=\dfrac{\log{\left(\dfrac{C_n}{C_0}\right)}}{\log{(1+i)}}$}
 
 \clearpage
 \subsubsection{Zusammenfassung}
 \begin{compactitem}
 	\item Zahlungen werden zeitabhängig bewertet.
 	\item Vergleich von verschiedenen Zahlungen immer als hätte man das Kapital am Kapitalmarkt angelegt.
-	\item Wesentliche Formel: Aufzinsformel $K_n=K_0\cdot(1+p)^n$
+	\item Wesentliche Formel: Aufzinsformel $C_n=C_0\cdot(1+i)^n$
 \end{compactitem}
 
 \subsection{Kapitalwertmethode}
@@ -187,6 +187,53 @@ Eignet sich für Überschlagsrechnungen und als Risikomaßstab.
 \clearpage
 \subsubsection{Annuitätenmethode (Kapitalwertmethode)}
 \imgw{Bilder/AM}{Annuitätenmethode}{}{16cm}
+
+\clearpage
+\section{Renten}
+\paragraph{Definition:} Renten sind gleichförmige,
+äquidistante Zahlungsreihen.
+
+\clearpage
+\subsection{Barwert}
+\redbox{$q=1+i$}\\
+\redbox{$\text{BWF} = \dfrac{1-q^{-n}}{q-1} = \dfrac{q^n-1}{iq^n}$}\\
+\redbox{$\text{Barwert} = C\cdot\text{BWF} = C\cdot\dfrac{q^n-1}{iq^n}$}
+
+\clearpage
+\subsection{Endwert}
+\redbox{$q=1+i$}\\
+\redbox{$\text{EWF} = \dfrac{1-q^n}{1-q} = \dfrac{q^n-1}{i}$}\\
+\redbox{$\text{Endwert} = C\cdot\text{EWF} = C\cdot\dfrac{q^n-1}{i}$}
+
+\bluebox{$\text{BWF} = \text{EWF}\cdot\dfrac{1}{q^n}$}
+
+\clearpage
+\subsection{Kapitalwiedergewinnungsfaktor}
+\redbox{$\text{KWF} = \dfrac{1}{\text{BWF}}$}\\
+\redbox{$C = \text{KWF}\cdot\text{Barwert}$}
+
+\clearpage
+\subsection{Rückverteilungsfaktor}
+\redbox{$\text{RVF} = \dfrac{1}{\text{EWF}}$}\\
+\redbox{$C = \text{RVF}\cdot\text{Endwert}$}
+
+\clearpage
+\section{Optimaler Ersatzzeitpunkt}
+Weiternutzung einer Anlage im Jahr $n+1$ ist sinnvoll wenn\\
+\redbox{$\text{Restwert}_n\cdot(1+i)<\text{Nettoeinkünfte}_{n+1}+\text{Restwert}_{n+1}$}\\
+d.h. es ist sinnvoll, wenn die Einkünfte durch die Weiternutzung der Anlage und der Restwert am Ende des nächsten Jahres noch immer größer sind als der aktuelle Restwert inklusive Verzinsung für ein Jahr.
+
+Daraus ergibt sich der Grenzgewinn:\\
+\redbox{$\text{Grenzgewinn}_{n+1} = \text{Nettoeinkünfte}_{n+1}+\text{Restwert}_{n+1} - \text{Restwert}_n\cdot(1+i)$}\\
+$\text{Grenzgewinn}_{n+1} > 0$: Weiterverwendung in Periode $n+1$\\
+$\text{Grenzgewinn}_{n+1} < 0$: Liquidation am Ende der Periode $n$
+
+Unterberücksichtigung, dass bei keiner Weiterverwendung eine neue Anlage gekauft werden muss. Diese ist für $x$ Jahre vorgesehen und kostet einmalig $A_0$. Daraus ergibt sich der zeitliche Wiedergewinn der nötig ist damit sich die Anlage abzahlt.
+Dies muss dann noch vom Gewinn im nächsten ($n+1$) Jahr abgezogen werden. Ist dieser zeitliche Durchschnittsgewinn immer noch größer als der zeitliche Grenzgewinn, sollte die Anlage ersetzt werden durch eine neue.\\
+\redbox{$\text{zeitlicher Durchschnittsgewinn}_{n+1} = \text{Nettoeinkünfte mit neuer Anlage}_{n+1} - A_0 \cdot \text{KWF}$}\\
+$\text{KWF} = \dfrac{iq^x}{q^x-1}$\\
+$\text{Grenzgewinn}_{n+1} > \text{zeitlicher Durchschnittsgewinn}_{n+1}$: Weiterverwendung in Periode $n+1$\\
+$\text{Grenzgewinn}_{n+1} < \text{zeitlicher Durchschnittsgewinn}_{n+1}$: Liquidation am Ende der Periode $n$
 
 \section{Abgeleitete Größen}
 \section{Nominal und effektiv Zins}
